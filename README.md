@@ -12,10 +12,11 @@ This is a structured scenario planning tool based on the Shell methodology, feat
 
 ## Quick Start
 
-### 1. Start Claude Code
+### 1. Clone and Start Claude Code
 
 ```bash
-cd /Users/braydon/projects/experiments/ai-simulations/shell-scenario-panel
+git clone https://github.com/dbmcco/shell-scenario-panel.git
+cd shell-scenario-panel
 # Start Claude Code conversation
 ```
 

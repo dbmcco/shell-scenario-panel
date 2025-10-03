@@ -2,9 +2,10 @@
 
 ## How to Use Shell Scenario Panel
 
-### Step 1: Start Claude Code
+### Step 1: Clone and Start Claude Code
 ```bash
-cd /Users/braydon/projects/experiments/ai-simulations/shell-scenario-panel
+git clone https://github.com/dbmcco/shell-scenario-panel.git
+cd shell-scenario-panel
 # Start your Claude Code session here
 ```
 
