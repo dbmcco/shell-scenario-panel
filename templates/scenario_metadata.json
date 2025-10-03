@@ -1,0 +1,18 @@
+{
+  "scenario_id": "",
+  "created_at": "",
+  "status": "active",
+  "focal_question": "",
+  "time_horizon": "",
+  "scope": "",
+  "phase": "understanding",
+  "consultations": [],
+  "last_specialist": null,
+  "next_action": "clarify_focal_question",
+  "validation_status": "pending_user_input",
+  "predetermined_elements_identified": false,
+  "critical_uncertainties_identified": false,
+  "scenarios_developed": 0,
+  "target_scenario_count": 4,
+  "notes": ""
+}

@@ -1,0 +1,92 @@
+{
+  "permissions": {
+    "file_operations": {
+      "read": true,
+      "write": true,
+      "create": true,
+      "modify": true
+    },
+    "allowed_tools": [
+      "Read", "Write", "Edit", "MultiEdit", "TodoWrite", "Bash", "Task"
+    ]
+  },
+  "hooks": {
+    "pre-session": ".claude/hooks/pre-session.sh",
+    "post-task": ".claude/hooks/post-task.sh"
+  },
+  "environment": {
+    "SCENARIO_PANEL_ROOT": ".",
+    "SCENARIO_TEMPLATES_DIR": "./templates",
+    "SCENARIOS_DIR": "./scenarios/active"
+  },
+  "validation": {
+    "require_scenario_id": true,
+    "enforce_transcript_creation": true,
+    "require_user_validation": true,
+    "minimum_transcript_words": 100
+  },
+  "project_type": "shell_scenario_planning",
+  "workflow_enforcement": "phase_based",
+  "phase_configurations": {
+    "understanding": {
+      "description": "Understand focal question and decision context",
+      "required_documents": ["focal_question.md"],
+      "completion_trigger": "focal_question_validated"
+    },
+    "predetermined": {
+      "description": "Identify trends already in motion",
+      "required_documents": ["predetermined_elements.md"],
+      "suggested_specialists": ["geopolitician", "economist", "ecologist", "futurist"],
+      "completion_trigger": "predetermined_elements_validated"
+    },
+    "uncertainties": {
+      "description": "Identify critical uncertainties",
+      "required_documents": ["critical_uncertainties.md"],
+      "suggested_specialists": ["anthropologist", "futurist", "geopolitician", "economist", "contrarian"],
+      "completion_trigger": "scenario_axes_selected"
+    },
+    "scenario_development": {
+      "description": "Develop scenario narratives",
+      "required_documents": ["scenarios/*.md"],
+      "suggested_specialists": ["all"],
+      "completion_trigger": "all_scenarios_complete"
+    },
+    "strategy_testing": {
+      "description": "Test strategies across scenarios",
+      "required_documents": ["strategy_analysis.md"],
+      "completion_trigger": "robust_strategies_identified"
+    }
+  },
+  "specialists": {
+    "ecologist": {
+      "name": "Dr. Elena Vasquez",
+      "focus": "Systems dynamics, feedback loops, resilience",
+      "prompt_file": "prompts/specialists/ecologist.md"
+    },
+    "geopolitician": {
+      "name": "Dr. Marcus Chen",
+      "focus": "Power, resources, state interests",
+      "prompt_file": "prompts/specialists/geopolitic.md"
+    },
+    "anthropologist": {
+      "name": "Dr. Aisha Okonkwo",
+      "focus": "Cultural shifts, values, lived experience",
+      "prompt_file": "prompts/specialists/anthrpologist.md"
+    },
+    "futurist": {
+      "name": "Dr. Kenji Tanaka",
+      "focus": "Technology capabilities, platform shifts",
+      "prompt_file": "prompts/specialists/furutrist.md"
+    },
+    "economist": {
+      "name": "Dr. Sarah Blackwood",
+      "focus": "Debt dynamics, financial structures",
+      "prompt_file": "prompts/specialists/economist.md"
+    },
+    "contrarian": {
+      "name": "Dr. Jamie O'Sullivan",
+      "focus": "Hidden risks, challenging assumptions",
+      "prompt_file": "prompts/specialists/contrarian.md"
+    }
+  }
+}

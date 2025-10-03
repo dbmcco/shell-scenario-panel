@@ -1,0 +1,46 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Active scenarios (don't commit user data)
+scenarios/active/*
+!scenarios/active/.gitkeep
+
+# Archived scenarios (don't commit user data)
+scenarios/archived/*
+!scenarios/archived/.gitkeep
+
+# Conversation transcripts (user-specific)
+conversations/*
+!conversations/.gitkeep
+
+# Artifacts (user-specific)
+artifacts/*
+!artifacts/.gitkeep
+
+# Local settings (may contain sensitive paths)
+.claude/settings.local.json
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+
+# Node
+node_modules/
+npm-debug.log*
