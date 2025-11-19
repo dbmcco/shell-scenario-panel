@@ -23,11 +23,12 @@ Just start talking about your scenario planning needs:
 
 She will automatically:
 1. Initialize a new scenario (runs `.claude/scenario-init.sh` for you)
-2. Guide you through Phase 1: Understanding your focal question
-3. Consult specialists strategically via Task tool
-4. Track progress with TodoWrite
-5. Synthesize insights for your validation
-6. Continue through all 6 phases until complete
+2. Offer Phase 0 discovery or direct to Phase 1
+3. Conduct company discovery if selected (interview + specialist research)
+4. Consult specialists strategically via Task tool
+5. Track progress with TodoWrite
+6. Synthesize insights for your validation
+7. Continue through all 7 phases until complete
 
 ## You Don't Need To:
 - ❌ Run any bash scripts manually
@@ -53,16 +54,68 @@ She will automatically:
 **Market Analysis:**
 > "I need to understand possible futures for the electric vehicle market over the next decade. What scenarios should we prepare for?"
 
-## The 6 Phases
+## The 7 Phases
 
 Dr. Wells will guide you through:
 
+0. **Company Discovery (NEW)** - Intelligent interview loop with specialist research to generate focal question recommendations
 1. **Understanding** - Clarify your focal question and decision context
 2. **Predetermined Elements** - Identify trends already locked in
 3. **Critical Uncertainties** - Surface factors that could go multiple ways
 4. **Scenario Development** - Create 4 plausible, divergent futures
 5. **Early Warning Signals** - Define indicators for each scenario
 6. **Strategy Testing** - Identify robust strategies across scenarios
+
+## Quick Example: Starting with Phase 0 Discovery
+
+**You:** I want to develop scenarios for my company
+
+**Dr. Wells:** Do you have a clear focal question, or should I interview you about your company first?
+
+**You:** Interview me
+
+**Dr. Wells:** What's your company name and what industry are you in?
+
+**You:** We're TechFab, a semiconductor equipment manufacturer
+
+**Dr. Wells:** What's your company size and stage?
+
+**You:** $200M revenue, 500 employees, growth stage
+
+**Dr. Wells:** What's your core business model?
+
+**You:** We sell lithography equipment to chip manufacturers
+
+**Dr. Wells:** I'm consulting all 6 specialists to research your industry and market context - this will take 10-15 minutes.
+
+[6 specialists research semiconductor equipment industry]
+
+**Dr. Wells:** Here's what the specialists discovered:
+
+**Common themes:**
+- Economist: Massive CapEx concentration in leading-edge nodes, Chinese self-sufficiency push
+- Geopolitician: Export controls tightening, CHIPS Act driving US fab construction
+- Futurist: EUV vs. High-NA EUV inflection point, AI chip demand surge
+- Ecologist: Water and energy intensity of fabs, material scarcity for advanced equipment
+
+**Questions that emerged:**
+1. What % of revenue comes from Chinese customers?
+2. Are you exposed to export control restrictions?
+3. What's your R&D investment in next-gen technology?
+
+[Interview continues for 1-2 more rounds based on findings]
+
+**Dr. Wells:** Based on discovery, here are 3 recommended focal questions:
+
+1. **The Geopolitical Bifurcation Question:** How should we position our product portfolio given uncertainty about US-China technology decoupling over 5 years?
+
+2. **The Technology Transition Question:** When should we shift R&D investment from EUV to High-NA EUV given uncertain customer adoption timelines?
+
+3. **The Market Concentration Question:** What customer diversification strategy maximizes resilience given TSMC/Samsung concentration risk?
+
+**You:** Let's go with #1, the geopolitical question
+
+**Dr. Wells:** [Offers refinements] → Proceeds to Phase 1 → ... → Develops 4 scenarios
 
 ## Output
 

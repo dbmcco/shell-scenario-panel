@@ -5,8 +5,9 @@ A Claude Code-powered Shell-style scenario planning system with multi-specialist
 ## Overview
 
 This is a structured scenario planning tool based on the Shell methodology, featuring:
-- **Dr. Michelle Wells** (Moderator) - Facilitates 6-phase scenario development process
+- **Dr. Michelle Wells** (Moderator) - Facilitates 7-phase scenario development process
 - **6 Specialist Consultants** - Domain experts providing diverse perspectives
+- **Intelligent Company Discovery** - AI-guided interview loop with specialist research
 - **Automated Workflow** - Hooks enforce quality standards and transcript creation
 - **DraftForge-inspired Architecture** - Proven patterns for multi-agent coordination
 
@@ -25,7 +26,7 @@ cd shell-scenario-panel
 Just describe your scenario planning needs:
 
 ```
-"I need to develop scenarios for AI regulation over the next decade."
+"I need to develop scenarios for my company."
 ```
 
 or
@@ -34,11 +35,22 @@ or
 "Let's explore future scenarios for renewable energy infrastructure."
 ```
 
-### 3. Dr. Wells Handles Everything
+### 3. Choose Your Starting Point
+
+Dr. Wells will ask: **"Do you have a clear focal question, or should I interview you about your company first?"**
+
+**Recommended:** Choose interview - Phase 0 discovery helps generate better focal questions and provides specialists with context
+
+**Fast path:** Provide focal question directly - basic company info is still captured but deep research is skipped
+
+Phase 0 typically takes 30-45 minutes (includes 6 specialist consultations + user interview rounds).
+
+### 4. Dr. Wells Handles Everything
 
 She will:
 - Initialize the scenario automatically
-- Guide you through the 6-phase process
+- Conduct company discovery (if selected)
+- Guide you through the 7-phase process
 - Consult specialists as needed
 - Track progress with TodoWrite
 - Ensure quality and documentation
@@ -83,13 +95,37 @@ shell-scenario-panel/
 
 ```
 
-## The 6-Phase Process
+## The 7-Phase Process
+
+### Phase 0: Company Discovery (NEW)
+
+**Purpose:** Build comprehensive understanding of company context through intelligent interview loop and specialist research.
+
+**Process:**
+1. Dr. Wells interviews user (2-3 basic questions: company, industry, size, business model)
+2. All 6 specialists research company/market from their domain perspectives
+3. Research findings inform follow-up questions for user
+4. Iterate until comprehensive picture emerges (typically 1-3 rounds)
+5. Dr. Wells generates 3-4 AI-recommended focal questions based on discoveries
+
+**Outputs:**
+- `company.md` - Comprehensive company profile
+- `phase_0_discovery/research/` - 6 specialist discovery transcripts (per round)
+- `scenario_suggestions.md` - AI-generated focal question recommendations
+
+**User chooses:** Pick recommended question or provide their own → Proceed to Phase 1
+
+**Can be skipped:** If user has clear focal question, basic company info is captured but deep discovery is optional.
+
+---
 
 ### Phase 1: Understand the Focal Question
-Clarify decision context, time horizon, scope, and assumptions
+Clarify decision context, time horizon, scope, and assumptions (now streamlined since Phase 0 provides context)
 
 ### Phase 2: Identify Predetermined Elements
 Map trends already in motion (demographics, infrastructure, debt, climate)
+
+Specialists now reference Phase 0 context and discovery findings
 
 ### Phase 3: Identify Critical Uncertainties
 Surface factors that could go multiple ways and matter for decisions
