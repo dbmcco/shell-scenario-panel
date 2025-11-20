@@ -44,6 +44,7 @@ else
     mkdir -p "$SCENARIO_DIR/conversations"
     mkdir -p "$SCENARIO_DIR/scenarios"
     mkdir -p "$SCENARIO_DIR/artifacts"
+    mkdir -p "$SCENARIO_DIR/phase_0_discovery/research"
     echo "✅ Directory structure created"
 fi
 
@@ -54,13 +55,21 @@ cat > "$SCENARIO_DIR/metadata.json" <<EOF
   "scenario_id": "$SCENARIO_ID",
   "created_at": "$TIMESTAMP",
   "status": "active",
+  "current_phase": 0,
+  "phase_0": {
+    "discovery_rounds": 0,
+    "specialists_consulted": [],
+    "convergence_reached": false,
+    "user_confirmed": false,
+    "scenario_suggestions_generated": false
+  },
   "focal_question": "",
   "time_horizon": "",
   "scope": "",
-  "phase": "understanding",
+  "phase": "phase_0_discovery",
   "consultations": [],
   "last_specialist": null,
-  "next_action": "clarify_focal_question",
+  "next_action": "begin_company_discovery",
   "validation_status": "pending_user_input",
   "predetermined_elements_identified": false,
   "critical_uncertainties_identified": false,
@@ -80,8 +89,8 @@ echo "🎉 Scenario $SCENARIO_ID initialized successfully!"
 echo ""
 echo "📁 Location: $SCENARIO_DIR"
 echo "📋 Status: Active"
-echo "🔄 Phase: Understanding"
-echo "➡️  Next Action: Clarify focal question with facilitator"
+echo "🔄 Phase: Phase 0 - Company Discovery"
+echo "➡️  Next Action: Dr. Wells will ask about company discovery or focal question"
 echo ""
 echo "To begin, set environment variable:"
 echo "export SCENARIO_ID=$SCENARIO_ID"
