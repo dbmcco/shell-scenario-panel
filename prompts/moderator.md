@@ -338,18 +338,120 @@ Ask targeted questions to understand:
 - What would you need to see differently to change your strategy?
 
 **Phase 2: Identify Predetermined Elements**
-These are trends already in motion that will shape the future regardless of uncertainty:
-- Demographics already born
-- Infrastructure already built
-- Debt already accumulated
-- Technologies already invented
-- Climate change already locked in
 
-Consult specialists strategically:
-- Marcus for geopolitical trends already in motion
-- Sarah for financial/economic structures already established
-- Elena for system dynamics with long time delays
-- Kenji for technological capabilities already demonstrated
+**Pattern:** 1 round, isolated consultation (all 7 specialists)
+
+**Objective:** Map trends already in motion
+
+**Your tasks:**
+
+1. **Invoke all 7 specialists in parallel** using Task tool
+
+Example invocation for economist:
+
+```
+Task("economist", "SCENARIO: SCENARIO-2025-001
+PHASE 2: Predetermined Elements
+
+Read company profile:
+scenarios/active/SCENARIO-2025-001/company.md
+
+Read focal question:
+scenarios/active/SCENARIO-2025-001/focal_question.md
+
+Identify predetermined elements from economic perspective:
+- What debt structures/financial obligations constrain the future?
+- What economic trends are already locked in?
+- What capital flows are inevitable?
+
+Create TWO files:
+
+1. Full analysis:
+scenarios/active/SCENARIO-2025-001/conversations/economist_round1_full.md
+
+Format:
+# Phase 2 Predetermined Elements - Dr. Sarah Blackwood (Economist)
+
+## Analysis
+[500+ words of deep economic reasoning]
+
+## Predetermined Elements Identified
+[Specific elements that are locked in]
+
+## Uncertainties Noted
+[What's genuinely uncertain, not predetermined]
+
+2. Summary for Round 2 cross-reading:
+scenarios/active/SCENARIO-2025-001/conversations/economist_round1_summary.md
+
+Format:
+## KEY POINTS (3-5 bullets)
+- Point 1
+- Point 2
+- Point 3
+
+## EXECUTIVE SUMMARY (100 words max)
+[Concise summary of analysis and key predetermined elements]
+")
+```
+
+2. **Immediately verify files created** after each Task completes
+
+Use Read tool:
+```
+Read("scenarios/active/SCENARIO-2025-001/conversations/economist_round1_full.md")
+Read("scenarios/active/SCENARIO-2025-001/conversations/economist_round1_summary.md")
+```
+
+Check:
+- Full transcript exists and is >100 words
+- Summary exists and is <200 words
+- Both files have required format
+
+If missing: Re-invoke specialist with explicit reminder about file paths
+
+3. **Update metadata.json** after all specialists complete
+
+Add to consultations array:
+```json
+{
+  "specialist": "economist",
+  "timestamp": "2025-11-21T10:30:00Z",
+  "phase": "predetermined",
+  "round": 1,
+  "transcript_path": "conversations/economist_round1_full.md",
+  "summary_path": "conversations/economist_round1_summary.md",
+  "validated": true
+}
+```
+
+4. **Synthesize into predetermined_elements.md**
+
+Read all 7 Round 1 **full** transcripts (not summaries).
+
+Synthesize into coherent document covering:
+- Economic predetermined elements
+- Geopolitical locked-in dynamics
+- Ecological constraints
+- Technological inevitabilities
+- Cultural/demographic trends
+- Contrarian challenges to assumptions
+
+5. **Present to user for validation**
+
+Show synthesized predetermined_elements.md.
+Get explicit approval before proceeding to Phase 3.
+
+**Specialists to invoke (all 7):**
+- economist
+- geopolitician
+- ecologist
+- futurist
+- anthropologist
+- contrarian
+- researcher (only if knowledge gaps identified)
+
+**Cost:** 7 specialist invocations
 
 **Phase 3: Identify Critical Uncertainties**
 These are factors that:
