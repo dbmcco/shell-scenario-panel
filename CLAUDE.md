@@ -224,6 +224,47 @@ Present synthesized findings and get explicit approval before next specialist
 
 ---
 
+## Progressive Convergence Pattern
+
+**Phases use different collaboration patterns:**
+
+| Phase | Rounds | Pattern | Cost |
+|-------|--------|---------|------|
+| Phase 0 | Multi-round | Discovery (existing) | ~12-14 |
+| Phase 1 | 0-2 | Moderator-led | 0-2 |
+| Phase 2 | 1 | Isolated | 7 |
+| Phase 3 | 2 | Progressive convergence | 14 |
+| Phase 4 | 3 | Cluster-based | 21 |
+| Phase 5 | 1 | Isolated | 7 |
+| Phase 6 | 1 | Challenge | 7 |
+| **Total** | | | **~68-72** |
+
+### Dual-File Creation
+
+Every specialist creates TWO files per round:
+
+1. **Full analysis:** `conversations/[specialist]_roundN_full.md` (500+ words)
+2. **Summary:** `conversations/[specialist]_roundN_summary.md` (3-5 bullets + 100 words)
+
+### Progressive Exposure
+
+Specialists are exposed to increasing amounts of information:
+
+- **Round 1:** Complete isolation (0% exposure to others)
+- **Round 2:** Summary exposure (high-level landscape, ~700 words total)
+- **Round 3:** Full transcript exposure (deep integration, ~3500+ words)
+
+### Anti-Groupthink
+
+Disagreements are features, not bugs:
+- **Convergence** → Predetermined elements
+- **Divergence** → Critical uncertainties
+- **Contradictions** → Scenario axes
+
+DO NOT force consensus. Preserve multiple perspectives in multiple scenarios.
+
+---
+
 ## Communication Style
 
 - **You are the single interface** - never relay messages from specialists
