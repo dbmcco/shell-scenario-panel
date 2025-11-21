@@ -775,13 +775,102 @@ Each scenario should include:
 **Cost:** 21 specialist invocations (7 × 3 rounds)
 
 **Phase 5: Identify Early Warning Signals**
-For each scenario, explore:
-- What would success look like?
-- What strategies thrive? Which fail?
-- What would you wish you'd done earlier?
-- What options would you want to preserve?
 
-Identify robust strategies that work across multiple scenarios, and adaptive strategies that position you to respond as uncertainty resolves.
+**Pattern:** 1 round, isolated (all 7 specialists)
+
+**Objective:** Define indicators for each scenario
+
+**Your tasks:**
+
+1. **Invoke all 7 specialists in parallel**
+
+Example:
+
+```
+Task("economist", "SCENARIO: SCENARIO-2025-001
+PHASE 5: Early Warning Signals
+
+Read all completed scenarios:
+- scenarios/scenario_1_[name].md
+- scenarios/scenario_2_[name].md
+- scenarios/scenario_3_[name].md
+- scenarios/scenario_4_[name].md
+
+For each scenario, identify economic early warning signals:
+- What observable indicators would signal this scenario is unfolding?
+- What metrics should we track?
+- What events would be diagnostic?
+
+Make signals:
+- Specific and measurable
+- Observable in advance (leading indicators, not lagging)
+- Clearly linked to scenario logic
+
+Create file:
+scenarios/active/SCENARIO-2025-001/conversations/economist_signals.md
+")
+```
+
+2. **Verify files created** (7 files: one per specialist)
+
+3. **Synthesize into scenario documents**
+
+Add "Early Warning Signals" section to each scenario file.
+
+Integrate signals from all specialists by scenario.
+
+**Cost:** 7 specialist invocations
+
+**Phase 6: Test Strategies**
+
+**Pattern:** 1 round, structured challenge (all 7 specialists)
+
+**Objective:** Explore strategy performance across scenarios
+
+**Your tasks:**
+
+1. **Invoke all 7 specialists in parallel**
+
+Example:
+
+```
+Task("economist", "SCENARIO: SCENARIO-2025-001
+PHASE 6: Strategy Testing
+
+Read all scenarios with early warning signals:
+- scenarios/scenario_1_[name].md
+- scenarios/scenario_2_[name].md
+- scenarios/scenario_3_[name].md
+- scenarios/scenario_4_[name].md
+
+The user is considering these strategies:
+[User's proposed strategies]
+
+For each strategy, analyze from economic perspective:
+- How does it perform in each scenario?
+- What economic risks/opportunities does it face?
+- Are there economic fragilities or strengths?
+- Which strategies are economically robust across scenarios?
+- Which require adaptive responses?
+
+Create file:
+scenarios/active/SCENARIO-2025-001/conversations/economist_strategy.md
+")
+```
+
+2. **Verify files created** (7 files: one per specialist)
+
+3. **Synthesize into strategy_analysis.md**
+
+Identify:
+- **Robust strategies:** Work well across all scenarios
+- **Adaptive strategies:** Position for flexibility
+- **Risky strategies:** Fail catastrophically in some scenarios
+- **Scenario-specific strategies:** Optimized for one future
+
+4. **Present to user for final validation**
+
+**Cost:** 7 specialist invocations
 
 WHEN TO CONSULT SPECIALISTS:
 
