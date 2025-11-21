@@ -363,11 +363,14 @@ Example invocation for economist:
 Task("economist", "SCENARIO: SCENARIO-2025-001
 PHASE 2: Predetermined Elements
 
-Read company profile:
+Read company profile and accumulated context:
 scenarios/active/SCENARIO-2025-001/company.md
-
-Read focal question:
 scenarios/active/SCENARIO-2025-001/focal_question.md
+scenarios/active/SCENARIO-2025-001/scenario_context.md (user feedback and clarifications)
+
+IMPORTANT: scenario_context.md contains user feedback that emerged during
+scenario planning. This represents their evolved understanding - treat it as
+authoritative corrections and additions to initial context.
 
 Identify predetermined elements from economic perspective:
 - What debt structures/financial obligations constrain the future?
@@ -447,10 +450,85 @@ Synthesize into coherent document covering:
 - Cultural/demographic trends
 - Contrarian challenges to assumptions
 
-5. **Present to user for validation**
+5. **Present synthesis and checkpoint**
 
-Show synthesized predetermined_elements.md.
-Get explicit approval before proceeding to Phase 3.
+Read all 7 Round 1 **full** transcripts to create synthesis.
+
+Then present to user:
+
+"Round 1 complete. Here's what specialists found regarding predetermined elements:
+
+[2-3 paragraph synthesis highlighting key themes, agreements, and tensions]
+
+Quick checkpoint:
+- Any corrections to data they're working with?
+- Any new context this triggered?
+- Major factors they're missing?
+
+(Say 'looks good' if nothing significant)"
+
+6. **Capture user feedback**
+
+If user provides feedback:
+- Update scenarios/active/SCENARIO-ID/scenario_context.md
+- Add timestamped section:
+  ```
+  ## Phase 2 Round 1 - User Feedback (YYYY-MM-DD HH:MM)
+  - **Correction:** [What changed and from what to what]
+  - **New context:** [Strategic factors not previously mentioned]
+  - **Clarification:** [Refinements to understanding]
+  - **Reaction:** [Responses to specialist insights]
+  ```
+
+7. **Evaluate significance**
+
+**Minor feedback (incorporate without re-round):**
+- Data corrections <20%
+- Clarifications that don't change direction
+- Refinements to existing information
+
+**Major feedback (consider re-round):**
+- New strategic factors
+- Data corrections >20%
+- Contradicts specialist assumptions
+- Game-changing revelations
+
+8. **If major feedback, ask user:**
+
+"This is significant - should I run another round so specialists
+can analyze with this new context? (Will take ~15 minutes)"
+
+9. **Handle user decision**
+
+**If user wants iteration (and within round limit: max 2 for Phase 2):**
+- Re-invoke all 7 specialists
+- Specialists read: their previous full transcript + scenario_context.md
+- Create Round 2 files with same naming pattern
+- Return to checkpoint step
+
+**If user says proceed or feedback is minor:**
+- Synthesize into predetermined_elements.md
+- Incorporate user feedback in synthesis
+- Get explicit approval before proceeding to Phase 3
+
+10. **Update metadata.json** with checkpoint record:
+
+```json
+{
+  "checkpoints": {
+    "phase_2": [
+      {
+        "round": 1,
+        "timestamp": "2025-11-21T14:30:00Z",
+        "user_feedback_provided": true,
+        "significance": "minor",
+        "user_decision": "proceed",
+        "context_file_updated": true
+      }
+    ]
+  }
+}
+```
 
 **Specialists to invoke (all 7):**
 - economist
@@ -461,7 +539,7 @@ Get explicit approval before proceeding to Phase 3.
 - contrarian
 - researcher (only if knowledge gaps identified)
 
-**Cost:** 7 specialist invocations
+**Cost:** Minimum 7 invocations (1 round), Maximum 14 invocations (2 rounds)
 
 **Phase 3: Identify Critical Uncertainties**
 
@@ -485,10 +563,15 @@ Example invocation for economist:
 Task("economist", "SCENARIO: SCENARIO-2025-001
 PHASE 3: Critical Uncertainties - ROUND 1
 
-Read company profile and prior phase work:
+Read company profile, prior phase work, and accumulated context:
 - scenarios/active/SCENARIO-2025-001/company.md
 - scenarios/active/SCENARIO-2025-001/focal_question.md
 - scenarios/active/SCENARIO-2025-001/predetermined_elements.md
+- scenarios/active/SCENARIO-2025-001/scenario_context.md (user feedback and clarifications)
+
+IMPORTANT: scenario_context.md contains user feedback that emerged during
+scenario planning. This represents their evolved understanding - treat it as
+authoritative corrections and additions to initial context.
 
 Identify critical uncertainties from economic perspective:
 - What economic factors could go multiple ways?
@@ -513,6 +596,40 @@ Use same format as Phase 2.
 
 3. **Update metadata.json** with Round 1 consultations
 
+4. **Checkpoint after Round 1**
+
+Read all 7 Round 1 full transcripts and present to user:
+
+"Round 1 complete. Here's what specialists identified as critical uncertainties:
+
+[2-3 paragraph synthesis of uncertainties across specialists]
+
+Quick checkpoint:
+- Any corrections to data they're working with?
+- Any new context this triggered?
+- Major uncertainties they're missing?
+
+(Say 'looks good' if nothing significant)"
+
+**Capture user feedback** in scenario_context.md if provided:
+```
+## Phase 3 Round 1 - User Feedback (YYYY-MM-DD HH:MM)
+- **Correction:** [...]
+- **New context:** [...]
+```
+
+**Evaluate significance** (minor vs. major) and ask if major:
+"This is significant - should I run an extra round before Round 2? (Will take ~15 minutes)"
+
+**If user wants extra round:**
+- Re-invoke specialists with updated scenario_context.md
+- Mark as Round 1b
+- Then proceed to standard Round 2
+
+**If user says proceed:**
+- Continue to Round 2 (standard progressive convergence)
+- Update metadata with checkpoint
+
 ---
 
 #### Round 2: Convergence with Summary Exposure
@@ -530,6 +647,9 @@ PHASE 3: Critical Uncertainties - ROUND 2
 Read YOUR full Round 1 analysis:
 scenarios/active/SCENARIO-2025-001/conversations/economist_round1_full.md
 
+Read accumulated user feedback:
+scenarios/active/SCENARIO-2025-001/scenario_context.md (includes any feedback from Round 1 checkpoint)
+
 Read SUMMARIES from all 7 specialists (including yours):
 - conversations/economist_round1_summary.md
 - conversations/geopolitician_round1_summary.md
@@ -539,7 +659,7 @@ Read SUMMARIES from all 7 specialists (including yours):
 - conversations/contrarian_round1_summary.md
 - conversations/researcher_round1_summary.md
 
-Your task: Refine your analysis based on high-level insights from other domains.
+Your task: Refine your analysis based on high-level insights from other domains and user feedback.
 
 FOCUS ON:
 - **Convergence:** Where do uncertainties cluster across domains?
@@ -567,6 +687,43 @@ scenarios/active/SCENARIO-2025-001/conversations/economist_round2_summary.md
 2. **Verify all 7 specialists created Round 2 files** (14 more files: 7 full + 7 summary)
 
 3. **Update metadata.json** with Round 2 consultations
+
+4. **Checkpoint after Round 2**
+
+Read all Round 2 full transcripts and present to user:
+
+"Round 2 complete. Specialists have refined uncertainties with cross-domain insights:
+
+[2-3 paragraph synthesis showing convergence, divergence, and contradictions]
+
+Quick checkpoint:
+- Does this capture the critical uncertainties?
+- Any new context or corrections?
+- Anything missing?
+
+(Say 'looks good' if ready to proceed to scenario axis selection)"
+
+**Capture user feedback** in scenario_context.md if provided:
+```
+## Phase 3 Round 2 - User Feedback (YYYY-MM-DD HH:MM)
+- **Correction:** [...]
+- **New context:** [...]
+```
+
+**Evaluate significance and handle decision:**
+
+**If minor feedback OR user says "proceed":**
+- Synthesize into critical_uncertainties.md
+- Select 2-3 scenario axes
+- Present to user for validation
+
+**If major feedback AND within round limit (max 3 rounds):**
+- Ask: "Should I run one more round with this context? (Will take ~15 minutes)"
+- If yes: Re-invoke relevant specialists (not necessarily all 7)
+- Mark as Round 3
+- Return to checkpoint step
+
+**Update metadata** with checkpoint record.
 
 ---
 
@@ -623,11 +780,16 @@ Example invocation:
 Task("economist", "SCENARIO: SCENARIO-2025-001
 PHASE 4: Scenario Development - ROUND 1
 
-Read all prior work:
+Read all prior work and accumulated context:
 - company.md
 - focal_question.md
 - predetermined_elements.md
 - critical_uncertainties.md (includes scenario axes)
+- scenario_context.md (user feedback and clarifications)
+
+IMPORTANT: scenario_context.md contains user feedback that emerged during
+scenario planning. This represents their evolved understanding - treat it as
+authoritative corrections and additions to initial context.
 
 Using the scenario axes [Axis 1: X] and [Axis 2: Y], explore the scenario quadrants:
 - Scenario A: [High X, High Y]
@@ -647,6 +809,29 @@ Create TWO files:
 ```
 
 2. **Verify files created** (14 files: 7 full + 7 summary)
+
+3. **Checkpoint after Round 1**
+
+Read all 7 Round 1 full transcripts and present to user:
+
+"Round 1 complete. Specialists have explored the scenario quadrants:
+
+[2-3 paragraph synthesis of initial scenario sketches across domains]
+
+Quick checkpoint:
+- Any corrections or new context?
+- Are these scenario directions making sense?
+- Anything they're missing?
+
+(Say 'looks good' to proceed to cluster refinement)"
+
+**Capture user feedback** in scenario_context.md if provided.
+
+**Evaluate significance:**
+- **Minor/proceed:** Continue to Round 2 (cluster formation)
+- **Major + user wants iteration:** Re-invoke specialists with updated context as Round 1b
+
+**Update metadata** with checkpoint.
 
 ---
 
@@ -675,6 +860,9 @@ PHASE 4: Scenario Development - ROUND 2 (Cluster Refinement)
 Read YOUR full Round 1:
 conversations/economist_round1_full.md
 
+Read accumulated user feedback:
+scenarios/active/SCENARIO-2025-001/scenario_context.md
+
 Read FULL TRANSCRIPTS from your cluster members:
 - conversations/futurist_round1_full.md
 - conversations/economist_round1_full.md
@@ -698,6 +886,29 @@ Create TWO files:
 
 4. **Verify files created** (14 files: 7 full + 7 summary)
 
+5. **Checkpoint after Round 2**
+
+Read all Round 2 full transcripts and present to user:
+
+"Round 2 complete. Specialists have refined scenarios within clusters:
+
+[2-3 paragraph synthesis of cluster-based scenario development]
+
+Quick checkpoint:
+- Any corrections or new context?
+- Are the scenarios developing well?
+- Anything missing from the narratives?
+
+(Say 'looks good' to proceed to final integration)"
+
+**Capture user feedback** in scenario_context.md if provided.
+
+**Evaluate significance:**
+- **Minor/proceed:** Continue to Round 3 (final integration)
+- **Major + user wants iteration:** Re-invoke specialists with updated context as Round 2b
+
+**Update metadata** with checkpoint.
+
 ---
 
 #### Round 3: Cross-Cluster Integration and Challenge
@@ -715,6 +926,9 @@ PHASE 4: Scenario Development - ROUND 3 (Final Integration)
 Read YOUR full history:
 - conversations/economist_round1_full.md
 - conversations/economist_round2_full.md
+
+Read accumulated user feedback:
+scenarios/active/SCENARIO-2025-001/scenario_context.md
 
 Read ALL specialists' full transcripts from Rounds 1 and 2:
 - conversations/*_round1_full.md (all 7)
@@ -756,6 +970,29 @@ conversations/contrarian_round3_final.md
 ```
 
 2. **Verify files created** (7 files: all specialists' round3_final.md)
+
+3. **Checkpoint after Round 3**
+
+Read all Round 3 final transcripts and present to user:
+
+"Round 3 complete. Specialists have completed final integration and stress-testing:
+
+[2-3 paragraph synthesis of final integrated scenarios with contrarian challenges addressed]
+
+Final checkpoint:
+- Any last corrections or context?
+- Are the scenarios ready for narrative synthesis?
+- Anything critical missing?
+
+(Say 'looks good' to proceed to creating final scenario documents)"
+
+**Capture user feedback** in scenario_context.md if provided.
+
+**Evaluate significance:**
+- **Minor/proceed:** Synthesize into final scenario narratives
+- **Major + within limit (max 4 rounds):** Ask if user wants one more round
+
+**Update metadata** with checkpoint.
 
 ---
 
@@ -800,11 +1037,15 @@ Example:
 Task("economist", "SCENARIO: SCENARIO-2025-001
 PHASE 5: Early Warning Signals
 
-Read all completed scenarios:
+Read all completed scenarios and accumulated context:
 - scenarios/scenario_1_[name].md
 - scenarios/scenario_2_[name].md
 - scenarios/scenario_3_[name].md
 - scenarios/scenario_4_[name].md
+- scenarios/active/SCENARIO-2025-001/scenario_context.md (user feedback)
+
+IMPORTANT: scenario_context.md contains user feedback from throughout scenario
+planning. Consider this evolved understanding when identifying signals.
 
 For each scenario, identify economic early warning signals:
 - What observable indicators would signal this scenario is unfolding?
@@ -823,13 +1064,41 @@ scenarios/active/SCENARIO-2025-001/conversations/economist_signals.md
 
 2. **Verify files created** (7 files: one per specialist)
 
-3. **Synthesize into scenario documents**
+3. **Checkpoint after signal identification**
+
+Read all specialist signal transcripts and present to user:
+
+"Signal identification complete. Specialists have identified early warning indicators:
+
+[2-3 paragraph synthesis of signals across specialists for each scenario]
+
+Quick checkpoint:
+- Any corrections or additional signals to track?
+- Do these indicators make sense?
+- Anything missing?
+
+(Say 'looks good' to proceed to adding signals to scenarios)"
+
+**Capture user feedback** in scenario_context.md if provided:
+```
+## Phase 5 - User Feedback (YYYY-MM-DD HH:MM)
+- **Additional signals:** [...]
+- **Corrections:** [...]
+```
+
+**Evaluate significance:**
+- **Minor/proceed:** Synthesize signals into scenario documents
+- **Major + within limit (max 2 rounds):** Ask if user wants another round
+
+**Update metadata** with checkpoint.
+
+4. **Synthesize into scenario documents**
 
 Add "Early Warning Signals" section to each scenario file.
 
 Integrate signals from all specialists by scenario.
 
-**Cost:** 7 specialist invocations
+**Cost:** Minimum 7 invocations (1 round), Maximum 14 invocations (2 rounds)
 
 **Phase 6: Test Strategies**
 
@@ -847,11 +1116,15 @@ Example:
 Task("economist", "SCENARIO: SCENARIO-2025-001
 PHASE 6: Strategy Testing
 
-Read all scenarios with early warning signals:
+Read all scenarios with early warning signals and accumulated context:
 - scenarios/scenario_1_[name].md
 - scenarios/scenario_2_[name].md
 - scenarios/scenario_3_[name].md
 - scenarios/scenario_4_[name].md
+- scenarios/active/SCENARIO-2025-001/scenario_context.md (user feedback)
+
+IMPORTANT: scenario_context.md contains user feedback from throughout scenario
+planning. Consider this evolved understanding when testing strategies.
 
 The user is considering these strategies:
 [User's proposed strategies]
@@ -870,7 +1143,35 @@ scenarios/active/SCENARIO-2025-001/conversations/economist_strategy.md
 
 2. **Verify files created** (7 files: one per specialist)
 
-3. **Synthesize into strategy_analysis.md**
+3. **Checkpoint after strategy testing**
+
+Read all specialist strategy transcripts and present to user:
+
+"Strategy testing complete. Specialists have analyzed your strategies across scenarios:
+
+[2-3 paragraph synthesis of strategy performance insights]
+
+Final checkpoint:
+- Any corrections to the strategies being tested?
+- Any additional strategies to evaluate?
+- Any context that would change the analysis?
+
+(Say 'looks good' to proceed to final strategy synthesis)"
+
+**Capture user feedback** in scenario_context.md if provided:
+```
+## Phase 6 - User Feedback (YYYY-MM-DD HH:MM)
+- **Strategy adjustments:** [...]
+- **Additional strategies:** [...]
+```
+
+**Evaluate significance:**
+- **Minor/proceed:** Synthesize into final strategy_analysis.md
+- **Major + within limit (max 2 rounds):** Ask if user wants another round with revised strategies
+
+**Update metadata** with checkpoint.
+
+4. **Synthesize into strategy_analysis.md**
 
 Identify:
 - **Robust strategies:** Work well across all scenarios
@@ -878,9 +1179,9 @@ Identify:
 - **Risky strategies:** Fail catastrophically in some scenarios
 - **Scenario-specific strategies:** Optimized for one future
 
-4. **Present to user for final validation**
+5. **Present to user for final validation**
 
-**Cost:** 7 specialist invocations
+**Cost:** Minimum 7 invocations (1 round), Maximum 14 invocations (2 rounds)
 
 WHEN TO CONSULT SPECIALISTS:
 

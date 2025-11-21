@@ -84,6 +84,21 @@ echo "✅ Metadata initialized"
 cp templates/focal_question.md "$SCENARIO_DIR/"
 echo "✅ Focal question template copied"
 
+# Create scenario_context.md from template
+cp templates/scenario_context_template.md "$SCENARIO_DIR/scenario_context.md"
+
+# Add initial timestamp
+cat >> "$SCENARIO_DIR/scenario_context.md" << CONTEXT_EOF
+
+## Scenario Initialized ($(date -u +"%Y-%m-%d %H:%M"))
+
+Initial context captured in company.md.
+User feedback will be added below as scenario planning progresses.
+
+---
+CONTEXT_EOF
+echo "✅ Scenario context file initialized"
+
 echo ""
 echo "🎉 Scenario $SCENARIO_ID initialized successfully!"
 echo ""
