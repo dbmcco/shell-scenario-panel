@@ -1284,6 +1284,134 @@ IMPORTANT: You MUST create a transcript at scenarios/active/SCENARIO-2025-001/co
 
 **Don't proceed.** Re-invoke with explicit path reminder. This is YOUR responsibility to enforce.
 
+---
+
+## FILE PLACEMENT ENFORCEMENT (PROGRAMMATIC)
+
+**Problem:** Prompting specialists about file paths is unreliable. Use programmatic enforcement instead.
+
+### Enforcement System Components
+
+**Three enforcement scripts in `.claude/lib/`:**
+1. `file-paths.sh` - Registry of expected paths by phase/round
+2. `generate-specialist-prompt.sh` - Generates prompts with explicit paths
+3. `validate-specialist-output.sh` - Validates files exist at correct paths
+
+### Mandatory Workflow for Specialist Invocations
+
+**BEFORE invoking specialist:**
+
+```bash
+# Generate prompt with explicit file paths
+PROMPT=$(.claude/lib/generate-specialist-prompt.sh \
+    "$SCENARIO_ID" \
+    "$PHASE" \
+    "$ROUND" \
+    "$SPECIALIST" \
+    "Your question/instructions here")
+```
+
+This returns a prompt containing:
+- Your question/instructions
+- EXACT file paths specialist must create
+- File requirements (word counts, formats)
+- Warning that validation will check
+
+**AFTER specialist returns:**
+
+```bash
+# Validate output files
+.claude/lib/validate-specialist-output.sh \
+    "$SCENARIO_ID" \
+    "$PHASE" \
+    "$ROUND" \
+    "$SPECIALIST"
+```
+
+**If validation fails (exit code 1):**
+- DO NOT synthesize
+- DO NOT present to user
+- Re-invoke specialist with explicit reminder ONE TIME
+- If still fails after retry: Alert user and request manual intervention
+
+**If validation passes (exit code 0):**
+- Proceed to reading files and synthesis
+
+### Example: Phase 2 Economist Invocation
+
+```bash
+SCENARIO_ID="SCENARIO-2025-001"
+
+# 1. Generate enforcement prompt
+PROMPT=$(.claude/lib/generate-specialist-prompt.sh \
+    "$SCENARIO_ID" phase_2 1 economist \
+    "Identify predetermined economic elements: debt structures, financial obligations, capital flows already locked in.")
+
+# 2. Invoke specialist
+Task("economist", "$PROMPT")
+
+# 3. Validate
+if ! .claude/lib/validate-specialist-output.sh "$SCENARIO_ID" phase_2 1 economist; then
+    echo "❌ Validation failed. Re-invoking economist."
+
+    # Get expected paths for error message
+    EXPECTED_PATHS=$(.claude/lib/file-paths.sh | head -5)
+
+    # Re-invoke once
+    Task("economist", "CRITICAL: Your previous response did not create the required files.
+
+You MUST create these files at EXACTLY these paths:
+- scenarios/active/$SCENARIO_ID/conversations/economist_round1_full.md
+- scenarios/active/$SCENARIO_ID/conversations/economist_round1_summary.md
+
+Recreate your analysis ensuring both files exist.")
+
+    # Validate again
+    if ! .claude/lib/validate-specialist-output.sh "$SCENARIO_ID" phase_2 1 economist; then
+        # Escalate to user
+        echo "⚠️ Specialist failed validation twice. Manual intervention required."
+    fi
+fi
+
+# 4. Only proceed if validated
+Read("scenarios/active/$SCENARIO_ID/conversations/economist_round1_full.md")
+```
+
+### Benefits of Enforcement
+
+- ✅ **Deterministic** - Paths are calculated, not guessed
+- ✅ **Validated** - Files checked automatically
+- ✅ **Blocking** - Can't proceed with missing files
+- ✅ **Clear errors** - Tells specialist exactly what's missing
+- ✅ **One retry** - Gives specialist one chance to fix
+
+### Phase/Round Mapping
+
+Use these phase identifiers with enforcement scripts:
+
+| Phase | Identifier | Rounds | Files Per Specialist |
+|-------|------------|--------|---------------------|
+| Phase 0 Discovery | `phase_0_discovery` | Variable | `*_discovery_roundN.md` |
+| Phase 2 Predetermined | `phase_2` | 1-2 | `*_roundN_full.md`, `*_roundN_summary.md` |
+| Phase 3 Uncertainties | `phase_3` | 2-3 | `*_roundN_full.md`, `*_roundN_summary.md` |
+| Phase 4 Scenarios | `phase_4` | 3-4 | Rounds 1-2: full+summary, Round 3: final only |
+| Phase 5 Signals | `phase_5` | 1-2 | `*_signals.md` |
+| Phase 6 Strategy | `phase_6` | 1-2 | `*_strategy.md` |
+
+### When to Use Enforcement
+
+**Always use for:**
+- Phase 2-6 specialist invocations (standard workflow)
+- Phase 0 discovery rounds (if user chooses discovery)
+- Any specialist consultation creating files
+
+**Don't use for:**
+- Phase 1 focal question (no specialists typically)
+- Moderator synthesis files (you create these yourself)
+- User-facing checkpoints
+
+---
+
 ### Communication Protocol
 
 - **Never mention specialists by name** to the user
