@@ -454,27 +454,144 @@ Get explicit approval before proceeding to Phase 3.
 **Cost:** 7 specialist invocations
 
 **Phase 3: Identify Critical Uncertainties**
-These are factors that:
-- Will significantly impact the focal question
-- Could plausibly go multiple directions
-- Are genuinely uncertain (not just unknown to you)
 
-Consult specialists to surface uncertainties:
-- Aisha for cultural shifts that could go multiple ways
-- Kenji for technologies at inflection points
-- Marcus for geopolitical alignments that could shift
-- Sarah for financial regime changes
-- Jamie to challenge what you think is certain
+**Pattern:** 2 rounds (parallel-then-converge) - all 7 specialists
 
-**Phase 4: Select Scenario-Defining Uncertainties**
-Choose 2-3 critical uncertainties that:
-- Are relatively independent of each other
-- Create genuinely different futures when combined
-- Are decision-relevant for the user
+**Objective:** Surface factors that could go multiple ways
 
-This is where your expertise matters most - selecting uncertainties that illuminate decisions rather than just creating interesting stories.
+**This is the CRITICAL phase for integration.** Finding scenario axes requires seeing across domains.
 
-**Phase 5: Develop Scenario Narratives**
+---
+
+#### Round 1: Isolated Identification
+
+**Your tasks:**
+
+1. **Invoke all 7 specialists in parallel** for isolated analysis
+
+Example invocation for economist:
+
+```
+Task("economist", "SCENARIO: SCENARIO-2025-001
+PHASE 3: Critical Uncertainties - ROUND 1
+
+Read company profile and prior phase work:
+- scenarios/active/SCENARIO-2025-001/company.md
+- scenarios/active/SCENARIO-2025-001/focal_question.md
+- scenarios/active/SCENARIO-2025-001/predetermined_elements.md
+
+Identify critical uncertainties from economic perspective:
+- What economic factors could go multiple ways?
+- What regime changes are possible but uncertain?
+- What financial/monetary uncertainties matter most?
+
+IMPORTANT: Work independently. You will NOT see other specialists' work until Round 2.
+
+Create TWO files:
+
+1. Full analysis:
+scenarios/active/SCENARIO-2025-001/conversations/economist_round1_full.md
+
+2. Summary:
+scenarios/active/SCENARIO-2025-001/conversations/economist_round1_summary.md
+
+Use same format as Phase 2.
+")
+```
+
+2. **Verify all 7 specialists created files** (14 files total: 7 full + 7 summary)
+
+3. **Update metadata.json** with Round 1 consultations
+
+---
+
+#### Round 2: Convergence with Summary Exposure
+
+**Your tasks:**
+
+1. **Invoke all 7 specialists in parallel** with summary exposure
+
+Example invocation for economist:
+
+```
+Task("economist", "SCENARIO: SCENARIO-2025-001
+PHASE 3: Critical Uncertainties - ROUND 2
+
+Read YOUR full Round 1 analysis:
+scenarios/active/SCENARIO-2025-001/conversations/economist_round1_full.md
+
+Read SUMMARIES from all 7 specialists (including yours):
+- conversations/economist_round1_summary.md
+- conversations/geopolitician_round1_summary.md
+- conversations/ecologist_round1_summary.md
+- conversations/futurist_round1_summary.md
+- conversations/anthropologist_round1_summary.md
+- conversations/contrarian_round1_summary.md
+- conversations/researcher_round1_summary.md
+
+Your task: Refine your analysis based on high-level insights from other domains.
+
+FOCUS ON:
+- **Convergence:** Where do uncertainties cluster across domains?
+- **Divergence:** Where do specialists see different possibilities?
+- **Contradictions:** Where do specialists fundamentally disagree?
+
+IMPORTANT: Disagreements are VALUABLE - they reveal what's genuinely uncertain.
+Do NOT force consensus. Surface divergence clearly.
+
+Your task is NOT to reach consensus. Instead:
+- Note where insights reinforce each other (may indicate robust trends)
+- Note where specialists diverge (may indicate critical uncertainties)
+- Note contradictions explicitly (often reveal scenario axes)
+
+Create TWO files:
+
+1. Full Round 2 analysis:
+scenarios/active/SCENARIO-2025-001/conversations/economist_round2_full.md
+
+2. Summary:
+scenarios/active/SCENARIO-2025-001/conversations/economist_round2_summary.md
+")
+```
+
+2. **Verify all 7 specialists created Round 2 files** (14 more files: 7 full + 7 summary)
+
+3. **Update metadata.json** with Round 2 consultations
+
+---
+
+#### Synthesis: Identify Scenario Axes
+
+**Your tasks:**
+
+1. **Read all Round 2 full transcripts** (not summaries)
+
+2. **Identify patterns:**
+   - **Convergence** → May strengthen predetermined elements or validate assumptions
+   - **Divergence** → Candidate scenario axes
+   - **Contradictions** → Critical uncertainties
+
+3. **Select 2-3 scenario axes**
+
+Example axes:
+- Axis 1: EV Transition Speed (Gradual vs. Accelerated)
+- Axis 2: Regulatory Environment (Permissive vs. Restrictive)
+
+Creates 4 scenarios: 2×2 matrix
+
+4. **Synthesize into critical_uncertainties.md**
+
+Include:
+- Critical uncertainties identified
+- Scenario axes selected (2-3 axes)
+- Rationale for axis selection
+- How axes create distinct scenario quadrants
+
+5. **Present to user for validation**
+
+**Cost:** 14 specialist invocations (7 × 2 rounds)
+
+**Phase 4: Develop Scenario Narratives**
 For each scenario:
 - Give it a memorable name that captures its essence
 - Describe how it unfolds over time (not just an end state)
