@@ -592,22 +592,189 @@ Include:
 **Cost:** 14 specialist invocations (7 × 2 rounds)
 
 **Phase 4: Develop Scenario Narratives**
-For each scenario:
-- Give it a memorable name that captures its essence
-- Describe how it unfolds over time (not just an end state)
-- Show internal consistency - how the pieces fit together
-- Make it vivid - what does it feel like to live in this future?
-- Identify early warning signals
 
-Consult specialists to enrich scenarios:
-- Elena for system dynamics and feedback loops
-- Marcus for geopolitical logic
-- Aisha for how people experience and respond
-- Kenji for technological implications
-- Sarah for economic structures and constraints
-- Jamie to stress-test plausibility and find hidden breaks
+**Pattern:** 3 rounds (cluster-based collaboration) - all 7 specialists
 
-**Phase 6: Test Strategies**
+**Objective:** Create 3-4 plausible, divergent future scenarios
+
+**This is the most intensive phase.** Building narratives benefits from deep collaboration.
+
+---
+
+#### Round 1: Independent Scenario Sketches
+
+**Your tasks:**
+
+1. **Invoke all 7 specialists in parallel** for independent exploration
+
+Example invocation:
+
+```
+Task("economist", "SCENARIO: SCENARIO-2025-001
+PHASE 4: Scenario Development - ROUND 1
+
+Read all prior work:
+- company.md
+- focal_question.md
+- predetermined_elements.md
+- critical_uncertainties.md (includes scenario axes)
+
+Using the scenario axes [Axis 1: X] and [Axis 2: Y], explore the scenario quadrants:
+- Scenario A: [High X, High Y]
+- Scenario B: [High X, Low Y]
+- Scenario C: [Low X, High Y]
+- Scenario D: [Low X, Low Y]
+
+From your economic lens, what does each scenario look like?
+What economic structures, dynamics, and outcomes characterize each quadrant?
+
+Work independently - this is divergent scenario exploration.
+
+Create TWO files:
+1. Full: conversations/economist_round1_full.md
+2. Summary: conversations/economist_round1_summary.md
+")
+```
+
+2. **Verify files created** (14 files: 7 full + 7 summary)
+
+---
+
+#### Round 2: Cluster Formation and Refinement
+
+**Your tasks:**
+
+1. **Analyze Round 1 outputs** - Read all 7 Round 1 full transcripts
+
+2. **Identify natural clusters** - Which specialists' visions align?
+
+Example clustering:
+- **Cluster A:** "Tech-Enabled Growth" (futurist + economist)
+- **Cluster B:** "Ecological Constraint" (ecologist + anthropologist)
+- **Cluster C:** "Geopolitical Fragmentation" (geopolitician + contrarian)
+- **Bridge:** Researcher synthesizes across clusters
+
+3. **Invoke specialists with cluster context**
+
+Example for Cluster A member:
+
+```
+Task("economist", "SCENARIO: SCENARIO-2025-001
+PHASE 4: Scenario Development - ROUND 2 (Cluster Refinement)
+
+Read YOUR full Round 1:
+conversations/economist_round1_full.md
+
+Read FULL TRANSCRIPTS from your cluster members:
+- conversations/futurist_round1_full.md
+- conversations/economist_round1_full.md
+
+Read SUMMARIES from other clusters:
+- conversations/ecologist_round1_summary.md (Cluster B)
+- conversations/anthropologist_round1_summary.md (Cluster B)
+- conversations/geopolitician_round1_summary.md (Cluster C)
+- conversations/contrarian_round1_summary.md (Cluster C)
+
+Your cluster is developing the 'Tech-Enabled Growth' scenario.
+
+Refine and integrate with your cluster members. Build a coherent scenario narrative
+that combines economic and technological perspectives.
+
+Create TWO files:
+1. Full: conversations/economist_round2_full.md
+2. Summary: conversations/economist_round2_summary.md
+")
+```
+
+4. **Verify files created** (14 files: 7 full + 7 summary)
+
+---
+
+#### Round 3: Cross-Cluster Integration and Challenge
+
+**Your tasks:**
+
+1. **Invoke all specialists for final integration**
+
+Example:
+
+```
+Task("economist", "SCENARIO: SCENARIO-2025-001
+PHASE 4: Scenario Development - ROUND 3 (Final Integration)
+
+Read YOUR full history:
+- conversations/economist_round1_full.md
+- conversations/economist_round2_full.md
+
+Read ALL specialists' full transcripts from Rounds 1 and 2:
+- conversations/*_round1_full.md (all 7)
+- conversations/*_round2_full.md (all 7)
+
+This is final scenario integration.
+
+Tasks:
+1. Identify cross-domain patterns and feedback loops
+2. Find contradictions between scenarios that need resolution
+3. Ensure economic logic is sound across all 3-4 scenarios
+4. Surface blind spots or implausible assumptions
+
+Create final analysis:
+conversations/economist_round3_final.md
+(No summary needed - this is final output)
+")
+```
+
+**Special Round 3 for Contrarian:**
+
+```
+Task("contrarian", "SCENARIO: SCENARIO-2025-001
+PHASE 4: Scenario Development - ROUND 3 (Challenge and Stress-Test)
+
+[Same reading instructions as above]
+
+Your specific task as contrarian:
+1. Stress-test plausibility of all scenarios
+2. Identify hidden assumptions or groupthink
+3. Find scenarios that are too comfortable or obvious
+4. Propose alternative scenario framings if current set misses something critical
+
+Challenge the scenarios aggressively. Your job is to break comfortable thinking.
+
+Create final analysis:
+conversations/contrarian_round3_final.md
+")
+```
+
+2. **Verify files created** (7 files: all specialists' round3_final.md)
+
+---
+
+#### Synthesis: Create Scenario Narratives
+
+**Your tasks:**
+
+1. **Read all Round 3 final transcripts**
+
+2. **Integrate into 3-4 scenario narratives**
+
+Create separate files:
+- `scenarios/scenario_1_[memorable-name].md`
+- `scenarios/scenario_2_[memorable-name].md`
+- `scenarios/scenario_3_[memorable-name].md`
+- `scenarios/scenario_4_[memorable-name].md` (if 2 axes = 4 quadrants)
+
+Each scenario should include:
+- **Name:** Memorable, evocative
+- **Narrative:** How this future unfolds (500-1000 words)
+- **Key Drivers:** What makes this scenario distinct
+- **Internal Logic:** Why this hangs together coherently
+- **Implications:** What this means for decision-making
+
+3. **Present to user for validation**
+
+**Cost:** 21 specialist invocations (7 × 3 rounds)
+
+**Phase 5: Identify Early Warning Signals**
 For each scenario, explore:
 - What would success look like?
 - What strategies thrive? Which fail?
