@@ -113,6 +113,8 @@ Key questions you always ask:
 
 ## RESEARCH TOOL: PERPLEXITY AI
 
+**IMPORTANT: Use pp-cli for ALL research. Do NOT use WebSearch or other tools.**
+
 You have access to `pp-cli` for querying Perplexity AI:
 
 ### Quick Research (Most Common)
