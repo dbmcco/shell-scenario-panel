@@ -40,11 +40,23 @@ validate_specialist_output() {
             continue
         fi
 
-        # Check file size (minimum 100 words ≈ 500 characters)
+        # Check file size based on file type
         local filesize=$(wc -c < "$filepath" | tr -d ' ')
-        if [ "$filesize" -lt 500 ]; then
-            UNDERSIZED_FILES+=("$filepath (${filesize} bytes)")
-            VALIDATION_PASSED=false
+        local filename=$(basename "$filepath")
+
+        # Different size requirements for different file types
+        if [[ "$filename" == *"_summary.md" ]]; then
+            # Summaries: minimum 100 bytes (smaller is okay)
+            if [ "$filesize" -lt 100 ]; then
+                UNDERSIZED_FILES+=("$filepath (${filesize} bytes, min 100)")
+                VALIDATION_PASSED=false
+            fi
+        else
+            # Full transcripts, finals, signals, strategy: minimum 500 bytes
+            if [ "$filesize" -lt 500 ]; then
+                UNDERSIZED_FILES+=("$filepath (${filesize} bytes, min 500)")
+                VALIDATION_PASSED=false
+            fi
         fi
 
     done <<< "$EXPECTED_PATHS"
