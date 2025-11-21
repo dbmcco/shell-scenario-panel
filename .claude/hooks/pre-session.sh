@@ -38,5 +38,20 @@ else
     echo ""
 fi
 
+# Display specialist roster
+echo "👥 Available Specialists:"
+echo ""
+echo "  Domain Experts:"
+echo "    • Elena (Ecologist) - Systems dynamics, feedback loops"
+echo "    • Marcus (Geopolitician) - Power, resources, state interests"
+echo "    • Aisha (Anthropologist) - Cultural shifts, values"
+echo "    • Kenji (Futurist) - Technology capabilities, platform shifts"
+echo "    • Sarah (Economist) - Debt dynamics, financial structures"
+echo "    • Jamie (Contrarian) - Challenge assumptions, hidden risks"
+echo ""
+echo "  Research Specialist:"
+echo "    • Anya (Researcher) - Multi-source analysis, gap-filling"
+echo ""
+
 echo "✅ Ready for scenario planning"
 exit 0
