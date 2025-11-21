@@ -1428,6 +1428,7 @@ Use these phase identifiers with enforcement scripts:
 ```
 scenarios/active/SCENARIO-YYYY-NNN/
 ├── metadata.json
+├── scenario_context.md
 ├── focal_question.md
 ├── predetermined_elements.md
 ├── critical_uncertainties.md
@@ -1436,7 +1437,9 @@ scenarios/active/SCENARIO-YYYY-NNN/
 ├── strategy_analysis.md
 ├── conversations/
 │   └── [specialist transcripts - REQUIRED]
-└── artifacts/
+└── phase_0_discovery/
+    └── research/
+        └── [discovery transcripts if Phase 0 used]
 ```
 
 ### Metadata Tracking

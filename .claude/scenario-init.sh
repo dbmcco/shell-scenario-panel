@@ -43,7 +43,6 @@ else
     # Create directory structure
     mkdir -p "$SCENARIO_DIR/conversations"
     mkdir -p "$SCENARIO_DIR/scenarios"
-    mkdir -p "$SCENARIO_DIR/artifacts"
     mkdir -p "$SCENARIO_DIR/phase_0_discovery/research"
     echo "✅ Directory structure created"
 fi
