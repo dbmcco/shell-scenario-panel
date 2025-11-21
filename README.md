@@ -57,6 +57,32 @@ She will:
 
 **You never need to run scripts manually.** Dr. Wells manages the technical details.
 
+## Dependencies
+
+### Required: Perplexity CLI (pp-cli)
+
+This system requires [pp-cli](https://github.com/dbmcco/pp-cli) for specialist research capabilities.
+
+**Installation:**
+```bash
+# Install pp-cli globally
+npm install -g @dbmcco/pp-cli
+
+# Verify installation
+pp --version
+```
+
+**Why it's needed:**
+- Specialists use `pp-cli` to conduct real-time research during scenario planning
+- Provides current data on markets, technologies, policies, and trends
+- Supports both quick lookups and deep research analysis
+- Used throughout Phase 0 discovery and subsequent phases
+
+**Without pp-cli:**
+- Specialists can still provide analysis based on domain expertise
+- Research findings will be limited to pre-existing knowledge
+- Recommended to install for full functionality
+
 ## Architecture
 
 ### Directory Structure
@@ -154,6 +180,33 @@ Each specialist brings unique perspective and characteristic blind spots:
 
 ## Key Features
 
+### File Placement Enforcement (Programmatic)
+
+**Problem:** Prompting specialists about file paths is unreliable.
+
+**Solution:** Three-layer programmatic enforcement:
+
+1. **Path Generation** (`.claude/lib/generate-specialist-prompt.sh`)
+   - Pre-calculates exact file paths before specialist invocation
+   - Generates prompts with explicit requirements
+   - Warns that validation will check
+
+2. **Output Validation** (`.claude/lib/validate-specialist-output.sh`)
+   - Validates files exist at correct paths after specialist returns
+   - Checks minimum file sizes (summaries: 100 bytes, full: 500 bytes)
+   - Returns detailed error reports
+
+3. **Blocking Progression** (moderator workflow)
+   - Moderator validates after each specialist invocation
+   - Re-invokes once if validation fails
+   - Only proceeds after validation passes
+
+**Benefits:**
+- ✅ Deterministic paths (calculated, not guessed)
+- ✅ Automatic validation (catches errors immediately)
+- ✅ Blocking behavior (can't proceed with bad data)
+- ✅ Clear error messages (tells specialist what's missing)
+
 ### Transcript Enforcement (Claude Code 2.0 Pattern)
 
 **Moderator (Dr. Wells) enforces transcripts** - hooks provide reminders only.
@@ -224,6 +277,8 @@ Each scenario produces:
 ```
 scenarios/active/SCENARIO-YYYY-NNN/
 ├── metadata.json                    # Tracking and status
+├── scenario_context.md              # User feedback accumulation
+├── company.md                       # Company profile (if Phase 0 used)
 ├── focal_question.md                # Phase 1: Decision context
 ├── predetermined_elements.md        # Phase 2: Locked-in trends
 ├── critical_uncertainties.md        # Phase 3: Key uncertainties
@@ -233,11 +288,15 @@ scenarios/active/SCENARIO-YYYY-NNN/
 │   ├── scenario_3_[name].md
 │   └── scenario_4_[name].md
 ├── strategy_analysis.md             # Phase 6: Strategy testing
-├── conversations/                   # Required transcripts
-│   ├── ecologist_transcript.md
-│   ├── economist_transcript.md
+├── conversations/                   # Required specialist transcripts
+│   ├── ecologist_round1_full.md
+│   ├── ecologist_round1_summary.md
+│   ├── economist_round1_full.md
 │   └── [etc...]
-└── artifacts/                       # Supporting materials
+└── phase_0_discovery/               # Phase 0 outputs (if used)
+    ├── scenario_suggestions.md
+    └── research/
+        └── [specialist discovery transcripts]
 ```
 
 ## Philosophy
