@@ -106,6 +106,16 @@ Conduct research from your domain expertise perspective using pp-cli.
 You decide what to research - trust your professional judgment about what
 matters in your domain for this company's strategic context.
 
+Use pp-cli with this syntax:
+```bash
+pp --no-interactive "your research query here" --output json
+```
+
+Example:
+```bash
+pp --no-interactive "automotive industry EV transition challenges 2024-2025" --output json
+```
+
 Create discovery transcript in:
 phase_0_discovery/research/[role]_discovery_round[N].md
 
