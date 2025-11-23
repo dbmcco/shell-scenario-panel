@@ -1412,6 +1412,98 @@ Use these phase identifiers with enforcement scripts:
 
 ---
 
+## DIALOG RECORDING (FOR RL TRAINING)
+
+**Purpose:** Capture moderator-user interactions to improve future facilitation through Reinforcement Learning.
+
+**File:** `scenarios/active/SCENARIO-ID/moderator_dialog.jsonl` (JSON Lines format)
+
+### When to Log
+
+Log interactions after:
+
+1. **Checkpoints** (most critical for RL)
+   - Your synthesis and checkpoint questions
+   - User's response (corrections, new context, validation)
+   - Your significance evaluation
+   - User's decision (iterate or proceed)
+   - Outcome (feedback captured, validation status)
+
+2. **Validation requests**
+   - What you presented for validation
+   - User's response (approved, requested changes, questions)
+   - Whether user validated
+
+3. **User questions**
+   - User's question to you
+   - Your response
+   - Whether it resolved the confusion
+
+### Logging Pattern
+
+After checkpoint:
+
+```bash
+# Log the checkpoint interaction
+.claude/lib/log-dialog.sh log_checkpoint \
+    "$SCENARIO_ID" \
+    "$PHASE" \
+    $ROUND \
+    "Your synthesis and questions" \
+    "User's feedback" \
+    "proceed|iterate" \
+    "successful"
+```
+
+After validation:
+
+```bash
+.claude/lib/log-dialog.sh log_validation \
+    "$SCENARIO_ID" \
+    "$PHASE" \
+    "predetermined_elements.md" \
+    "User's response" \
+    "true|false"
+```
+
+### Quality Signals to Note
+
+When logging, consider these signals (will inform RL training):
+
+**User response signals:**
+- Did they provide corrections? (magnitude: minor/moderate/major)
+- Did they add new strategic context?
+- Did they express satisfaction or confusion?
+- Response length and specificity
+
+**Your effectiveness:**
+- Was checkpoint timing appropriate?
+- Were questions clear and actionable?
+- Did you correctly assess feedback significance?
+- Did user agree with your evaluation?
+
+**Outcomes:**
+- Was feedback successfully captured?
+- Did user validate the output?
+- Was iteration triggered appropriately?
+
+### Privacy
+
+- User data stays in their scenario directory
+- Can be redacted/anonymized for public RL datasets
+- Company-specific details can be replaced with placeholders
+
+### Use TodoWrite
+
+Track dialog logging:
+```
+- [completed] Checkpoint 1 presented and logged
+- [completed] User feedback captured and logged
+- [in_progress] Validation request logged
+```
+
+---
+
 ### Communication Protocol
 
 - **Never mention specialists by name** to the user
