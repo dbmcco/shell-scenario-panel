@@ -1418,89 +1418,54 @@ Use these phase identifiers with enforcement scripts:
 
 **File:** `scenarios/active/SCENARIO-ID/moderator_dialog.jsonl` (JSON Lines format)
 
-### When to Log
+**Automation:** Dialog recording is **fully automated** via the `on-user-message.sh` hook. No manual logging required.
 
-Log interactions after:
+### How It Works
 
-1. **Checkpoints** (most critical for RL)
-   - Your synthesis and checkpoint questions
-   - User's response (corrections, new context, validation)
-   - Your significance evaluation
-   - User's decision (iterate or proceed)
-   - Outcome (feedback captured, validation status)
+The hook automatically:
+1. **Monitors conversation** - Parses the session's JSONL file in `~/.claude/projects/`
+2. **Detects interactions** - Identifies checkpoints, validations, user questions
+3. **Logs automatically** - Writes to `moderator_dialog.jsonl`
 
-2. **Validation requests**
-   - What you presented for validation
-   - User's response (approved, requested changes, questions)
-   - Whether user validated
+### What Gets Captured
 
-3. **User questions**
-   - User's question to you
-   - Your response
-   - Whether it resolved the confusion
+**Checkpoints:**
+- Your synthesis and questions
+- User's feedback (corrections, new context)
+- Interaction type and outcome
 
-### Logging Pattern
+**Validations:**
+- Your validation request
+- User's approval/changes
+- Whether validated
 
-After checkpoint:
+**User Questions:**
+- User's question
+- Your response (captured in next exchange)
+- Interaction pattern
 
-```bash
-# Log the checkpoint interaction
-.claude/lib/log-dialog.sh log_checkpoint \
-    "$SCENARIO_ID" \
-    "$PHASE" \
-    $ROUND \
-    "Your synthesis and questions" \
-    "User's feedback" \
-    "proceed|iterate" \
-    "successful"
-```
+### Quality Signals (Automatically Captured)
 
-After validation:
+The system records:
+- Message content (truncated to 500 chars)
+- Interaction type (checkpoint, validation, question)
+- Timestamp (added automatically)
+- Scenario context (scenario_id, phase if available)
 
-```bash
-.claude/lib/log-dialog.sh log_validation \
-    "$SCENARIO_ID" \
-    "$PHASE" \
-    "predetermined_elements.md" \
-    "User's response" \
-    "true|false"
-```
+### For Future RL Training
 
-### Quality Signals to Note
-
-When logging, consider these signals (will inform RL training):
-
-**User response signals:**
-- Did they provide corrections? (magnitude: minor/moderate/major)
-- Did they add new strategic context?
-- Did they express satisfaction or confusion?
-- Response length and specificity
-
-**Your effectiveness:**
-- Was checkpoint timing appropriate?
-- Were questions clear and actionable?
-- Did you correctly assess feedback significance?
-- Did user agree with your evaluation?
-
-**Outcomes:**
-- Was feedback successfully captured?
-- Did user validate the output?
-- Was iteration triggered appropriately?
+These logs will enable training on:
+- **Checkpoint timing** - When to ask for feedback
+- **Question quality** - What prompts get useful responses
+- **Significance evaluation** - Detecting when to iterate
+- **User engagement** - Response patterns and satisfaction
 
 ### Privacy
 
-- User data stays in their scenario directory
-- Can be redacted/anonymized for public RL datasets
+- Dialog logs stay in scenario directory
+- Can be redacted/anonymized for public datasets
 - Company-specific details can be replaced with placeholders
-
-### Use TodoWrite
-
-Track dialog logging:
-```
-- [completed] Checkpoint 1 presented and logged
-- [completed] User feedback captured and logged
-- [in_progress] Validation request logged
-```
+- User controls their data
 
 ---
 
