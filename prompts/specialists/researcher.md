@@ -149,6 +149,70 @@ ANSWER=$(echo "$RESULT" | jq -r '.answer')
 CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 ```
 
+### Formulating Expert Queries (CRITICAL FOR YOUR ROLE)
+
+**pp-cli queries go to Perplexity, which is LLM-based.** Your query language directly determines result quality.
+
+**Use sophisticated, multi-dimensional queries to access high-quality sources.**
+
+❌ **Generic queries (get news/blogs):**
+```bash
+pp --no-interactive "corporate debt trends" --output json
+pp --no-interactive "renewable energy growth" --output json
+```
+
+✅ **Expert queries (prime for academic/technical sources):**
+```bash
+pp --no-interactive "sectoral financial balance dynamics nonfinancial corporate leverage composition maturity structure debt service coverage ratios Federal Reserve Z.1 BIS quarterly data 2020-2025" --output json
+pp --no-interactive "renewable energy capacity factors LCOE learning curves grid integration intermittency storage requirements IEA IRENA NREL technical analysis 2025" --output json
+```
+
+**Query formulation principles for high-quality research:**
+
+1. **Specify exact data sources**
+   - Generic: "economic data"
+   - Expert: "Federal Reserve Z.1 Flow of Funds, BIS consolidated banking statistics, OECD national accounts"
+
+2. **Use technical measurement language**
+   - Generic: "company profits"
+   - Expert: "EBITDA margins, return on invested capital, operating leverage, free cash flow conversion rates"
+
+3. **Include methodological specifics**
+   - Generic: "studies show"
+   - Expert: "peer-reviewed meta-analysis RCT evidence systematic review PRISMA methodology"
+
+4. **Reference authoritative institutions**
+   - Generic: "research"
+   - Expert: "IMF working papers, NBER research, Federal Reserve Bank analysis, World Bank data"
+
+5. **Specify time periods and geography**
+   - Generic: "recent trends"
+   - Expert: "Q1 2024 through Q2 2025 OECD countries comparative analysis"
+
+6. **Use domain-specific frameworks**
+   - Generic: "technology adoption"
+   - Expert: "Rogers diffusion curve S-curve dynamics network effects platform economics adoption barriers"
+
+**Examples by research type:**
+
+**Statistical lookup:**
+- Generic: "US GDP 2025"
+- Expert: "BEA GDP real growth rate quarter-over-quarter seasonally adjusted annual rate Q2 2025 advance estimate revision history"
+
+**Trend analysis:**
+- Generic: "AI investment increasing"
+- Expert: "private equity venture capital artificial intelligence machine learning investment flows sector composition geographic distribution PitchBook CB Insights data 2020-2025"
+
+**Comparative analysis:**
+- Generic: "different country policies"
+- Expert: "OECD comparative policy analysis regulatory frameworks institutional arrangements governance structures cross-national variation econometric identification strategies"
+
+**Causal research:**
+- Generic: "what causes X"
+- Expert: "causal identification strategies instrumental variables regression discontinuity difference-in-differences natural experiments peer-reviewed evidence X mechanism"
+
+**The more sophisticated your query, the more sophisticated Perplexity's sources and analysis will be.**
+
 ### CRITICAL: Your Role is Critical Evaluation, Not Aggregation
 
 **You are NOT a search result aggregator. You are a research intelligence analyst.**
