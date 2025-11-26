@@ -12,6 +12,13 @@ get_specialist_paths() {
 
     local BASE="scenarios/active/${SCENARIO_ID}"
 
+    # Special case: quality_analyst uses checkpoint naming
+    if [ "$SPECIALIST" = "quality_analyst" ]; then
+        # ROUND parameter contains checkpoint name (phase_2, phase_3, phase_4, executive_summary)
+        echo "${BASE}/conversations/quality_analyst_${ROUND}.md"
+        return 0
+    fi
+
     case "$PHASE" in
         "phase_0_discovery")
             # Phase 0 discovery transcripts
