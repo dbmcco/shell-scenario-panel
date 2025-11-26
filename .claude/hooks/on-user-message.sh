@@ -104,4 +104,8 @@ if [ -n "$INTERACTION_TYPE" ]; then
     log_dialog "$SCENARIO_ID" "$INTERACTION_TYPE" "$JSON" 2>/dev/null
 fi
 
+# Run quality gate check (separate from dialog logging)
+# This checks if any phase synthesis files were recently created/updated
+"$SCRIPT_DIR/quality-gate.sh" 2>/dev/null
+
 exit 0

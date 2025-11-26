@@ -6,9 +6,11 @@ A Claude Code-powered Shell-style scenario planning system with multi-specialist
 
 This is a structured scenario planning tool based on the Shell methodology, featuring:
 - **Dr. Michelle Wells** (Moderator) - Facilitates 7-phase scenario development process
-- **6 Specialist Consultants** - Domain experts providing diverse perspectives
+- **6 Domain Specialist Consultants** - Diverse expert perspectives (ecology, geopolitics, culture, technology, economics, contrarian)
+- **Dr. Anya Petrov** (Research Specialist) - Multi-source research and fact-checking
+- **Dr. Mei Chen** (Quality Analyst) - Automated quality gates prevent regression to generic analysis
 - **Intelligent Company Discovery** - AI-guided interview loop with specialist research
-- **Automated Workflow** - Hooks enforce quality standards and transcript creation
+- **Automated Quality Enforcement** - Hooks trigger quality gates, ensure intellectual integrity
 - **DraftForge-inspired Architecture** - Proven patterns for multi-agent coordination
 
 ## Quick Start
@@ -221,19 +223,52 @@ Each specialist brings unique perspective and characteristic blind spots:
 
 **Key insight:** Hooks can't check specialist-specific work because they lack context. The moderator uses Task tool to invoke specialists and immediately verifies their output.
 
-### Quality Gates (Moderator-Enforced)
+### Quality Gates (Automated Enforcement)
 
-**Dr. Wells is responsible for:**
-- Verifying transcripts exist with substantial analysis (>100 words)
+**Automated Quality Analysis:**
+The system includes **Dr. Mei Chen (Quality Analyst)** - an 8th specialist who audits intellectual integrity and prevents quality regression.
+
+**Automatic Triggers (via hooks):**
+When phase synthesis documents are created, the system automatically prompts for quality analysis:
+- **Phase 2 completion** (`predetermined_elements.md`) → Quality gate checkpoint
+- **Phase 3 completion** (`critical_uncertainties.md`) → Quality gate checkpoint
+- **Phase 4 completion** (scenario files) → Quality gate checkpoint
+- **Executive Summary** → Final quality gate
+
+**Quality Analyst evaluates:**
+- Has synthesis quality regressed from specialist quality?
+- Are specialist frameworks and terminology preserved?
+- Has iteration diluted sophistication (Round 3 < Round 1)?
+- Are there generic contamination patterns (web search, startup advice)?
+- Does language maintain expert-level rigor?
+
+**Pass/Fail Enforcement:**
+- **PASS:** Proceed to next phase
+- **CONDITIONAL PASS:** Fix issues before user delivery
+- **FAIL:** Rewrite synthesis using specialist transcripts, cannot proceed
+
+**Dr. Wells is also responsible for:**
+- Verifying transcripts exist with substantial analysis (>100 words summaries, >500 words full)
 - Synthesizing specialist insights into phase documents
 - Getting user validation before each new specialist
 - Updating metadata to track all consultations
 - Using TodoWrite to show workflow progress
 
-**Hooks provide:**
-- Session startup information
-- Post-task reminders about verification responsibilities
-- No blocking validation (moderator enforces quality)
+**Example Quality Gate:**
+```
+⚠️  QUALITY GATE REQUIRED: phase_2
+
+Phase synthesis detected: predetermined_elements.md
+
+📋 MODERATOR ACTION REQUIRED:
+
+Task("quality_analyst", "SCENARIO: SCENARIO-2025-001
+CHECKPOINT: phase_2
+Evaluate intellectual integrity and quality regression.
+TRANSCRIPT PATH: conversations/quality_analyst_phase_2.md")
+
+⛔ CANNOT PROCEED to next phase until quality gate PASSES
+```
 
 ### Scenario Management
 
