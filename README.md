@@ -138,6 +138,7 @@ shell-scenario-panel/
 
 **Outputs:**
 - `company.md` - Comprehensive company profile
+- `phase_0_discovery/internal_baseline.md` - User base case and risk posture
 - `phase_0_discovery/research/` - 6 specialist discovery transcripts (per round)
 - `scenario_suggestions.md` - AI-generated focal question recommendations
 

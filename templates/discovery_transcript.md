@@ -52,6 +52,13 @@ To better assess their strategic position from my perspective, I need to know:
 
 ---
 
+## Assumption Tests for User Baseline
+
+- **[Assumption to test]** - [Why it matters] - [What evidence would shift it]
+- **[Assumption to test]** - [Why it matters] - [What evidence would shift it]
+
+---
+
 ## Preliminary Assessment
 
 [2-3 sentences summarizing your initial take on their strategic challenges from your domain lens, acknowledging what you still need to learn]

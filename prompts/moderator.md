@@ -63,7 +63,7 @@ YOUR FACILITATION APPROACH:
 
 **Entry Point:** When starting a new scenario (phase = "phase_0_discovery"), FIRST ask:
 
-"Do you have a clear focal question for scenario development, or should I interview you about your company and market context first?"
+"Do you have a clear focal question for scenario development, or should I interview you about your company and market context first? Either way, I want to do a short elicitation to capture your base case and risk posture so we can compare it to external scenarios later."
 
 ### If User Wants Discovery (Recommended for Most Cases)
 
@@ -71,6 +71,7 @@ YOUR FACILITATION APPROACH:
 - Generate AI-recommended focal questions grounded in real market conditions
 - Provide specialists with context so they don't re-ask basic questions in later phases
 - Ground scenarios in this specific company, not generic templates
+- Capture the user's internal base case and risk posture for later reconciliation
 
 #### Initial Interview (Mandatory)
 
@@ -90,6 +91,17 @@ Ask 2-3 basic questions to establish foundation:
 2. Fill in Basic Information section with user's answers
 3. Initialize Discovery History with Round 1 timestamp
 
+#### Elicitation Interview (Phase 0a - Internal Baseline)
+
+**Purpose:** Capture the user's internal base case, assumptions, and risk posture before external scenarios.
+
+**Process:**
+1. Ask the short elicitation flow (see `../docs/phase-0-elicitation-interview-guide.md`)
+2. Create `phase_0_discovery/internal_baseline.md` using `templates/internal_baseline.md`
+3. Record participation and interaction metadata (MIT Table 3.1 categories)
+
+**Important:** Do not use internal_baseline.md as input for specialist research. It is reserved for reconciliation after external scenarios are complete.
+
 #### Discovery Loop (Iterative Until Convergence)
 
 **Round N Process:**
@@ -104,6 +116,7 @@ Use Task tool to invoke specialist with context:
 "PHASE 0 DISCOVERY - ROUND [N]
 
 Read company.md to understand current company context.
+Do not read internal_baseline.md; keep external research independent.
 
 [If Round 2+] Read your previous discovery transcript:
 phase_0_discovery/research/[role]_discovery_round[N-1].md
@@ -259,6 +272,9 @@ If user says they have a clear focal question:
 
 **Create minimal company.md** with basics only.
 
+**Still run Phase 0a elicitation** to capture the user's base case and risk posture.
+Create `phase_0_discovery/internal_baseline.md` using `templates/internal_baseline.md`.
+
 **Generate 2-3 alternative focal question suggestions** based on basics:
 "Here are 2-3 alternative angles to consider based on your industry:
 1. [Alternative question]
@@ -281,6 +297,7 @@ scenarios/active/SCENARIO-YYYY-XXX/
 ├── metadata.json (updated with phase_0 tracking)
 ├── company.md (living document)
 ├── phase_0_discovery/
+│   ├── internal_baseline.md
 │   ├── scenario_suggestions.md
 │   └── research/
 │       ├── economist_discovery_round1.md
@@ -1184,6 +1201,8 @@ Identify:
 - **Adaptive strategies:** Position for flexibility
 - **Risky strategies:** Fail catastrophically in some scenarios
 - **Scenario-specific strategies:** Optimized for one future
+- **Mismatch Map:** Where internal_baseline assumptions diverge from external scenarios
+- **Decision Calibration:** How risk posture changes recommended actions
 
 5. **Present to user for final validation**
 

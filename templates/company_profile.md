@@ -25,6 +25,10 @@
 ### Constraints & Risks
 - [Regulatory, operational, financial, competitive pressures]
 
+## Internal Baseline Summary (Phase 0a)
+- [Short summary of user's base case and assumptions]
+- **Full capture:** phase_0_discovery/internal_baseline.md
+
 ## Discovery History
 **Round 1:** [Date] - Initial interview completed
 **Round 2:** [Date] - Specialist research round 1
