@@ -92,9 +92,14 @@ The visualization uses Google's Imagen 3 (nano banana) model to generate:
 
 ### API Configuration
 
-API key is embedded in `script.js`:
+API key is loaded from browser localStorage (not committed to the repo):
 ```javascript
-const IMAGEN_API_KEY = 'REDACTED';
+localStorage.setItem('IMAGEN_API_KEY', 'YOUR_KEY_HERE');
+```
+
+`script.js` reads it at runtime:
+```javascript
+const IMAGEN_API_KEY = localStorage.getItem('IMAGEN_API_KEY') || '';
 ```
 
 **Note**: Images are generated on first page load, then cached. Subsequent loads use cached versions.

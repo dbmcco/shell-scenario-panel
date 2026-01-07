@@ -2,9 +2,15 @@
 // Simplified version with placeholder graphics
 
 // Configuration
-const USE_IMAGEN = true; // Re-enabled with correct API!
-const IMAGEN_API_KEY = 'REDACTED';
+const IMAGEN_API_KEY = typeof window !== 'undefined' && window.localStorage
+  ? window.localStorage.getItem('IMAGEN_API_KEY') || ''
+  : '';
+const USE_IMAGEN = Boolean(IMAGEN_API_KEY);
 const IMAGEN_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent';
+
+if (!IMAGEN_API_KEY) {
+  console.warn('Imagen API key missing; using placeholders for avatars and diagrams.');
+}
 
 // Image cache
 const imageCache = {

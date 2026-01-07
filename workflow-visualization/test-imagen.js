@@ -1,8 +1,16 @@
 // Test Gemini image generation API call
-const API_KEY = 'REDACTED';
+const API_KEY =
+  (typeof process !== 'undefined' && process.env && process.env.IMAGEN_API_KEY) ||
+  (typeof window !== 'undefined' && window.localStorage && window.localStorage.getItem('IMAGEN_API_KEY')) ||
+  '';
 const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent';
 
 async function testImageGeneration() {
+  if (!API_KEY) {
+    console.error('Missing IMAGEN_API_KEY. Set it in the environment or localStorage.');
+    return;
+  }
+
   console.log('Testing Gemini image generation API...');
 
   try {
