@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shell Scenario Panel Workflow - Multi-Agent Scenario Planning</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fixed Navigation Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h3>Navigate</h3>
+        </div>
+        <ul class="phase-nav">
+            <li><a href="#phase-0" data-phase="0">Phase 0: Discovery</a></li>
+            <li><a href="#phase-1" data-phase="1">Phase 1: Focal Question</a></li>
+            <li><a href="#phase-2" data-phase="2">Phase 2: Predetermined</a></li>
+            <li><a href="#phase-3" data-phase="3">Phase 3: Uncertainties</a></li>
+            <li><a href="#phase-4" data-phase="4">Phase 4: Scenarios</a></li>
+            <li><a href="#phase-5" data-phase="5">Phase 5: Signals</a></li>
+            <li><a href="#phase-6" data-phase="6">Phase 6: Strategies</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p class="total-invocations">Total: <span id="total-invocations">~68-72</span> invocations</p>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="timeline-container">
+        <!-- Header -->
+        <header class="page-header">
+            <h1>Shell Scenario Panel</h1>
+            <p class="subtitle">Multi-Agent Scenario Planning Workflow</p>
+            <p class="description">An intelligent 7-phase process with progressive convergence, powered by 8 specialist consultants</p>
+        </header>
+
+        <!-- Overview Diagram -->
+        <div id="overview-diagram" class="overview-diagram-container">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <!-- Timeline Spine -->
+        <div class="timeline-spine"></div>
+
+        <!-- Phase Sections (will be populated by JavaScript) -->
+        <div id="timeline-phases">
+            <!-- Phases will be dynamically inserted here -->
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p>Based on the Shell Methodology adapted for Claude Code CLI</p>
+            <p class="tech-note">Built with Vanilla JS + Google Imagen 3 (nano banana) for AI-generated diagrams</p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="personas.js"></script>
+    <script src="phases.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

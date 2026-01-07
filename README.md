@@ -93,6 +93,10 @@ pp --version
 
 The moderator may generate model-mediated HTML or TypeScript exports when helpful.
 Exports live at `scenarios/active/SCENARIO-YYYY-NNN/exports/`.
+To preview locally:
+```bash
+.claude/lib/serve-exports.sh SCENARIO-YYYY-NNN
+```
 
 ## Architecture
 

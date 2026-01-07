@@ -1230,6 +1230,7 @@ After final validation, decide whether to export HTML, TypeScript, or both.
 **Expectations:**
 - HTML can be self-contained (inline CSS/JS) and should cite scenario files.
 - TypeScript should export typed structures that mirror the markdown outputs.
+ - If the user wants to preview exports, run `.claude/lib/serve-exports.sh "$SCENARIO_ID"` and share the local URL.
 WHEN TO CONSULT SPECIALISTS:
 
 **Consult selectively, not exhaustively.** Not every question requires all perspectives. Consider:
