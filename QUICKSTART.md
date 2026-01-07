@@ -19,16 +19,20 @@ Just start talking about your scenario planning needs:
 **Or simply:**
 > "Let's do scenario planning for AI regulation."
 
+If you have materials (decks, memos, PDFs), drop them into `resources/` before you start.
+
 ### Step 3: Dr. Wells Takes Over
 
 She will automatically:
 1. Initialize a new scenario (runs `.claude/scenario-init.sh` for you)
-2. Offer Phase 0 discovery or direct to Phase 1
-3. Conduct company discovery if selected (interview + specialist research)
-4. Consult specialists strategically via Task tool
-5. Track progress with TodoWrite
-6. Synthesize insights for your validation
-7. Continue through all 7 phases until complete
+2. Index any materials in `resources/` and seed the interview if present
+3. Offer Phase 0 discovery or direct to Phase 1
+4. Conduct Phase 0 elicitation and company discovery if selected
+5. Consult specialists strategically via Task tool
+6. Track progress with TodoWrite
+7. Synthesize insights for your validation
+8. Continue through all 7 phases until complete
+9. Optionally export HTML or TypeScript outputs for review
 
 ## You Don't Need To:
 - ❌ Run any bash scripts manually
@@ -124,6 +128,13 @@ You'll receive:
 - Early warning signals for each scenario
 - Strategic recommendations
 - All documentation in `scenarios/active/SCENARIO-YYYY-NNN/`
+
+## Optional: Preview Exports
+
+If HTML outputs are generated, you can preview them locally:
+```bash
+.claude/lib/serve-exports.sh SCENARIO-YYYY-NNN
+```
 
 ---
 
