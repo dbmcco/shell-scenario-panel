@@ -10,6 +10,7 @@ This is a structured scenario planning tool based on the Shell methodology, feat
 - **Dr. Anya Petrov** (Research Specialist) - Multi-source research and fact-checking
 - **Dr. Mei Chen** (Quality Analyst) - Automated quality gates prevent regression to generic analysis
 - **Intelligent Company Discovery** - AI-guided interview loop with specialist research
+- **Resources-First Intake** - Drop materials into `resources/` for automatic indexing
 - **Automated Quality Enforcement** - Hooks trigger quality gates, ensure intellectual integrity
 - **DraftForge-inspired Architecture** - Proven patterns for multi-agent coordination
 
@@ -36,6 +37,9 @@ or
 ```
 "Let's explore future scenarios for renewable energy infrastructure."
 ```
+
+If you have materials (decks, memos, PDFs), place them in `resources/` before you start.
+Dr. Wells will automatically index them and use them to seed the interview.
 
 ### 3. Choose Your Starting Point
 
@@ -85,6 +89,11 @@ pp --version
 - Research findings will be limited to pre-existing knowledge
 - Recommended to install for full functionality
 
+## Exports (Optional)
+
+The moderator may generate model-mediated HTML or TypeScript exports when helpful.
+Exports live at `scenarios/active/SCENARIO-YYYY-NNN/exports/`.
+
 ## Architecture
 
 ### Directory Structure
@@ -104,6 +113,7 @@ shell-scenario-panel/
 ├── scenarios/
 │   ├── active/                      # Current scenario planning
 │   └── archived/                    # Completed scenarios
+├── resources/                      # Optional input materials for auto-intake
 ├── prompts/
 │   ├── moderator.md                 # Dr. Michelle Wells
 │   └── specialists/                 # 6 domain specialists
@@ -139,6 +149,7 @@ shell-scenario-panel/
 **Outputs:**
 - `company.md` - Comprehensive company profile
 - `phase_0_discovery/internal_baseline.md` - User base case and risk posture
+- `phase_0_discovery/materials_index.md` - Auto-generated index of `resources/` inputs
 - `phase_0_discovery/research/` - 6 specialist discovery transcripts (per round)
 - `scenario_suggestions.md` - AI-generated focal question recommendations
 

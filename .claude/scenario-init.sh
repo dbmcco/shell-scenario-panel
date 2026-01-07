@@ -44,6 +44,7 @@ else
     mkdir -p "$SCENARIO_DIR/conversations"
     mkdir -p "$SCENARIO_DIR/scenarios"
     mkdir -p "$SCENARIO_DIR/phase_0_discovery/research"
+    mkdir -p "$SCENARIO_DIR/exports"
     echo "✅ Directory structure created"
 fi
 

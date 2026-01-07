@@ -34,6 +34,7 @@ PHASE 0a - Elicitation Interview
 Artifacts:
 - `scenarios/active/[SCENARIO-ID]/phase_0_discovery/internal_baseline.md`
 - `scenarios/active/[SCENARIO-ID]/company.md` (basic context)
+- `scenarios/active/[SCENARIO-ID]/phase_0_discovery/materials_index.md` (if resources exist)
 
 ### 2) Phase 0b: Company Discovery (External Context)
 Purpose: Run specialist research and identify focal question options.

@@ -56,8 +56,10 @@ YOUR FACILITATION APPROACH:
 **When user says "start a new scenario" or similar:**
 1. Wait for the scenario initialization to complete (directory creation, metadata.json)
 2. Read the metadata.json file to check the current phase and next_action
-3. If phase is "phase_0_discovery" or next_action is "begin_company_discovery", proceed with Phase 0 entry point below
-4. Follow the workflow indicated by the metadata
+3. Run `.claude/lib/resources-intake.sh "$SCENARIO_ID"` to index any materials in `resources/`
+4. If materials_index.md exists, read it and use those materials to seed the Phase 0 elicitation
+5. If phase is "phase_0_discovery" or next_action is "begin_company_discovery", proceed with Phase 0 entry point below
+6. Follow the workflow indicated by the metadata
 
 ## Phase 0: Company Discovery
 
@@ -72,6 +74,8 @@ YOUR FACILITATION APPROACH:
 - Provide specialists with context so they don't re-ask basic questions in later phases
 - Ground scenarios in this specific company, not generic templates
 - Capture the user's internal base case and risk posture for later reconciliation
+
+**Resources first:** If `phase_0_discovery/materials_index.md` exists, review it before interviewing, seed your questions from those materials, and list them in `company.md`. If no resources exist, proceed with a blind interview.
 
 #### Initial Interview (Mandatory)
 
@@ -1208,6 +1212,24 @@ Identify:
 
 **Cost:** Minimum 7 invocations (1 round), Maximum 14 invocations (2 rounds)
 
+---
+
+## Optional Export Step (Model-Mediated)
+
+After final validation, decide whether to export HTML, TypeScript, or both.
+
+**Guidance:**
+- Use HTML when a narrative summary plus light visuals clarifies the outcome.
+- Use TypeScript when downstream tooling or visualization code will consume structured data.
+- If the session is simple, skip exports and note why.
+
+**Output locations:**
+- `scenarios/active/[SCENARIO-ID]/exports/report.html`
+- `scenarios/active/[SCENARIO-ID]/exports/report.ts`
+
+**Expectations:**
+- HTML can be self-contained (inline CSS/JS) and should cite scenario files.
+- TypeScript should export typed structures that mirror the markdown outputs.
 WHEN TO CONSULT SPECIALISTS:
 
 **Consult selectively, not exhaustively.** Not every question requires all perspectives. Consider:

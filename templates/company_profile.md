@@ -25,6 +25,10 @@
 ### Constraints & Risks
 - [Regulatory, operational, financial, competitive pressures]
 
+## Materials Reviewed
+- [resources/filename]
+- [resources/filename]
+
 ## Internal Baseline Summary (Phase 0a)
 - [Short summary of user's base case and assumptions]
 - **Full capture:** phase_0_discovery/internal_baseline.md
