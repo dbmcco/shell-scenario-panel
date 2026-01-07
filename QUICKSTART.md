@@ -9,6 +9,11 @@ cd shell-scenario-panel
 # Start your Claude Code session here
 ```
 
+**Codex CLI:** run the bootstrapper first to enforce sequencing:
+```bash
+.codex/session-start.sh
+```
+
 ### Step 2: Tell Dr. Wells What You Want
 
 Just start talking about your scenario planning needs:
