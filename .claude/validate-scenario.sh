@@ -145,6 +145,9 @@ echo "━━━ Phase Documents ━━━"
 # Phase 0: Worldview Model
 check_transcript "$SCENARIO_DIR/worldview_model.md" "Worldview Model (Phase 0)"
 
+# Phase 0a: Internal Baseline
+check_transcript "$SCENARIO_DIR/phase_0_discovery/internal_baseline.md" "Internal Baseline (Phase 0a)"
+
 # Phase 1: Focal Question
 check_transcript "$SCENARIO_DIR/focal_question.md" "Focal Question (Phase 1)"
 

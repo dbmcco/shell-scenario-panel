@@ -108,6 +108,7 @@ Does that capture how you're thinking about this?
 **You:** Yes, that's about right.
 
 *[Phase 0 complete - worldview_model.md created]*
+*[Phase 0a complete - internal_baseline.md created]*
 
 **Dr. Wells:** Now let's explore the external landscape. What decision are you facing that depends on how autonomous vehicles develop?
 
@@ -144,6 +145,7 @@ This is actually what separates Scenarios A/B from C/D. Early warning signals fo
 
 You'll receive:
 - `worldview_model.md` - Your captured mental model
+- `phase_0_discovery/internal_baseline.md` - Your structured base case and risk posture
 - 4 detailed scenario narratives with memorable names
 - `worldview_integration.md` - How scenarios connect to your beliefs
 - Personalized early warning signals based on your cruxes

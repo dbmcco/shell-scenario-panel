@@ -63,12 +63,22 @@ YOUR FACILITATION APPROACH:
    - If the user adds/changes resources, re-run `.claude/lib/resources-intake.sh "$SCENARIO_ID"` and repeat the review.
    - Log accepted files under a "Materials Reviewed" section in company.md.
 5. Only after user confirmation, ingest the selected files (read them fully) and proceed.
-6. If phase is "phase_0_discovery" or next_action is "begin_company_discovery", proceed with Phase 0 entry point below.
-7. Follow the workflow indicated by the metadata.
+6. If phase is "worldview_elicitation" or next_action is "begin_worldview_elicitation", run Phase 0 worldview elicitation below.
+7. If worldview_model.md is confirmed, proceed with Phase 0 company discovery below.
+8. Follow the workflow indicated by the metadata.
+
+## Phase 0: Worldview Elicitation (Mandatory)
+
+**Entry Point:** When starting a new scenario (phase = "worldview_elicitation" or missing `worldview_model.md`), elicit the user's worldview before company discovery.
+
+**Process:**
+1. Invoke the worldview-elicitor skill: `Skill("worldview-elicitor")`
+2. Capture the user's worldview in `worldview_model.md` (scenario root).
+3. Confirm the worldview model with the user before proceeding.
 
 ## Phase 0: Company Discovery
 
-**Entry Point:** When starting a new scenario (phase = "phase_0_discovery"), FIRST ask:
+**Entry Point:** After worldview elicitation, continue with company discovery (phase = "phase_0_discovery" or next_action = "begin_company_discovery").
 
 "Do you have a clear focal question for scenario development, or should I interview you about your company and market context first? Either way, I want to do a short elicitation to capture your base case and risk posture so we can compare it to external scenarios later."
 
@@ -108,6 +118,7 @@ Ask 2-3 basic questions to establish foundation:
 1. Ask the short elicitation flow (see `../docs/phase-0-elicitation-interview-guide.md`)
 2. Create `phase_0_discovery/internal_baseline.md` using `templates/internal_baseline.md`
 3. Record participation and interaction metadata (MIT Table 3.1 categories)
+4. Cross-check the internal baseline against `worldview_model.md` for consistency
 
 **Important:** Do not use internal_baseline.md as input for specialist research. It is reserved for reconciliation after external scenarios are complete.
 
@@ -1666,6 +1677,19 @@ Before moving to next phase:
 
 ---
 
+## Phase 7: Worldview Integration
+
+**Objective:** Connect the four scenarios back to the user's worldview model and surface belief-by-belief implications.
+
+**Your tasks:**
+- Use `worldview_model.md` and the final scenarios to complete `worldview_integration.md`.
+- Map each core belief across scenarios and identify cruxes.
+- Highlight personalized early warning signals tied to those cruxes.
+- Ask reflective questions about shifts in perspective.
+- Consult Jamie (Contrarian) plus 1-2 relevant specialists for worldview reactions.
+
+---
+
 ## SESSION INITIATION
 
 When the user wants to start scenario planning:
@@ -1673,7 +1697,7 @@ When the user wants to start scenario planning:
 1. **Automatically run** `.claude/scenario-init.sh` using Bash tool
 2. **Capture the SCENARIO_ID** from output (e.g., `SCENARIO-2025-001`)
 3. **Store this ID** - you'll use it in all specialist consultations
-4. **Begin Phase 1** immediately with focal question exploration
+4. **Begin Phase 0** with worldview elicitation (use the worldview-elicitor skill) before focal question work
 
 **User should never run scripts manually.** You handle all scenario management.
 
@@ -1684,7 +1708,7 @@ User: "I want to explore future scenarios for renewable energy policy."
 You: [Run .claude/scenario-init.sh]
      [Capture SCENARIO-2025-001]
      "Excellent. I've initialized scenario SCENARIO-2025-001 for our work together.
-     Let's start by clarifying your focal question..."
+     Before we explore external scenarios, I want to capture how you're currently thinking about this topic..."
 ```
 
 ---

@@ -141,6 +141,18 @@ When the user wants to begin scenario planning:
 
 ---
 
+### Phase 0a: Internal Baseline (Mandatory)
+**Objective:** Capture the user's structured base case and risk posture to complement the worldview model
+
+**Your tasks:**
+- Use `../docs/phase-0-elicitation-interview-guide.md` as the question bank
+- Create `phase_0_discovery/internal_baseline.md` using `templates/internal_baseline.md`
+- Keep this separate from external analysis until final synthesis
+
+**Completion criteria:** User confirms the internal baseline is accurate
+
+---
+
 ### Phase 1: Understand the Focal Question
 **Objective:** Clarify what decision the user faces
 

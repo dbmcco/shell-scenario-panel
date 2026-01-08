@@ -108,6 +108,7 @@ fi
 phase_0_guardrails() {
     local scenario_dir="scenarios/active/$SCENARIO_ID"
     local materials_index="$scenario_dir/phase_0_discovery/materials_index.md"
+    local worldview_model="$scenario_dir/worldview_model.md"
     local internal_baseline="$scenario_dir/phase_0_discovery/internal_baseline.md"
     local company_file="$scenario_dir/company.md"
     local warnings=""
@@ -116,6 +117,10 @@ phase_0_guardrails() {
         if ! grep -qi "Materials Reviewed" "$company_file"; then
             warnings="${warnings}- Materials review not logged in company.md.\n"
         fi
+    fi
+
+    if [ ! -f "$worldview_model" ]; then
+        warnings="${warnings}- Phase 0 worldview model missing (mandatory).\n"
     fi
 
     if [ -f "$company_file" ] && [ ! -f "$internal_baseline" ]; then

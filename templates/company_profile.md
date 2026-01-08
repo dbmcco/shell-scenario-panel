@@ -31,7 +31,7 @@
 
 ## Internal Baseline Summary (Phase 0a)
 - [Short summary of user's base case and assumptions]
-- **Full capture:** phase_0_discovery/internal_baseline.md
+- **Full capture:** worldview_model.md, phase_0_discovery/internal_baseline.md
 
 ## Discovery History
 **Round 1:** [Date] - Initial interview completed

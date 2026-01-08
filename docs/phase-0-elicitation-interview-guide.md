@@ -7,9 +7,11 @@ ABOUTME: Provides question bank, metadata schema, and panel-specific add-ons.
 
 Capture the user's internal base case, assumptions, and risk posture before running external scenarios.
 The goal is not to predict, but to map how the user currently sees the world so we can later show where external scenarios diverge.
+Complete worldview elicitation first and capture `worldview_model.md` using the worldview-elicitor skill.
 
 ## Primary Outputs
 
+- `worldview_model.md` (user worldview, cruxes, and mental models)
 - `phase_0_discovery/internal_baseline.md` (user mental model, assumptions, risk posture)
 - `company.md` (context, materials, and discovery history)
 

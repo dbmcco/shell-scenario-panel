@@ -100,6 +100,8 @@ She will:
 
 **Output:** `worldview_model.md`
 
+**Also captured:** `phase_0_discovery/internal_baseline.md` (structured base case and risk posture)
+
 **Why this matters:**
 - Scenarios become more relevant (we know what lens you're looking through)
 - Helps identify blind spots (where your worldview differs from scenario implications)

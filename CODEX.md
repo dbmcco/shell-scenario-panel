@@ -23,6 +23,7 @@ This script initializes a scenario (if needed), indexes `resources/`, and prints
 - Follow `prompts/moderator.md` for Phase 0 elicitation and discovery.
 - Do not bypass phase gates or file validation steps.
 - Review `phase_0_discovery/materials_index.md` with the user before interviewing; re-run intake if materials change.
+- Complete worldview elicitation (`worldview_model.md`) and internal baseline (`phase_0_discovery/internal_baseline.md`) before external analysis.
 
 ## Subagent Invocation (Codex)
 
