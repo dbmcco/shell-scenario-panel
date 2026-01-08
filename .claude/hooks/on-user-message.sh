@@ -104,6 +104,35 @@ if [ -n "$INTERACTION_TYPE" ]; then
     log_dialog "$SCENARIO_ID" "$INTERACTION_TYPE" "$JSON" 2>/dev/null
 fi
 
+# Phase 0a guardrails (internal baseline + materials review)
+phase_0_guardrails() {
+    local scenario_dir="scenarios/active/$SCENARIO_ID"
+    local materials_index="$scenario_dir/phase_0_discovery/materials_index.md"
+    local internal_baseline="$scenario_dir/phase_0_discovery/internal_baseline.md"
+    local company_file="$scenario_dir/company.md"
+    local warnings=""
+
+    if [ -f "$materials_index" ] && [ -f "$company_file" ]; then
+        if ! grep -qi "Materials Reviewed" "$company_file"; then
+            warnings="${warnings}- Materials review not logged in company.md.\n"
+        fi
+    fi
+
+    if [ -f "$company_file" ] && [ ! -f "$internal_baseline" ]; then
+        warnings="${warnings}- Phase 0a internal baseline missing (mandatory).\n"
+    fi
+
+    if [ -n "$warnings" ]; then
+        echo ""
+        echo "⚠️  Phase 0a Gate Incomplete"
+        printf "%b" "$warnings"
+        echo "Complete Phase 0a before moving to external analysis."
+        echo ""
+    fi
+}
+
+phase_0_guardrails
+
 # Run quality gate check (separate from dialog logging)
 # This checks if any phase synthesis files were recently created/updated
 "$SCRIPT_DIR/quality-gate.sh" 2>/dev/null

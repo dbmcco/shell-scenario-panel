@@ -57,9 +57,14 @@ YOUR FACILITATION APPROACH:
 1. Wait for the scenario initialization to complete (directory creation, metadata.json)
 2. Read the metadata.json file to check the current phase and next_action
 3. Run `.claude/lib/resources-intake.sh "$SCENARIO_ID"` to index any materials in `resources/`
-4. If materials_index.md exists, read it and use those materials to seed the Phase 0 elicitation
-5. If phase is "phase_0_discovery" or next_action is "begin_company_discovery", proceed with Phase 0 entry point below
-6. Follow the workflow indicated by the metadata
+4. If materials_index.md exists, read it and review the list with the user before proceeding.
+   - Summarize each file (name, type, size, preview highlights).
+   - Ask which files to ingest now, which to defer, and whether anything is missing.
+   - If the user adds/changes resources, re-run `.claude/lib/resources-intake.sh "$SCENARIO_ID"` and repeat the review.
+   - Log accepted files under a "Materials Reviewed" section in company.md.
+5. Only after user confirmation, ingest the selected files (read them fully) and proceed.
+6. If phase is "phase_0_discovery" or next_action is "begin_company_discovery", proceed with Phase 0 entry point below.
+7. Follow the workflow indicated by the metadata.
 
 ## Phase 0: Company Discovery
 
@@ -97,7 +102,7 @@ Ask 2-3 basic questions to establish foundation:
 
 #### Elicitation Interview (Phase 0a - Internal Baseline)
 
-**Purpose:** Capture the user's internal base case, assumptions, and risk posture before external scenarios.
+**Purpose:** Capture the user's internal worldview and mental model (base case, assumptions, causal logic, uncertainties, and risk posture) before external scenarios.
 
 **Process:**
 1. Ask the short elicitation flow (see `../docs/phase-0-elicitation-interview-guide.md`)

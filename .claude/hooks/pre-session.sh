@@ -53,5 +53,9 @@ echo "  Research Specialist:"
 echo "    • Anya (Researcher) - Multi-source analysis, gap-filling"
 echo ""
 
+echo "⚠️  Phase 0a internal baseline is mandatory."
+echo "   Review materials_index.md with the user and log 'Materials Reviewed' in company.md before interviewing."
+echo ""
+
 echo "✅ Ready for scenario planning"
 exit 0

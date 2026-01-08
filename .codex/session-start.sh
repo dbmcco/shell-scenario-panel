@@ -7,6 +7,13 @@ set -e
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+WORKSPACE_ROOT="$ROOT/../../.."
+if [ -f "$WORKSPACE_ROOT/.codex/hooks/session-start.sh" ]; then
+  # shellcheck source=/dev/null
+  source "$WORKSPACE_ROOT/.codex/hooks/session-start.sh"
+  codex_session_start
+fi
+
 SCENARIO_ID=""
 
 if [ "${1:-}" = "--scenario" ]; then
