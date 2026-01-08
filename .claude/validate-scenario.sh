@@ -142,6 +142,9 @@ echo ""
 # Check phase documents
 echo "━━━ Phase Documents ━━━"
 
+# Phase 0: Worldview Model
+check_transcript "$SCENARIO_DIR/worldview_model.md" "Worldview Model (Phase 0)"
+
 # Phase 1: Focal Question
 check_transcript "$SCENARIO_DIR/focal_question.md" "Focal Question (Phase 1)"
 
@@ -168,6 +171,11 @@ fi
 # Phase 6: Strategy Analysis
 if [ -f "$SCENARIO_DIR/strategy_analysis.md" ]; then
     check_transcript "$SCENARIO_DIR/strategy_analysis.md" "Strategy Analysis (Phase 6)"
+fi
+
+# Phase 7: Worldview Integration
+if [ -f "$SCENARIO_DIR/worldview_integration.md" ]; then
+    check_transcript "$SCENARIO_DIR/worldview_integration.md" "Worldview Integration (Phase 7)"
 fi
 
 echo ""

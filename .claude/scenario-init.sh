@@ -45,6 +45,7 @@ else
     mkdir -p "$SCENARIO_DIR/scenarios"
     mkdir -p "$SCENARIO_DIR/phase_0_discovery/research"
     mkdir -p "$SCENARIO_DIR/exports"
+    mkdir -p "$SCENARIO_DIR/artifacts"
     echo "✅ Directory structure created"
 fi
 
@@ -56,25 +57,20 @@ cat > "$SCENARIO_DIR/metadata.json" <<EOF
   "created_at": "$TIMESTAMP",
   "status": "active",
   "current_phase": 0,
-  "phase_0": {
-    "discovery_rounds": 0,
-    "specialists_consulted": [],
-    "convergence_reached": false,
-    "user_confirmed": false,
-    "scenario_suggestions_generated": false
-  },
+  "worldview_captured": false,
   "focal_question": "",
   "time_horizon": "",
   "scope": "",
-  "phase": "phase_0_discovery",
+  "phase": "worldview_elicitation",
   "consultations": [],
   "last_specialist": null,
-  "next_action": "begin_company_discovery",
+  "next_action": "begin_worldview_elicitation",
   "validation_status": "pending_user_input",
   "predetermined_elements_identified": false,
   "critical_uncertainties_identified": false,
   "scenarios_developed": 0,
   "target_scenario_count": 4,
+  "worldview_integration_complete": false,
   "notes": ""
 }
 EOF
@@ -82,7 +78,9 @@ echo "✅ Metadata initialized"
 
 # Copy templates
 cp templates/focal_question.md "$SCENARIO_DIR/"
-echo "✅ Focal question template copied"
+cp templates/worldview_model.md "$SCENARIO_DIR/"
+cp templates/worldview_integration.md "$SCENARIO_DIR/"
+echo "✅ Templates copied (focal_question, worldview_model, worldview_integration)"
 
 # Create scenario_context.md from template
 cp templates/scenario_context_template.md "$SCENARIO_DIR/scenario_context.md"
@@ -104,8 +102,8 @@ echo "🎉 Scenario $SCENARIO_ID initialized successfully!"
 echo ""
 echo "📁 Location: $SCENARIO_DIR"
 echo "📋 Status: Active"
-echo "🔄 Phase: Phase 0 - Company Discovery"
-echo "➡️  Next Action: Dr. Wells will ask about company discovery or focal question"
+echo "🔄 Phase: Phase 0 - Worldview Elicitation"
+echo "➡️  Next Action: Dr. Wells will use worldview-elicitor to understand your mental model"
 echo ""
 echo "To begin, set environment variable:"
 echo "export SCENARIO_ID=$SCENARIO_ID"
