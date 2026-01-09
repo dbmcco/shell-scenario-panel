@@ -65,6 +65,32 @@ check_transcript() {
     return 0
 }
 
+# Optional transcript check (warns instead of errors)
+check_optional_transcript() {
+    local file=$1
+    local description=$2
+
+    if [ ! -f "$file" ]; then
+        echo -e "${YELLOW}⚠ Missing (optional): $description${NC}"
+        echo "  Expected: $file"
+        ((WARNINGS++))
+        return 1
+    fi
+
+    local word_count=$(count_words "$file")
+
+    if [ "$word_count" -lt "$MIN_WORDS" ]; then
+        echo -e "${YELLOW}⚠ Insufficient content: $description${NC}"
+        echo "  File: $file"
+        echo "  Words: $word_count (minimum: $MIN_WORDS)"
+        ((WARNINGS++))
+        return 1
+    fi
+
+    echo -e "${GREEN}✓ Valid: $description ($word_count words)${NC}"
+    return 0
+}
+
 # Check metadata.json exists
 echo "━━━ Metadata Validation ━━━"
 METADATA_FILE="$SCENARIO_DIR/metadata.json"
@@ -147,6 +173,9 @@ check_transcript "$SCENARIO_DIR/worldview_model.md" "Worldview Model (Phase 0)"
 
 # Phase 0a: Internal Baseline
 check_transcript "$SCENARIO_DIR/phase_0_discovery/internal_baseline.md" "Internal Baseline (Phase 0a)"
+
+# Phase 0b: Context Packet
+check_optional_transcript "$SCENARIO_DIR/phase_0_discovery/context_packet.md" "Context Packet (Phase 0b)"
 
 # Phase 1: Focal Question
 check_transcript "$SCENARIO_DIR/focal_question.md" "Focal Question (Phase 1)"

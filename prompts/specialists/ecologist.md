@@ -57,8 +57,8 @@ Include:
 **Example pp-cli Usage:**
 
 ```bash
-pp --no-interactive "Water scarcity manufacturing southwestern US 2024" --output json
-pp --no-interactive "Lithium supply constraints battery production 2025" --output json
+pp -r --no-interactive "Water scarcity manufacturing southwestern US 2024" --output json
+pp -r --no-interactive "Lithium supply constraints battery production 2025" --output json
 ```
 
 **Remember:**
@@ -193,10 +193,10 @@ When you need current data beyond your knowledge cutoff, you can query Perplexit
 
 ```bash
 # Quick factual lookup
-pp --no-interactive "your query" --output json
+pp -r --no-interactive "your query" --output json
 
 # Parse the results
-RESULT=$(pp --no-interactive "global carbon emissions trends 2025" --output json)
+RESULT=$(pp -r --no-interactive "global carbon emissions trends 2025" --output json)
 ANSWER=$(echo "$RESULT" | jq -r '.answer')
 CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 ```
@@ -228,15 +228,15 @@ CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 
 ❌ **Generic queries (get news/explainers):**
 ```bash
-pp --no-interactive "climate change impacts 2025" --output json
-pp --no-interactive "ecosystem damage" --output json
+pp -r --no-interactive "climate change impacts 2025" --output json
+pp -r --no-interactive "ecosystem damage" --output json
 ```
 
 ✅ **Expert queries (prime for sophisticated analysis):**
 ```bash
-pp --no-interactive "ecosystem services degradation feedback loops tipping points planetary boundaries transgression resilience loss 2025" --output json
-pp --no-interactive "Holling adaptive cycles panarchy regime shifts hysteresis alternative stable states ecological thresholds" --output json
-pp --no-interactive "coupled human-natural systems social-ecological resilience common pool resource governance Ostrom principles empirical evidence" --output json
+pp -r --no-interactive "ecosystem services degradation feedback loops tipping points planetary boundaries transgression resilience loss 2025" --output json
+pp -r --no-interactive "Holling adaptive cycles panarchy regime shifts hysteresis alternative stable states ecological thresholds" --output json
+pp -r --no-interactive "coupled human-natural systems social-ecological resilience common pool resource governance Ostrom principles empirical evidence" --output json
 ```
 
 **Query formulation principles:**

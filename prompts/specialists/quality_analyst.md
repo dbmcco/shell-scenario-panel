@@ -353,7 +353,7 @@ You have authority to FAIL a phase if quality has critically degraded. Dr. Wells
 
 If needed for methodology references:
 ```bash
-pp --no-interactive "scenario planning quality assurance peer review" --output json
+pp -r --no-interactive "scenario planning quality assurance peer review" --output json
 ```
 
 But your primary sources are always:

@@ -56,12 +56,14 @@ YOUR FACILITATION APPROACH:
 **When user says "start a new scenario" or similar:**
 1. Wait for the scenario initialization to complete (directory creation, metadata.json)
 2. Read the metadata.json file to check the current phase and next_action
-3. Run `.claude/lib/resources-intake.sh "$SCENARIO_ID"` to index any materials in `resources/`
-4. If materials_index.md exists, read it and review the list with the user before proceeding.
+3. Check whether `resources/` contains files (ignore README/.gitkeep). If yes, ask the user whether to scan and incorporate them.
+4. If the user says yes, run `.claude/lib/resources-intake.sh "$SCENARIO_ID"` to index materials.
+5. If materials_index.md exists, read it and review the list with the user before proceeding.
    - Summarize each file (name, type, size, preview highlights).
    - Ask which files to ingest now, which to defer, and whether anything is missing.
    - If the user adds/changes resources, re-run `.claude/lib/resources-intake.sh "$SCENARIO_ID"` and repeat the review.
    - Log accepted files under a "Materials Reviewed" section in company.md.
+6. If the user declines scanning resources, proceed with a blind interview and note "Materials Skipped" in company.md after it exists.
 5. Only after user confirmation, ingest the selected files (read them fully) and proceed.
 6. If phase is "worldview_elicitation" or next_action is "begin_worldview_elicitation", run Phase 0 worldview elicitation below.
 7. If worldview_model.md is confirmed, proceed with Phase 0 company discovery below.
@@ -75,6 +77,22 @@ YOUR FACILITATION APPROACH:
 1. Invoke the worldview-elicitor skill: `Skill("worldview-elicitor")`
 2. Capture the user's worldview in `worldview_model.md` (scenario root).
 3. Confirm the worldview model with the user before proceeding.
+
+## Phase 0b: Context Enrichment (Iterative Search)
+
+**Entry Point:** During the Phase 0 interview when knowledge gaps or disputed assumptions appear.
+
+**Purpose:** Use targeted web search to enrich the interview, then return to user questions with better grounding.
+
+**Process:**
+1. Identify 1-3 high-impact gaps from the interview or materials.
+2. Run targeted searches using pp-cli research mode only:
+   ```bash
+   pp -r --no-interactive "your research query here" --output json
+   ```
+3. Summarize findings with citations in `phase_0_discovery/context_packet.md`.
+4. Ask the user to confirm or correct; update `company.md` with new facts.
+5. Repeat up to 3 cycles, then continue the interview.
 
 ## Phase 0: Company Discovery
 
@@ -141,18 +159,18 @@ Do not read internal_baseline.md; keep external research independent.
 [If Round 2+] Read your previous discovery transcript:
 phase_0_discovery/research/[role]_discovery_round[N-1].md
 
-Conduct research from your domain expertise perspective using pp-cli.
+Conduct research from your domain expertise perspective using pp-cli research mode.
 You decide what to research - trust your professional judgment about what
 matters in your domain for this company's strategic context.
 
 Use pp-cli with this syntax:
 ```bash
-pp --no-interactive "your research query here" --output json
+pp -r --no-interactive "your research query here" --output json
 ```
 
 Example:
 ```bash
-pp --no-interactive "automotive industry EV transition challenges 2024-2025" --output json
+pp -r --no-interactive "automotive industry EV transition challenges 2024-2025" --output json
 ```
 
 Create discovery transcript in:
@@ -318,6 +336,7 @@ scenarios/active/SCENARIO-YYYY-XXX/
 ├── company.md (living document)
 ├── phase_0_discovery/
 │   ├── internal_baseline.md
+│   ├── context_packet.md
 │   ├── scenario_suggestions.md
 │   └── research/
 │       ├── economist_discovery_round1.md
@@ -1274,7 +1293,7 @@ Invoke the research specialist ONLY when knowledge gaps emerge that specialists 
 - Fact-checking when specialists' knowledge is outdated
 
 **Don't invoke Dr. Petrov for:**
-- Simple fact lookups (specialists can use pp-cli directly)
+- Simple fact lookups (specialists can use pp-cli research mode directly)
 - Domain analysis (that's what domain specialists do)
 - Questions specialists can answer from their expertise
 - Routine verification of recent statistics

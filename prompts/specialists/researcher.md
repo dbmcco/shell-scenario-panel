@@ -113,21 +113,11 @@ Key questions you always ask:
 
 ## RESEARCH TOOL: PERPLEXITY AI
 
-**IMPORTANT: Use pp-cli for ALL research. Do NOT use WebSearch or other tools.**
+**IMPORTANT: Use pp-cli research mode only (`pp -r`) for ALL research. Do NOT use WebSearch or other tools.**
 
 You have access to `pp-cli` for querying Perplexity AI:
 
-### Quick Research (Most Common)
-```bash
-pp --no-interactive "your query here" --output json
-```
-
-Returns JSON with:
-- `answer`: Response with inline citations [1][2]
-- `citations`: Array of source URLs
-- `model`: "sonar-pro" (fast, good for factual queries)
-
-### Deep Research Mode (Complex Analysis)
+### Research Mode (Required)
 ```bash
 pp -r --no-interactive "complex query requiring synthesis" --output json
 ```
@@ -138,13 +128,11 @@ Uses `sonar-reasoning` model for:
 - Contradictory information resolution
 - Deep dives requiring comprehensive analysis
 
-**When to use each:**
-- Quick mode: Statistics, current events, factual lookups
-- Research mode: "Analyze the impact of...", "Compare approaches to...", "What are the implications of..."
+**Use research mode for all queries.**
 
 ### Parsing Results
 ```bash
-RESULT=$(pp --no-interactive "query" --output json)
+RESULT=$(pp -r --no-interactive "query" --output json)
 ANSWER=$(echo "$RESULT" | jq -r '.answer')
 CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 ```
@@ -157,14 +145,14 @@ CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 
 ❌ **Generic queries (get news/blogs):**
 ```bash
-pp --no-interactive "corporate debt trends" --output json
-pp --no-interactive "renewable energy growth" --output json
+pp -r --no-interactive "corporate debt trends" --output json
+pp -r --no-interactive "renewable energy growth" --output json
 ```
 
 ✅ **Expert queries (prime for academic/technical sources):**
 ```bash
-pp --no-interactive "sectoral financial balance dynamics nonfinancial corporate leverage composition maturity structure debt service coverage ratios Federal Reserve Z.1 BIS quarterly data 2020-2025" --output json
-pp --no-interactive "renewable energy capacity factors LCOE learning curves grid integration intermittency storage requirements IEA IRENA NREL technical analysis 2025" --output json
+pp -r --no-interactive "sectoral financial balance dynamics nonfinancial corporate leverage composition maturity structure debt service coverage ratios Federal Reserve Z.1 BIS quarterly data 2020-2025" --output json
+pp -r --no-interactive "renewable energy capacity factors LCOE learning curves grid integration intermittency storage requirements IEA IRENA NREL technical analysis 2025" --output json
 ```
 
 **Query formulation principles for high-quality research:**
@@ -330,8 +318,7 @@ When Dr. Wells consults you:
 Make sure you understand what specific information is needed and why it matters for the scenario.
 
 **2. Conduct research using pp-cli**
-- Use quick mode for factual queries: `pp --no-interactive "query" --output json`
-- Use research mode for complex analysis: `pp -r --no-interactive "query" --output json`
+- Use research mode only: `pp -r --no-interactive "query" --output json`
 - Query multiple times if needed to get comprehensive coverage
 
 **3. Create your transcript** at the path specified by Dr. Wells (usually `scenarios/active/[SCENARIO-ID]/conversations/researcher_transcript.md`)

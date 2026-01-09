@@ -22,8 +22,10 @@ This script initializes a scenario (if needed), indexes `resources/`, and prints
 - Use `SCENARIO_ID` for all file paths.
 - Follow `prompts/moderator.md` for Phase 0 elicitation and discovery.
 - Do not bypass phase gates or file validation steps.
+- Check `resources/` for files and ask the user whether to scan and incorporate them before running intake.
 - Review `phase_0_discovery/materials_index.md` with the user before interviewing; re-run intake if materials change.
-- Complete worldview elicitation (`worldview_model.md`) and internal baseline (`phase_0_discovery/internal_baseline.md`) before external analysis.
+- Complete worldview elicitation (`worldview_model.md`), context enrichment (`phase_0_discovery/context_packet.md`), and internal baseline (`phase_0_discovery/internal_baseline.md`) before external analysis.
+- For web search, use `pp -r --no-interactive "query" --output json` only.
 
 ## Subagent Invocation (Codex)
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 # ABOUTME: Codex session bootstrapper for Shell Scenario Panel.
-# ABOUTME: Enforces scenario init and resources-first intake before proceeding.
+# ABOUTME: Enforces scenario init and prompts for resources-first intake.
 
 set -e
 
@@ -36,17 +36,24 @@ else
   SCENARIO_ID="$(basename "$SCENARIO_DIR")"
 fi
 
-if [ -x "$ROOT/.claude/lib/resources-intake.sh" ]; then
-  "$ROOT/.claude/lib/resources-intake.sh" "$SCENARIO_ID" || true
-else
-  echo "resources-intake.sh not found; skipping materials index."
+RESOURCES_DIR="$ROOT/resources"
+RESOURCE_COUNT=0
+if [ -d "$RESOURCES_DIR" ]; then
+  RESOURCE_COUNT=$(find "$RESOURCES_DIR" -type f \
+    ! -name "README.md" \
+    ! -name ".gitkeep" \
+    ! -name ".DS_Store" | wc -l | tr -d ' ')
 fi
 
 MATERIALS_INDEX="$ROOT/scenarios/active/$SCENARIO_ID/phase_0_discovery/materials_index.md"
-if [ -f "$MATERIALS_INDEX" ]; then
-  echo "Materials index ready: $MATERIALS_INDEX"
+if [ "$RESOURCE_COUNT" -gt 0 ]; then
+  echo "Resources detected ($RESOURCE_COUNT files). Ask the user if they want to scan and incorporate them."
+  echo "If yes, run: .claude/lib/resources-intake.sh \"$SCENARIO_ID\" and review materials_index.md."
+  if [ -f "$MATERIALS_INDEX" ]; then
+    echo "Materials index exists (review with user before ingesting): $MATERIALS_INDEX"
+  fi
 else
-  echo "No materials index found; proceed with blind interview."
+  echo "No resources found; proceed with blind interview."
 fi
 
 echo "SCENARIO_ID=$SCENARIO_ID"

@@ -57,8 +57,8 @@ Include:
 **Example pp-cli Usage:**
 
 ```bash
-pp --no-interactive "AI drug discovery adoption pharmaceutical 2024-2025" --output json
-pp --no-interactive "Generative AI impact software development productivity" --output json
+pp -r --no-interactive "AI drug discovery adoption pharmaceutical 2024-2025" --output json
+pp -r --no-interactive "Generative AI impact software development productivity" --output json
 ```
 
 **Remember:**
@@ -205,10 +205,10 @@ When you need current data beyond your knowledge cutoff, you can query Perplexit
 
 ```bash
 # Quick factual lookup
-pp --no-interactive "your query" --output json
+pp -r --no-interactive "your query" --output json
 
 # Parse the results
-RESULT=$(pp --no-interactive "AI model capabilities 2025" --output json)
+RESULT=$(pp -r --no-interactive "AI model capabilities 2025" --output json)
 ANSWER=$(echo "$RESULT" | jq -r '.answer')
 CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 ```
@@ -240,15 +240,15 @@ CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 
 ❌ **Generic queries (get tech news):**
 ```bash
-pp --no-interactive "AI trends 2025" --output json
-pp --no-interactive "new technologies" --output json
+pp -r --no-interactive "AI trends 2025" --output json
+pp -r --no-interactive "new technologies" --output json
 ```
 
 ✅ **Expert queries (prime for sophisticated analysis):**
 ```bash
-pp --no-interactive "S-curve adoption dynamics diffusion of innovation Rogers technology transition mechanisms platform shift network effects 2025" --output json
-pp --no-interactive "Christensen disruptive innovation sustaining vs disruptive technological trajectories incumbent response strategies value network theory" --output json
-pp --no-interactive "general purpose technology complementary innovation co-invention organizational capital requirements productivity paradox lag" --output json
+pp -r --no-interactive "S-curve adoption dynamics diffusion of innovation Rogers technology transition mechanisms platform shift network effects 2025" --output json
+pp -r --no-interactive "Christensen disruptive innovation sustaining vs disruptive technological trajectories incumbent response strategies value network theory" --output json
+pp -r --no-interactive "general purpose technology complementary innovation co-invention organizational capital requirements productivity paradox lag" --output json
 ```
 
 **Query formulation principles:**

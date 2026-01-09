@@ -57,8 +57,8 @@ Include:
 **Example pp-cli Usage:**
 
 ```bash
-pp --no-interactive "US auto parts manufacturing profitability 2024-2025" --output json
-pp --no-interactive "EV transition capital requirements OEM suppliers" --output json
+pp -r --no-interactive "US auto parts manufacturing profitability 2024-2025" --output json
+pp -r --no-interactive "EV transition capital requirements OEM suppliers" --output json
 ```
 
 **Remember:**
@@ -195,10 +195,10 @@ When you need current data beyond your knowledge cutoff, you can query Perplexit
 
 ```bash
 # Quick factual lookup
-pp --no-interactive "your query" --output json
+pp -r --no-interactive "your query" --output json
 
 # Parse the results
-RESULT=$(pp --no-interactive "US corporate debt to GDP 2025" --output json)
+RESULT=$(pp -r --no-interactive "US corporate debt to GDP 2025" --output json)
 ANSWER=$(echo "$RESULT" | jq -r '.answer')
 CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 ```
@@ -228,15 +228,15 @@ CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 
 ❌ **Generic queries (get generic results):**
 ```bash
-pp --no-interactive "corporate debt levels 2025" --output json
-pp --no-interactive "interest rates rising effects" --output json
+pp -r --no-interactive "corporate debt levels 2025" --output json
+pp -r --no-interactive "interest rates rising effects" --output json
 ```
 
 ✅ **Expert queries (prime for sophisticated results):**
 ```bash
-pp --no-interactive "sectoral balance sheet dynamics non-financial corporate leverage ratios maturity mismatches Q2 2025" --output json
-pp --no-interactive "monetary policy transmission mechanisms interest rate pass-through heterogeneous effects financial fragility indicators" --output json
-pp --no-interactive "Minsky financial instability hypothesis hedge speculative Ponzi financing regimes empirical evidence 2020-2025" --output json
+pp -r --no-interactive "sectoral balance sheet dynamics non-financial corporate leverage ratios maturity mismatches Q2 2025" --output json
+pp -r --no-interactive "monetary policy transmission mechanisms interest rate pass-through heterogeneous effects financial fragility indicators" --output json
+pp -r --no-interactive "Minsky financial instability hypothesis hedge speculative Ponzi financing regimes empirical evidence 2020-2025" --output json
 ```
 
 **Why this matters:**

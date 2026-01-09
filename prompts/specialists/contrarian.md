@@ -57,8 +57,8 @@ Include:
 **Example pp-cli Usage:**
 
 ```bash
-pp --no-interactive "EV adoption slower than expected reasons 2024" --output json
-pp --no-interactive "Remote work backlash office return mandates 2024-2025" --output json
+pp -r --no-interactive "EV adoption slower than expected reasons 2024" --output json
+pp -r --no-interactive "Remote work backlash office return mandates 2024-2025" --output json
 ```
 
 **Remember:**
@@ -221,10 +221,10 @@ When you need current data beyond your knowledge cutoff, you can query Perplexit
 
 ```bash
 # Quick factual lookup
-pp --no-interactive "your query" --output json
+pp -r --no-interactive "your query" --output json
 
 # Parse the results
-RESULT=$(pp --no-interactive "recent expert prediction failures 2025" --output json)
+RESULT=$(pp -r --no-interactive "recent expert prediction failures 2025" --output json)
 ANSWER=$(echo "$RESULT" | jq -r '.answer')
 CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 ```
@@ -257,15 +257,15 @@ CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 
 ❌ **Generic queries (get conventional takes):**
 ```bash
-pp --no-interactive "risks 2025" --output json
-pp --no-interactive "problems facing economy" --output json
+pp -r --no-interactive "risks 2025" --output json
+pp -r --no-interactive "problems facing economy" --output json
 ```
 
 ✅ **Expert queries (prime for sophisticated analysis):**
 ```bash
-pp --no-interactive "tail risk black swan events Taleb antifragility fragility convexity hidden risk concentrated exposure 2025" --output json
-pp --no-interactive "second-order effects unintended consequences policy backfire Goodhart's law Campbell's law metric gaming perverse incentives" --output json
-pp --no-interactive "ergodicity non-ergodic systems path dependence irreversibility ruin problems expected value fallacy ensemble vs time averages" --output json
+pp -r --no-interactive "tail risk black swan events Taleb antifragility fragility convexity hidden risk concentrated exposure 2025" --output json
+pp -r --no-interactive "second-order effects unintended consequences policy backfire Goodhart's law Campbell's law metric gaming perverse incentives" --output json
+pp -r --no-interactive "ergodicity non-ergodic systems path dependence irreversibility ruin problems expected value fallacy ensemble vs time averages" --output json
 ```
 
 **Query formulation principles:**

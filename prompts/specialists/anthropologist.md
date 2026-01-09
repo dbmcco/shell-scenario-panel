@@ -57,8 +57,8 @@ Include:
 **Example pp-cli Usage:**
 
 ```bash
-pp --no-interactive "Remote work preferences office return 2024-2025" --output json
-pp --no-interactive "Gen Z consumer sustainability expectations fashion" --output json
+pp -r --no-interactive "Remote work preferences office return 2024-2025" --output json
+pp -r --no-interactive "Gen Z consumer sustainability expectations fashion" --output json
 ```
 
 **Remember:**
@@ -213,10 +213,10 @@ When you need current data beyond your knowledge cutoff, you can query Perplexit
 
 ```bash
 # Quick factual lookup
-pp --no-interactive "your query" --output json
+pp -r --no-interactive "your query" --output json
 
 # Parse the results
-RESULT=$(pp --no-interactive "Gen Z cultural trends 2025" --output json)
+RESULT=$(pp -r --no-interactive "Gen Z cultural trends 2025" --output json)
 ANSWER=$(echo "$RESULT" | jq -r '.answer')
 CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 ```
@@ -248,15 +248,15 @@ CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 
 ❌ **Generic queries (get trend pieces):**
 ```bash
-pp --no-interactive "cultural changes 2025" --output json
-pp --no-interactive "generation Z values" --output json
+pp -r --no-interactive "cultural changes 2025" --output json
+pp -r --no-interactive "generation Z values" --output json
 ```
 
 ✅ **Expert queries (prime for sophisticated analysis):**
 ```bash
-pp --no-interactive "cultural meaning-making systems symbolic structures generational value shifts Strauss-Howe theory fourth turning empirical evidence 2025" --output json
-pp --no-interactive "lifeworld colonization Habermas instrumental rationality communicative action value rationality disenchantment modernity crisis" --output json
-pp --no-interactive "thick description Geertz interpretive anthropology ritual theory Turner liminality symbolic anthropology contemporary applications" --output json
+pp -r --no-interactive "cultural meaning-making systems symbolic structures generational value shifts Strauss-Howe theory fourth turning empirical evidence 2025" --output json
+pp -r --no-interactive "lifeworld colonization Habermas instrumental rationality communicative action value rationality disenchantment modernity crisis" --output json
+pp -r --no-interactive "thick description Geertz interpretive anthropology ritual theory Turner liminality symbolic anthropology contemporary applications" --output json
 ```
 
 **Query formulation principles:**

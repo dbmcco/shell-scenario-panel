@@ -57,8 +57,8 @@ Include:
 **Example pp-cli Usage:**
 
 ```bash
-pp --no-interactive "US-China trade policy auto parts 2024-2025" --output json
-pp --no-interactive "Critical minerals supply chain vulnerabilities semiconductors" --output json
+pp -r --no-interactive "US-China trade policy auto parts 2024-2025" --output json
+pp -r --no-interactive "Critical minerals supply chain vulnerabilities semiconductors" --output json
 ```
 
 **Remember:**
@@ -200,10 +200,10 @@ When you need current data beyond your knowledge cutoff, you can query Perplexit
 
 ```bash
 # Quick factual lookup
-pp --no-interactive "your query" --output json
+pp -r --no-interactive "your query" --output json
 
 # Parse the results
-RESULT=$(pp --no-interactive "current military spending by country 2025" --output json)
+RESULT=$(pp -r --no-interactive "current military spending by country 2025" --output json)
 ANSWER=$(echo "$RESULT" | jq -r '.answer')
 CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 ```
@@ -235,15 +235,15 @@ CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
 
 ❌ **Generic queries (get news summaries):**
 ```bash
-pp --no-interactive "US China relations 2025" --output json
-pp --no-interactive "Middle East conflicts" --output json
+pp -r --no-interactive "US China relations 2025" --output json
+pp -r --no-interactive "Middle East conflicts" --output json
 ```
 
 ✅ **Expert queries (prime for sophisticated analysis):**
 ```bash
-pp --no-interactive "great power competition spheres of influence resource securitization rare earth elements supply chain weaponization 2025" --output json
-pp --no-interactive "balance of power dynamics regional hegemons alliance formation security dilemma offense-defense balance nuclear deterrence stability" --output json
-pp --no-interactive "Mackinder Heartland theory Spykman Rimland geopolitical chokepoints Strait of Malacca energy transit routes" --output json
+pp -r --no-interactive "great power competition spheres of influence resource securitization rare earth elements supply chain weaponization 2025" --output json
+pp -r --no-interactive "balance of power dynamics regional hegemons alliance formation security dilemma offense-defense balance nuclear deterrence stability" --output json
+pp -r --no-interactive "Mackinder Heartland theory Spykman Rimland geopolitical chokepoints Strait of Malacca energy transit routes" --output json
 ```
 
 **Query formulation principles:**

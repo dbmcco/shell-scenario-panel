@@ -110,6 +110,7 @@ phase_0_guardrails() {
     local materials_index="$scenario_dir/phase_0_discovery/materials_index.md"
     local worldview_model="$scenario_dir/worldview_model.md"
     local internal_baseline="$scenario_dir/phase_0_discovery/internal_baseline.md"
+    local context_packet="$scenario_dir/phase_0_discovery/context_packet.md"
     local company_file="$scenario_dir/company.md"
     local warnings=""
 
@@ -127,11 +128,19 @@ phase_0_guardrails() {
         warnings="${warnings}- Phase 0a internal baseline missing (mandatory).\n"
     fi
 
+    if [ -f "$company_file" ]; then
+        if [ ! -f "$context_packet" ]; then
+            warnings="${warnings}- Phase 0b context enrichment packet missing (pp -r search).\n"
+        elif grep -q "\\[gap\\]" "$context_packet"; then
+            warnings="${warnings}- Phase 0b context enrichment packet not completed (pp -r search).\n"
+        fi
+    fi
+
     if [ -n "$warnings" ]; then
         echo ""
-        echo "⚠️  Phase 0a Gate Incomplete"
+        echo "⚠️  Phase 0 Gate Incomplete"
         printf "%b" "$warnings"
-        echo "Complete Phase 0a before moving to external analysis."
+        echo "Complete Phase 0 before moving to external analysis."
         echo ""
     fi
 }

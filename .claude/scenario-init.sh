@@ -80,7 +80,8 @@ echo "✅ Metadata initialized"
 cp templates/focal_question.md "$SCENARIO_DIR/"
 cp templates/worldview_model.md "$SCENARIO_DIR/"
 cp templates/worldview_integration.md "$SCENARIO_DIR/"
-echo "✅ Templates copied (focal_question, worldview_model, worldview_integration)"
+cp templates/context_packet.md "$SCENARIO_DIR/phase_0_discovery/context_packet.md"
+echo "✅ Templates copied (focal_question, worldview_model, worldview_integration, context_packet)"
 
 # Create scenario_context.md from template
 cp templates/scenario_context_template.md "$SCENARIO_DIR/scenario_context.md"
