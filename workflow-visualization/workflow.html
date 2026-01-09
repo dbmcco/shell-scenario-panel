@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shell Scenario Panel Workflow</title>
+    <style>
+      :root {
+        --bg: #f6efe6;
+        --bg-alt: #efe2cf;
+        --card: #ffffff;
+        --ink: #1b1b1b;
+        --muted: #5a5248;
+        --accent: #b06f3c;
+        --accent-2: #365b52;
+        --line: #c8b39a;
+        --shadow: 0 12px 30px rgba(27, 27, 27, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", "Avenir Next", "Gill Sans", sans-serif;
+        color: var(--ink);
+        background: linear-gradient(145deg, var(--bg), var(--bg-alt));
+      }
+
+      header {
+        padding: 40px 20px 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0 0 10px;
+        font-size: clamp(26px, 3vw, 40px);
+        letter-spacing: -0.02em;
+      }
+
+      header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(14px, 1.6vw, 18px);
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px 20px 60px;
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 24px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .swatch {
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+        background: var(--accent);
+      }
+
+      .swatch.alt {
+        background: var(--accent-2);
+      }
+
+      .flow {
+        display: grid;
+        gap: 26px;
+      }
+
+      .node {
+        position: relative;
+        background: var(--card);
+        border: 1px solid rgba(27, 27, 27, 0.08);
+        border-left: 6px solid var(--accent);
+        padding: 18px 22px;
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+      }
+
+      .node.secondary {
+        border-left-color: var(--accent-2);
+      }
+
+      .node h2 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      .node p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.4;
+      }
+
+      .note {
+        margin-top: 8px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .node::before {
+        content: "";
+        position: absolute;
+        top: -22px;
+        left: 50%;
+        width: 2px;
+        height: 18px;
+        background: var(--line);
+        transform: translateX(-50%);
+      }
+
+      .node::after {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 8px solid var(--line);
+        transform: translateX(-50%);
+      }
+
+      .node:first-of-type::before,
+      .node:first-of-type::after {
+        display: none;
+      }
+
+      .gate {
+        border-left-color: #8a5d3b;
+      }
+
+      .branch {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+      }
+
+      .branch-item {
+        border: 1px dashed rgba(27, 27, 27, 0.2);
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 13px;
+        color: var(--muted);
+        background: rgba(176, 111, 60, 0.08);
+      }
+
+      .outputs {
+        margin-top: 8px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .outputs span {
+        display: inline-block;
+        margin-right: 10px;
+        padding: 2px 6px;
+        border-radius: 6px;
+        background: rgba(54, 91, 82, 0.12);
+      }
+
+      @media (max-width: 640px) {
+        header {
+          padding-top: 28px;
+        }
+
+        .node {
+          padding: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Shell Scenario Panel Workflow</h1>
+      <p>Consent-first materials intake, worldview capture, and multi-round specialist analysis.</p>
+    </header>
+
+    <main>
+      <div class="legend">
+        <span><span class="swatch"></span>Core phase</span>
+        <span><span class="swatch alt"></span>Outputs and gates</span>
+      </div>
+
+      <section class="flow">
+        <div class="node secondary">
+          <h2>Session start</h2>
+          <p>Initialize scenario, set SCENARIO_ID, and confirm readiness.</p>
+        </div>
+
+        <div class="node gate secondary">
+          <h2>Resources consent gate</h2>
+          <p>Check for files in resources/. Ask whether to scan and incorporate them.</p>
+          <div class="branch">
+            <div class="branch-item">If yes: run intake, review materials index, ingest selected files.</div>
+            <div class="branch-item">If no or empty: proceed with blind interview.</div>
+          </div>
+        </div>
+
+        <div class="node">
+          <h2>Phase 0: Worldview elicitation</h2>
+          <p>Capture the interviewee's mental model and confirm it.</p>
+          <p class="note">Worldview model: core beliefs, causal logic, uncertainties, and what could change their mind.</p>
+          <div class="outputs"><span>worldview_model.md</span></div>
+        </div>
+
+        <div class="node">
+          <h2>Phase 0a: Internal baseline</h2>
+          <p>Base case assumptions, uncertainties, and risk posture.</p>
+          <p class="note">Internal baseline: their base-case expectations before external evidence.</p>
+          <div class="outputs"><span>internal_baseline.md</span></div>
+        </div>
+
+        <div class="node">
+          <h2>Phase 0b: Context enrichment</h2>
+          <p>Iterative pp -r searches to fill gaps, then loop back with follow-up questions.</p>
+          <p class="note">Context packet: search findings + user corrections + follow-up questions to resolve gaps.</p>
+          <div class="outputs"><span>context_packet.md</span></div>
+        </div>
+
+        <div class="node">
+          <h2>Phase 1: Focal question</h2>
+          <p>Define decision scope, horizon, and the central question.</p>
+          <p class="note">Focal question: the decision-shaping question that anchors the scenarios.</p>
+          <div class="outputs"><span>focal_question.md</span></div>
+        </div>
+
+        <div class="node">
+          <h2>Phase 2: Predetermined elements</h2>
+          <p>Specialists map locked-in trends and constraints.</p>
+          <div class="outputs"><span>predetermined_elements.md</span></div>
+        </div>
+
+        <div class="node">
+          <h2>Phase 3: Critical uncertainties</h2>
+          <p>Two-round convergence to surface defining uncertainties.</p>
+          <div class="outputs"><span>critical_uncertainties.md</span></div>
+        </div>
+
+        <div class="node">
+          <h2>Phase 4: Scenario development</h2>
+          <p>Three rounds to build divergent futures.</p>
+          <div class="outputs"><span>scenarios/*.md</span></div>
+        </div>
+
+        <div class="node">
+          <h2>Phase 5: Early warning signals</h2>
+          <p>Identify observable indicators per scenario.</p>
+        </div>
+
+        <div class="node">
+          <h2>Phase 6: Strategy testing</h2>
+          <p>Stress-test decisions across scenarios.</p>
+          <div class="outputs"><span>strategy_analysis.md</span></div>
+        </div>
+
+        <div class="node">
+          <h2>Phase 7: Worldview integration</h2>
+          <p>Reflect scenarios through the user's worldview.</p>
+          <div class="outputs"><span>worldview_integration.md</span></div>
+        </div>
+
+        <div class="node secondary">
+          <h2>Optional exports</h2>
+          <p>Generate HTML or TypeScript outputs when needed.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
