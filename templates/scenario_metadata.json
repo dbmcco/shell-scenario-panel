@@ -14,5 +14,11 @@
   "critical_uncertainties_identified": false,
   "scenarios_developed": 0,
   "target_scenario_count": 4,
+  "monitoring": {
+    "status": "not_started",
+    "last_run_at": null,
+    "run_count": 0,
+    "next_review_at": null
+  },
   "notes": ""
 }

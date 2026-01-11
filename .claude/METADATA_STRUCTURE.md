@@ -141,6 +141,19 @@ This separate structure makes it easier to:
 }
 ```
 
+### Monitoring (Ongoing)
+
+```json
+{
+  "monitoring": {
+    "status": "not_started" | "active",
+    "last_run_at": "ISO 8601 timestamp or null",
+    "run_count": 0,
+    "next_review_at": "ISO 8601 timestamp or null"
+  }
+}
+```
+
 ### Phase 6: Strategy Testing
 
 ```json

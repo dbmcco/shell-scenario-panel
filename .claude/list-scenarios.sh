@@ -25,10 +25,17 @@ if [ -d "scenarios/active" ]; then
                 FOCAL_Q=$(jq -r '.focal_question // ""' "$METADATA" | head -c 50)
                 CONSULTATIONS=$(jq -r '.consultations | length' "$METADATA")
                 NEXT_ACTION=$(jq -r '.next_action // "unknown"' "$METADATA")
+                MONITOR_STATUS=$(jq -r '.monitoring.status // "not_started"' "$METADATA")
+                MONITOR_LAST=$(jq -r '.monitoring.last_run_at // ""' "$METADATA")
+                MONITOR_RUNS=$(jq -r '.monitoring.run_count // 0' "$METADATA")
 
                 echo "📁 $SCENARIO_ID"
                 echo "   Status: $STATUS | Phase: $PHASE"
                 echo "   Created: $CREATED"
+                echo "   Monitoring: $MONITOR_STATUS | Runs: $MONITOR_RUNS"
+                if [ -n "$MONITOR_LAST" ] && [ "$MONITOR_LAST" != "null" ]; then
+                    echo "   Monitoring Last Run: $MONITOR_LAST"
+                fi
                 if [ -n "$FOCAL_Q" ]; then
                     echo "   Question: $FOCAL_Q..."
                 fi

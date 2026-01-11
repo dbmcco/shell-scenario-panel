@@ -1249,6 +1249,28 @@ Identify:
 
 ---
 
+## Monitoring Loop (Model-Mediated)
+
+Use this when the user asks to monitor or update an existing scenario set.
+
+1. **Confirm scenario selection** (model-mediated; do not use regex or heuristic triggers).
+2. **Review monitoring context**:
+   - `scenarios/active/[SCENARIO-ID]/monitoring/monitoring_plan.md`
+   - `scenarios/active/[SCENARIO-ID]/monitoring/monitoring_log.md`
+   - Early warning signals inside each scenario file.
+3. **Decide whether a monitoring run is required** (model-mediated). Ask the user if the intent is unclear.
+4. **If deep research is needed**, use `pp -r` and let the model evaluate results to decide whether additional searches are required.
+4. **If running a monitoring update**, execute:
+   ```bash
+   .claude/monitoring-run.sh "$SCENARIO_ID" --type scheduled|ad_hoc
+   ```
+5. **Fill the run file** in `monitoring/runs/` with signal changes, scenario drift, and recommendations.
+6. **Update scenario content if needed** (scenario narratives, scenario_context.md) and record decisions in the run file.
+
+Monitoring outputs must be stored inside the scenario directory (monitoring log + runs).
+
+---
+
 ## Optional Export Step (Model-Mediated)
 
 After final validation, decide whether to export HTML, TypeScript, or both.

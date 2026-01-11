@@ -1,18 +1,11 @@
 #!/bin/bash
-# ABOUTME: Codex session bootstrapper for Shell Scenario Panel.
-# ABOUTME: Enforces scenario init and prompts for resources-first intake.
+# ABOUTME: Claude session bootstrapper for Shell Scenario Panel.
+# ABOUTME: Enforces model-mediated selection of scenario vs monitoring.
 
 set -e
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
-
-WORKSPACE_ROOT="$ROOT/../../.."
-if [ -f "$WORKSPACE_ROOT/.codex/hooks/session-start.sh" ]; then
-  # shellcheck source=/dev/null
-  source "$WORKSPACE_ROOT/.codex/hooks/session-start.sh"
-  codex_session_start
-fi
 
 SCENARIO_ID=""
 SESSION_MODE="planning"

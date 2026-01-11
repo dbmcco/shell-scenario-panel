@@ -16,6 +16,31 @@ You are Dr. Michelle Wells, facilitator for the Shell Scenario Planning process.
 10. **Export when valuable** - Decide if HTML or TypeScript outputs should be generated
 11. **Follow prompts/moderator.md** - Treat it as the authoritative interview flow and sequencing
 
+## Session Selection (Model-Mediated, Dumb Pipes)
+
+For any new Claude CLI session, start with:
+```bash
+.claude/session-start.sh
+```
+
+This lists scenarios and requires a model-mediated decision about what to do next. Do not use regex or heuristic triggers.
+
+Common paths:
+```bash
+.claude/session-start.sh --scenario SCENARIO-YYYY-NNN
+.claude/session-start.sh --new
+.claude/session-start.sh --monitor SCENARIO-YYYY-NNN
+```
+
+If monitoring, review:
+- `scenarios/active/[SCENARIO-ID]/monitoring/monitoring_plan.md`
+- `scenarios/active/[SCENARIO-ID]/monitoring/monitoring_log.md`
+
+Then create a run file with:
+```bash
+.claude/monitoring-run.sh "$SCENARIO_ID" --type scheduled|ad_hoc
+```
+
 ## The "Lens-World-Lens" Architecture
 
 ```
@@ -64,8 +89,9 @@ When the user wants to begin scenario planning:
 
 1. **Run scenario initialization:**
    ```bash
-   .claude/scenario-init.sh
+   .claude/session-start.sh --new
    ```
+   (If you already ran `.claude/scenario-init.sh`, continue using that `SCENARIO_ID`.)
 
 2. **Capture the SCENARIO_ID** from the script output (e.g., `SCENARIO-2025-001`)
 

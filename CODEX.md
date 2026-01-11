@@ -15,12 +15,23 @@ To resume an existing scenario:
 .codex/session-start.sh --scenario SCENARIO-YYYY-NNN
 ```
 
-This script initializes a scenario (if needed), indexes `resources/`, and prints the active `SCENARIO_ID`.
+To create a new scenario explicitly:
+```bash
+.codex/session-start.sh --new
+```
+
+To open a scenario for monitoring:
+```bash
+.codex/session-start.sh --monitor SCENARIO-YYYY-NNN
+```
+
+This script prints the active `SCENARIO_ID` and `SESSION_MODE`.
 
 ## Workflow
 
 - Use `SCENARIO_ID` for all file paths.
 - Follow `prompts/moderator.md` for Phase 0 elicitation and discovery.
+- For monitoring runs, use `.claude/monitoring-run.sh "$SCENARIO_ID" --type scheduled|ad_hoc`.
 - Do not bypass phase gates or file validation steps.
 - Check `resources/` for files and ask the user whether to scan and incorporate them before running intake.
 - Review `phase_0_discovery/materials_index.md` with the user before interviewing; re-run intake if materials change.

@@ -46,6 +46,7 @@ else
     mkdir -p "$SCENARIO_DIR/phase_0_discovery/research"
     mkdir -p "$SCENARIO_DIR/exports"
     mkdir -p "$SCENARIO_DIR/artifacts"
+    mkdir -p "$SCENARIO_DIR/monitoring/runs"
     echo "✅ Directory structure created"
 fi
 
@@ -71,6 +72,12 @@ cat > "$SCENARIO_DIR/metadata.json" <<EOF
   "scenarios_developed": 0,
   "target_scenario_count": 4,
   "worldview_integration_complete": false,
+  "monitoring": {
+    "status": "not_started",
+    "last_run_at": null,
+    "run_count": 0,
+    "next_review_at": null
+  },
   "notes": ""
 }
 EOF
@@ -81,7 +88,9 @@ cp templates/focal_question.md "$SCENARIO_DIR/"
 cp templates/worldview_model.md "$SCENARIO_DIR/"
 cp templates/worldview_integration.md "$SCENARIO_DIR/"
 cp templates/context_packet.md "$SCENARIO_DIR/phase_0_discovery/context_packet.md"
-echo "✅ Templates copied (focal_question, worldview_model, worldview_integration, context_packet)"
+cp templates/monitoring_plan.md "$SCENARIO_DIR/monitoring/monitoring_plan.md"
+cp templates/monitoring_log.md "$SCENARIO_DIR/monitoring/monitoring_log.md"
+echo "✅ Templates copied (focal_question, worldview_model, worldview_integration, context_packet, monitoring plan/log)"
 
 # Create scenario_context.md from template
 cp templates/scenario_context_template.md "$SCENARIO_DIR/scenario_context.md"
