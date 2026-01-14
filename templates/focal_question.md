@@ -12,6 +12,15 @@
 ## Scope
 *What's the appropriate scope? (industry, region, global?)*
 
+## Not-knowing Focus
+*Which unknowns dominate: actions (what we can do), outcomes (what might happen), causation (how it works), value (what matters). Use plain language if the user is new to these ideas.*
+
+## User Familiarity
+*New / Some / Expert (adjust jargon and depth accordingly)*
+
+## Facilitation Stance
+*Mirror / Hybrid / Analytic*
+
 ## Success Criteria
 *What would you need to see differently to change your strategy?*
 

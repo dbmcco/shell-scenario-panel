@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Shell Scenario Panel - Model-Mediated Guardrails Proposal</title>
+    <style>
+      :root {
+        --text: #111111;
+        --muted: #555555;
+        --rule: #dddddd;
+        --accent: #0b3a63;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 32px;
+        font-family: "Georgia", "Times New Roman", serif;
+        color: var(--text);
+        line-height: 1.45;
+      }
+      h1, h2, h3 {
+        color: var(--accent);
+        margin: 0 0 12px 0;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      h2 {
+        font-size: 20px;
+        margin-top: 24px;
+      }
+      h3 {
+        font-size: 16px;
+        margin-top: 18px;
+      }
+      p {
+        margin: 8px 0 12px 0;
+      }
+      ul {
+        margin: 6px 0 12px 18px;
+      }
+      li {
+        margin: 4px 0;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 16px;
+      }
+      .rule {
+        border-top: 1px solid var(--rule);
+        margin: 16px 0;
+      }
+      .callout {
+        border-left: 4px solid var(--accent);
+        padding: 8px 12px;
+        background: #f6f8fb;
+        margin: 10px 0 16px 0;
+      }
+      code, pre {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+      }
+      pre {
+        white-space: pre-wrap;
+        background: #f5f5f5;
+        padding: 10px;
+        border: 1px solid #e5e5e5;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0 16px 0;
+        font-size: 13px;
+      }
+      th, td {
+        border: 1px solid var(--rule);
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: #f1f3f5;
+      }
+      @media print {
+        body {
+          margin: 18mm;
+        }
+        .page-break {
+          page-break-before: always;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Shell Scenario Panel - Model-Mediated Guardrails Proposal</h1>
+    <div class="meta">Date: 2026-01-14 | Scope: Shell Scenario Panel workflow and prompts</div>
+    <div class="rule"></div>
+
+    <h2>Context</h2>
+    <p>
+      The system is intentionally model-mediated and oriented to narrative scaffolding
+      under Knightian uncertainty. The goal is not predictive accuracy but structured
+      sensemaking that expands user thinking. Guardrails should therefore be implemented
+      inside the model workflow (prompts, required sections, explicit self-audit), not via
+      heuristics or regex gates.
+    </p>
+    <div class="callout">
+      <strong>Design intent:</strong> Make mirroring explicit and bounded, add an
+      antagonistic pass for reflective stress testing, and avoid false precision.
+    </div>
+
+    <h2>Principles</h2>
+    <ul>
+      <li><strong>Model-mediated first:</strong> Controls live in prompts and required sections.</li>
+      <li><strong>Mirror is a feature:</strong> Reflection is useful when it is explicit and bounded.</li>
+      <li><strong>Antagonistic prompting:</strong> Every phase includes a structured opposition pass.</li>
+      <li><strong>Provenance over certainty:</strong> Inputs are logged as claims with confidence.</li>
+      <li><strong>Discussion over prediction:</strong> Outputs bias toward usable narratives and decisions.</li>
+    </ul>
+
+    <h2>Proposed Changes</h2>
+
+    <h3>1) Stance and Uncertainty Class Ritual</h3>
+    <p>
+      At scenario start, the moderator states the stance (mirror, hybrid, analytic) and
+      uncertainty class (Type 1 vs Type 2). This becomes visible in outputs to prevent
+      accidental drift into a predictive tone.
+    </p>
+    <ul>
+      <li>Add to <code>shell-scenario-panel/prompts/moderator.md</code>.</li>
+      <li>Echo in phase outputs and executive summaries.</li>
+    </ul>
+
+    <h3>2) Mirror / Opposition / Synthesis Structure</h3>
+    <p>
+      Each phase synthesis explicitly separates faithful reflection from antagonistic
+      counter-frames, then reconciles into a short synthesis. This preserves narrative
+      value while forcing reflective stress testing.
+    </p>
+    <pre>
+## Mirror (What the inputs say)
+- ...
+
+## Opposition (Plausible alternatives and disconfirmers)
+- ...
+
+## Synthesis (What we keep, what we suspend)
+- ...
+    </pre>
+    <ul>
+      <li>Add to <code>shell-scenario-panel/templates/scenario_narrative.md</code>.</li>
+      <li>Use in Phase 2-6 synthesis sections.</li>
+    </ul>
+
+    <h3>3) Provenance and Confidence for New Inputs</h3>
+    <p>
+      When new intel is injected mid-process, capture provenance and falsifiers so the
+      system treats it as a claim, not a fact. This preserves value without uncritical
+      mirroring.
+    </p>
+    <ul>
+      <li>Extend <code>shell-scenario-panel/templates/scenario_context_template.md</code> with:</li>
+    </ul>
+    <pre>
+- Source type (open source, proprietary, expert, hearsay)
+- Confidence (low, medium, high)
+- Corroboration (none, partial, strong)
+- Recency (hours, days, weeks)
+- What would falsify this?
+    </pre>
+
+    <h3>4) Antagonistic Pass in Specialist Prompts</h3>
+    <p>
+      Each specialist must include a short disconfirming section: alternative hypotheses,
+      failure modes, or reasons their own analysis could be wrong.
+    </p>
+    <ul>
+      <li>Add to <code>shell-scenario-panel/prompts/specialists/*.md</code>.</li>
+      <li>Make it a required subsection in transcripts.</li>
+    </ul>
+
+    <h3>5) Quality Analyst: Detect False Precision</h3>
+    <p>
+      Expand the quality gate to flag precision without provenance and synthesis that
+      collapses uncertainty. This is a model-mediated audit, not a hard gate.
+    </p>
+    <ul>
+      <li>Update <code>shell-scenario-panel/prompts/specialists/quality_analyst.md</code>.</li>
+      <li>Red flags: single-source dominance, no disconfirmers, tight probabilities on weak data.</li>
+    </ul>
+
+    <h3>6) Near-Term Scenario Constraint</h3>
+    <p>
+      For sub-30-day horizons, require explicit data freshness and uncertainty envelope.
+      This reduces "timeline hallucination" while still allowing narrative detail.
+    </p>
+    <ul>
+      <li>Add a short checklist to <code>shell-scenario-panel/prompts/moderator.md</code>.</li>
+      <li>Include a "data freshness" note in outputs.</li>
+    </ul>
+
+    <h3>7) Baseline vs Intel Delta Branching</h3>
+    <p>
+      Run a baseline analysis from open-source inputs, then apply an intel delta memo.
+      This makes the impact of privileged data explicit rather than blended.
+    </p>
+    <ul>
+      <li>Document as a small workflow note.</li>
+      <li>Optionally produce a comparison table in reports.</li>
+    </ul>
+
+    <h3>8) Discussion-First Wrap</h3>
+    <p>
+      End outputs with 3-5 prompts that drive discussion rather than prediction
+      (e.g., "What would change your mind?" "What options should stay open?").
+    </p>
+    <ul>
+      <li>Add a closing block to <code>shell-scenario-panel/templates/scenario_narrative.md</code>.</li>
+    </ul>
+
+    <h2 class="page-break">Implementation Map</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Change</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>shell-scenario-panel/prompts/moderator.md</td>
+          <td>Add stance ritual, near-term checklist, explicit mirror/opposition framing</td>
+          <td>Model-mediated guardrails at the facilitation layer</td>
+        </tr>
+        <tr>
+          <td>shell-scenario-panel/templates/scenario_context_template.md</td>
+          <td>Add provenance and falsifier fields</td>
+          <td>Make injected intel explicit and auditable</td>
+        </tr>
+        <tr>
+          <td>shell-scenario-panel/templates/scenario_narrative.md</td>
+          <td>Add Mirror/Opposition/Synthesis and discussion prompts</td>
+          <td>Bound reflection and force stress testing</td>
+        </tr>
+        <tr>
+          <td>shell-scenario-panel/prompts/specialists/*.md</td>
+          <td>Add "Disconfirmers" section requirement</td>
+          <td>Antagonistic prompting inside each reasoning model</td>
+        </tr>
+        <tr>
+          <td>shell-scenario-panel/prompts/specialists/quality_analyst.md</td>
+          <td>Add false precision and single-source dominance checks</td>
+          <td>Audit for mirroring failures without heuristics</td>
+        </tr>
+        <tr>
+          <td>shell-scenario-panel/docs/</td>
+          <td>Add a short workflow note on baseline vs intel delta</td>
+          <td>Make sensitivity to intel explicit</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Acceptance Criteria</h2>
+    <ul>
+      <li>Every phase synthesis includes Mirror, Opposition, and Synthesis blocks.</li>
+      <li>Every specialist transcript includes at least one disconfirming alternative.</li>
+      <li>All injected intel entries include provenance, confidence, and falsifiers.</li>
+      <li>Quality audits flag false precision and single-source dominance.</li>
+      <li>Near-term runs state data freshness and uncertainty class.</li>
+    </ul>
+
+    <div class="rule"></div>
+    <p class="meta">
+      Note: This proposal preserves the model-mediated philosophy while adding structured
+      antagonistic prompting and transparency guardrails.
+    </p>
+  </body>
+</html>

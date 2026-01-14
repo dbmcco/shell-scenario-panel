@@ -7,6 +7,8 @@
 ### Uncertainty 1: [Name]
 **Description:**
 
+**Not-knowing Type:** Actions / Outcomes / Causation / Value
+
 **Why It Matters:**
 
 **Possible Directions:**
@@ -20,6 +22,8 @@
 
 ### Uncertainty 2: [Name]
 **Description:**
+
+**Not-knowing Type:** Actions / Outcomes / Causation / Value
 
 **Why It Matters:**
 

@@ -42,6 +42,23 @@ From my [domain] perspective, these uncertainties could significantly impact str
 
 ---
 
+## Disconfirmers and Alternative Interpretations
+
+[What would make these findings wrong? What alternative frames should be kept in mind?]
+
+---
+
+## Not-knowing Focus
+
+- Actions (what we can do)
+- Outcomes (what might happen)
+- Causation (how actions lead to outcomes)
+- Value (what outcomes are worth)
+
+[Note which types dominate and why]
+
+---
+
 ## Questions for User
 
 To better assess their strategic position from my perspective, I need to know:

@@ -451,8 +451,8 @@ Read prior work and accumulated context:
 - [phase-specific files]
 
 IMPORTANT: scenario_context.md contains user feedback that emerged during
-scenario planning. This represents their evolved understanding - treat it as
-authoritative corrections and additions to initial context.
+scenario planning. It includes provenance fields - treat entries as claims with
+stated confidence, not absolute facts. Note implications and disconfirmers.
 ```
 
 **This applies to:**

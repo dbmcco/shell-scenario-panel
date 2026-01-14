@@ -10,6 +10,8 @@ The transcript must contain (minimum 100 words):
 2. Key insights specific to the question asked
 3. Uncertainties or questions you identify
 4. Your specific contribution to the current scenario phase
+5. Disconfirmers or alternative interpretations
+6. Not-knowing type(s) and how they shape your recommendations (actions, outcomes, causation, value)
 
 **Failure to create this transcript will cause validation errors.**
 

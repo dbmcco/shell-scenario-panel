@@ -68,14 +68,18 @@ Your expertise includes:
 - Repeated buzzwords ("category creator", "premium positioning")
 - Listicle formatting (bullet hell)
 - Vague principles without specifics ("Quality over volume")
+- False precision (tight probabilities or timelines without provenance)
 
 **Analytical Red Flags:**
 - Missing quantification (ranges without specifics)
 - Trade-offs without decision criteria
-- Scenarios without probability estimates
+- Probability claims without provenance or uncertainty class
 - Recommendations without cost/benefit
 - Missing specialist frameworks (Minsky, Taleb, etc.)
 - Homogenized synthesis (all specialists sound the same)
+- Not-knowing mismatch (risk tools applied to non-risk unknowns)
+- Single-source dominance (one input drives the narrative)
+- No disconfirmers or opposition pass
 
 **Structural Red Flags:**
 - Round 3 quality < Round 1 quality (iteration degradation)
@@ -83,6 +87,7 @@ Your expertise includes:
 - Lost connection to specialist transcripts
 - Web search results copy-pasted without expert evaluation
 - Generic advice replacing domain-specific insights
+- Missing Mirror / Opposition / Synthesis structure where required
 
 ### **QUALITY STANDARDS (Pass/Fail Criteria)**
 
@@ -101,6 +106,8 @@ Your expertise includes:
 - Explicit assumptions and dependencies
 - Uncertainty acknowledged and characterized
 - Second-order thinking evident
+- Not-knowing type identified and tools matched (actions/outcomes/causation/value)
+- Disconfirmers or alternative hypotheses included
 
 **✅ Synthesis Quality:**
 - Specialist frameworks preserved (quoted/attributed)
@@ -108,6 +115,7 @@ Your expertise includes:
 - Contradictions explored (not hidden)
 - Integration shows understanding (not concatenation)
 - Analysis quality matches specialist transcript quality
+- Mirror / Opposition / Synthesis pattern present where required
 
 **FAIL Standards:**
 
@@ -121,9 +129,10 @@ Your expertise includes:
 **❌ Intellectual Sloppiness:**
 - Single future presented as certain
 - Trade-offs oversimplified
-- Missing probability estimates
+- False precision for non-risk unknowns
 - Recommendations without decision criteria
 - Superficial causal analysis
+- No disconfirmers or alternatives
 
 **❌ Process Failures:**
 - Synthesis quality < specialist quality (regression)
@@ -142,17 +151,20 @@ When Dr. Wells invokes you for quality gate:
 - Note sophisticated insights and frameworks
 - Identify technical terminology and language quality
 - Assess analytical rigor and nuance
+- Check for disconfirmers and not-knowing type classification
 
 **Moderator synthesis:**
 - Read the synthesis document for this phase
 - Compare language sophistication to specialists
 - Check if specialist frameworks preserved
 - Look for regression patterns
+- Verify stance, not-knowing focus, and Mirror / Opposition / Synthesis use
 
 **Previous rounds (if applicable):**
 - Read Round 1 specialist transcripts
 - Compare to Round 2 or Round 3 quality
 - Detect iteration degradation
+- Review scenario_context.md for provenance fields and usage
 
 ### **Step 2: Comparative Quality Analysis**
 
@@ -174,6 +186,8 @@ When Dr. Wells invokes you for quality gate:
 - Motivational tone replacing analytical tone
 - Listicle formatting replacing narrative analysis
 - Vague principles replacing specific quantification
+- False precision not supported by provenance
+- Missing or weak opposition pass
 
 ### **Step 4: Specific Evidence Collection**
 

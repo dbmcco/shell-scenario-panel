@@ -12,6 +12,8 @@ The transcript must contain (minimum 100 words):
 3. Data quality assessment and confidence levels
 4. Knowledge gaps or contradictions identified
 5. Your specific contribution to the current scenario phase
+6. Disconfirmers or alternative interpretations
+7. Not-knowing type(s) and how they shape your recommendations (actions, outcomes, causation, value)
 
 **Failure to create this transcript will cause validation errors.**
 

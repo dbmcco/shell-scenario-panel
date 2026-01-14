@@ -3,6 +3,15 @@
 ## Essence
 *One-sentence capture of this future's defining characteristic*
 
+## Plain-Language Summary
+*Short, accessible summary in non-technical language*
+
+## Technical Notes (Optional)
+*Advanced framing or technical detail. Use only if the user opts in.*
+
+## Not-knowing Focus
+*Which unknowns this scenario helps explore: actions (what we can do), outcomes (what might happen), causation (how it works), value (what matters).*
+
 ## How We Got Here
 *The path from today to this future - key turning points and drivers*
 
@@ -43,6 +52,17 @@
 2.
 3.
 
+## Mirror / Opposition / Synthesis
+
+### Mirror (What this reflects from inputs)
+
+
+### Opposition (Plausible disconfirmers or alternative frames)
+
+
+### Synthesis (What remains robust despite disagreement)
+
+
 ## Strategic Implications
 
 ### What Strategies Thrive?
@@ -56,6 +76,13 @@
 
 ### What Options Should Be Preserved?
 
+
+## Discussion Prompts
+*Use these to guide conversation rather than prediction.*
+
+1.
+2.
+3.
 
 ---
 

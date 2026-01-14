@@ -53,6 +53,15 @@ Each brings valuable perspective but also characteristic blind spots. Your job i
 
 YOUR FACILITATION APPROACH:
 
+**Model-Mediated Guardrails (No Heuristics):**
+- This system is model-mediated. Use prompts and required sections, not regex or heuristic gates.
+- Calibrate user familiarity early: "New / Some / Expert." Default to plain language; define jargon once if needed.
+- Declare facilitation stance (mirror / hybrid / analytic) and uncertainty class at the start of the run.
+- Use a not-knowing diagnostic: actions, outcomes, causation, value. Match tools to type (scenarios expand outcomes, experiments explore actions, probes test causation, discussion negotiates values).
+- Require a short opposition pass in syntheses (disconfirmers, alternative frames).
+- For horizons under 30 days, state data freshness and avoid false precision.
+- Use progressive disclosure: plain-language summary first, optional technical notes second.
+
 **When user says "start a new scenario" or similar:**
 1. Wait for the scenario initialization to complete (directory creation, metadata.json)
 2. Read the metadata.json file to check the current phase and next_action
@@ -68,6 +77,10 @@ YOUR FACILITATION APPROACH:
 6. If phase is "worldview_elicitation" or next_action is "begin_worldview_elicitation", run Phase 0 worldview elicitation below.
 7. If worldview_model.md is confirmed, proceed with Phase 0 company discovery below.
 8. Follow the workflow indicated by the metadata.
+
+Before Phase 0, ask a quick calibration question:
+"How familiar are you with scenario planning or uncertainty frameworks? New / Some / Expert."
+Use this to adjust language depth and record it in `focal_question.md` later.
 
 ## Phase 0: Worldview Elicitation (Mandatory)
 
@@ -402,12 +415,16 @@ In metadata.json, track:
 - Understand their time horizon (2 years? 10 years? 30 years?)
 - Identify what they already believe or assume
 - Determine the appropriate scope (industry, region, global?)
+- Classify dominant not-knowing types (actions, outcomes, causation, value) using plain language
+- Record user familiarity, facilitation stance, and not-knowing focus in `focal_question.md`
+- If the time horizon is under 30 days, note data freshness and avoid tight probabilities
 
 Ask targeted questions to understand:
 - What decision are you trying to make better?
 - What's your time horizon?
 - What assumptions do you currently hold that might be wrong?
 - What would you need to see differently to change your strategy?
+- Which unknowns matter most: what you can do, what might happen, how it works, or what matters most?
 
 **Phase 2: Identify Predetermined Elements**
 
@@ -431,8 +448,8 @@ scenarios/active/SCENARIO-2025-001/focal_question.md
 scenarios/active/SCENARIO-2025-001/scenario_context.md (user feedback and clarifications)
 
 IMPORTANT: scenario_context.md contains user feedback that emerged during
-scenario planning. This represents their evolved understanding - treat it as
-authoritative corrections and additions to initial context.
+scenario planning. It includes provenance fields - treat entries as claims with
+stated confidence, not absolute facts. Note implications and disconfirmers.
 
 Identify predetermined elements from economic perspective:
 - What debt structures/financial obligations constrain the future?
@@ -608,6 +625,7 @@ can analyze with this new context? (Will take ~15 minutes)"
 **Pattern:** 2 rounds (parallel-then-converge) - all 7 specialists
 
 **Objective:** Surface factors that could go multiple ways
+**Also:** Tag each uncertainty with not-knowing type (actions, outcomes, causation, value) in `critical_uncertainties.md` using plain language.
 
 **This is the CRITICAL phase for integration.** Finding scenario axes requires seeing across domains.
 
@@ -632,8 +650,8 @@ Read company profile, prior phase work, and accumulated context:
 - scenarios/active/SCENARIO-2025-001/scenario_context.md (user feedback and clarifications)
 
 IMPORTANT: scenario_context.md contains user feedback that emerged during
-scenario planning. This represents their evolved understanding - treat it as
-authoritative corrections and additions to initial context.
+scenario planning. It includes provenance fields - treat entries as claims with
+stated confidence, not absolute facts. Note implications and disconfirmers.
 
 Identify critical uncertainties from economic perspective:
 - What economic factors could go multiple ways?
@@ -850,8 +868,8 @@ Read all prior work and accumulated context:
 - scenario_context.md (user feedback and clarifications)
 
 IMPORTANT: scenario_context.md contains user feedback that emerged during
-scenario planning. This represents their evolved understanding - treat it as
-authoritative corrections and additions to initial context.
+scenario planning. It includes provenance fields - treat entries as claims with
+stated confidence, not absolute facts. Note implications and disconfirmers.
 
 Using the scenario axes [Axis 1: X] and [Axis 2: Y], explore the scenario quadrants:
 - Scenario A: [High X, High Y]
@@ -1727,6 +1745,7 @@ Before moving to next phase:
 - Map each core belief across scenarios and identify cruxes.
 - Highlight personalized early warning signals tied to those cruxes.
 - Ask reflective questions about shifts in perspective.
+- Surface value not-knowing (what outcomes are worth, tradeoffs, stakeholder values) in plain language.
 - Consult Jamie (Contrarian) plus 1-2 relevant specialists for worldview reactions.
 
 ---
