@@ -254,6 +254,17 @@ This means scenarios are:
 - Connected to your existing mental models
 - Explicit about where they confirm or challenge your view
 
+### Model-Mediated Guardrails
+
+The system keeps reflection explicit while forcing constructive opposition:
+- **Calibration:** user familiarity + facilitation stance (mirror / hybrid / analytic)
+- **Not-knowing diagnostic:** actions, outcomes, causation, value, with tool matching
+- **Mirror / Opposition / Synthesis:** preserve input reflection and stress-test it
+- **Provenance logging:** new inputs tracked as claims with confidence and falsifiers
+- **Progressive disclosure:** plain-language summary first, optional technical notes second
+
+See `docs/model-guardrails-proposal.html` for the full guardrail rationale and implementation map.
+
 ### Transcript Enforcement
 
 **Moderator (Dr. Wells) enforces transcripts** - hooks provide reminders only.

@@ -10,6 +10,7 @@ This interactive HTML visualization shows the complete 7-phase Shell Scenario Pa
 - Round-by-round collaboration structures
 - Information flow diagrams
 - Key outputs and deliverables
+- A model-mediated workflow snapshot (`workflow-model-mediated.html`)
 
 ## Features
 
@@ -41,6 +42,7 @@ This interactive HTML visualization shows the complete 7-phase Shell Scenario Pa
 ```
 workflow-visualization/
 ├── index.html          # Main HTML structure
+├── workflow-model-mediated.html # Model-mediated guardrails snapshot
 ├── styles.css          # LFW-branded styling
 ├── script.js           # Imagen API integration & DOM manipulation
 ├── personas.js         # 8 specialist persona definitions
