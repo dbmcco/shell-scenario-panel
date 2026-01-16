@@ -1,108 +1,98 @@
 #!/bin/bash
 
-# Dialog Recording Hook
-# Automatically captures moderator-user interactions from conversation history
-# Triggers after each user message
+# Dialog Recording Hook (UserPromptSubmit)
+# Captures user messages via stdin and logs to moderator_dialog.jsonl
+# Triggers on each user prompt submission
 
-# Source logging functions
 SCRIPT_DIR="$(dirname "$0")"
-source "$SCRIPT_DIR/../lib/log-dialog.sh" 2>/dev/null || {
-    exit 0  # Silently skip if logging not available
-}
 
-# Find active scenario
+# Read JSON input from stdin (Claude Code provides this)
+INPUT_JSON=$(cat)
+
+# Extract prompt from input
+USER_PROMPT=$(echo "$INPUT_JSON" | jq -r '.prompt // empty' 2>/dev/null)
+
+# Skip if no prompt
+if [ -z "$USER_PROMPT" ]; then
+    exit 0
+fi
+
+# Find the most recent scenario (highest numbered, or active status in metadata)
 SCENARIO_ID=""
-for scenario_dir in scenarios/active/SCENARIO-*; do
-    if [ -d "$scenario_dir" ]; then
-        SCENARIO_ID=$(basename "$scenario_dir")
-        break
+SCENARIO_DIR=""
+
+# First try to find a scenario with status "active" or "in_progress"
+for dir in $(ls -d scenarios/active/SCENARIO-* 2>/dev/null | sort -r); do
+    if [ -f "$dir/metadata.json" ]; then
+        STATUS=$(jq -r '.status // "active"' "$dir/metadata.json" 2>/dev/null)
+        if [ "$STATUS" = "active" ] || [ "$STATUS" = "in_progress" ]; then
+            SCENARIO_DIR="$dir"
+            SCENARIO_ID=$(basename "$dir")
+            break
+        fi
     fi
 done
+
+# Fallback: use the highest numbered scenario (most recently created)
+if [ -z "$SCENARIO_DIR" ]; then
+    SCENARIO_DIR=$(ls -d scenarios/active/SCENARIO-* 2>/dev/null | sort -r | head -1)
+    if [ -n "$SCENARIO_DIR" ] && [ -d "$SCENARIO_DIR" ]; then
+        SCENARIO_ID=$(basename "$SCENARIO_DIR")
+    fi
+fi
 
 # Skip if no active scenario
 if [ -z "$SCENARIO_ID" ]; then
     exit 0
 fi
 
-# Find current session's conversation file
-PROJECT_PATH=$(pwd | sed 's|/|-|g' | sed 's|^-||')
-CONVERSATION_DIR="$HOME/.claude/projects/$PROJECT_PATH"
+# Source logging functions
+source "$SCRIPT_DIR/../lib/log-dialog.sh" 2>/dev/null || {
+    # Fallback: direct logging if lib not available
+    LOG_FILE="$SCENARIO_DIR/moderator_dialog.jsonl"
+    mkdir -p "$(dirname "$LOG_FILE")"
 
-if [ ! -d "$CONVERSATION_DIR" ]; then
+    # Log basic entry
+    TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+    echo "{\"timestamp\":\"$TIMESTAMP\",\"scenario_id\":\"$SCENARIO_ID\",\"type\":\"user_message\",\"content\":$(echo "$USER_PROMPT" | head -c 1000 | jq -Rs .)}" >> "$LOG_FILE"
     exit 0
-fi
+}
 
-# Get most recent non-agent conversation file
-CURRENT_SESSION=$(ls -t "$CONVERSATION_DIR"/*.jsonl 2>/dev/null | grep -v "agent-" | head -1)
+# Detect interaction type based on user prompt patterns
+INTERACTION_TYPE="user_input"
 
-if [ -z "$CURRENT_SESSION" ] || [ ! -f "$CURRENT_SESSION" ]; then
-    exit 0
-fi
-
-# Get last 10 messages (5 exchanges typically)
-RECENT_MESSAGES=$(tail -20 "$CURRENT_SESSION" | jq -s '[.[] | select(.type == "user" or .type == "assistant")] | .[-10:]')
-
-# Analyze for interaction patterns
-# Look for checkpoint patterns: moderator presents synthesis, user responds
-# Look for validation patterns: moderator asks for approval, user validates
-# Look for question patterns: user asks clarification
-
-# Extract last user message
-LAST_USER_MSG=$(echo "$RECENT_MESSAGES" | jq -r '.[-1] | select(.type == "user") | .message.content // empty')
-LAST_ASSISTANT_MSG=$(echo "$RECENT_MESSAGES" | jq -r '.[-2] | select(.type == "assistant") | .message.content // empty')
-
-if [ -z "$LAST_USER_MSG" ] || [ -z "$LAST_ASSISTANT_MSG" ]; then
-    exit 0
-fi
-
-# Detect interaction type based on patterns
-INTERACTION_TYPE=""
-
-# Checkpoint detection: moderator synthesis + user feedback
-if echo "$LAST_ASSISTANT_MSG" | grep -qiE "(checkpoint|round.*complete|synthesis|quick check|any corrections|looks good)"; then
-    if echo "$LAST_USER_MSG" | grep -qviE "^(looks good|ok|yes|no|proceed)$"; then
-        INTERACTION_TYPE="checkpoint"
-    fi
-fi
-
-# Validation detection: moderator requests validation
-if echo "$LAST_ASSISTANT_MSG" | grep -qiE "(validate|approval|does this.*look|ready to|shall we proceed)"; then
-    INTERACTION_TYPE="validation_request"
-fi
-
-# User question detection: user asks for clarification
-if echo "$LAST_USER_MSG" | grep -qE "(\?|what|how|why|can you|could you|please explain)"; then
+# User question detection
+if echo "$USER_PROMPT" | grep -qiE "(\?|what|how|why|can you|could you|please explain|tell me)"; then
     INTERACTION_TYPE="user_question"
 fi
 
-# Only log if we detected a loggable interaction
-if [ -n "$INTERACTION_TYPE" ]; then
-    # Truncate messages for logging (first 500 chars)
-    USER_MSG_TRUNCATED=$(echo "$LAST_USER_MSG" | head -c 500)
-    ASSISTANT_MSG_TRUNCATED=$(echo "$LAST_ASSISTANT_MSG" | head -c 500)
-
-    # Create JSON log entry
-    JSON=$(jq -n \
-        --arg mod_msg "$ASSISTANT_MSG_TRUNCATED" \
-        --arg user_msg "$USER_MSG_TRUNCATED" \
-        --arg itype "$INTERACTION_TYPE" \
-        '{
-            moderator_message: {
-                content: $mod_msg,
-                message_type: $itype
-            },
-            user_response: {
-                content: $user_msg,
-                response_type: "feedback"
-            },
-            outcome: {
-                interaction_captured: true
-            }
-        }')
-
-    # Log to dialog file
-    log_dialog "$SCENARIO_ID" "$INTERACTION_TYPE" "$JSON" 2>/dev/null
+# Validation/approval detection
+if echo "$USER_PROMPT" | grep -qiE "^(yes|no|ok|okay|looks good|proceed|approve|lgtm|confirmed|good|great)"; then
+    INTERACTION_TYPE="user_validation"
 fi
+
+# Correction/feedback detection
+if echo "$USER_PROMPT" | grep -qiE "(actually|instead|change|correct|wrong|fix|update|but|however|not quite)"; then
+    INTERACTION_TYPE="user_correction"
+fi
+
+# Log the interaction
+USER_MSG_TRUNCATED=$(echo "$USER_PROMPT" | head -c 1000)
+
+JSON=$(jq -n \
+    --arg user_msg "$USER_MSG_TRUNCATED" \
+    --arg itype "$INTERACTION_TYPE" \
+    '{
+        user_message: {
+            content: $user_msg,
+            message_type: $itype
+        },
+        outcome: {
+            interaction_captured: true
+        }
+    }')
+
+log_dialog "$SCENARIO_ID" "$INTERACTION_TYPE" "$JSON" 2>/dev/null || true
 
 # Phase 0a guardrails (internal baseline + materials review)
 phase_0_guardrails() {
