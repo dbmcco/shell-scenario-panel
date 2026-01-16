@@ -1,5 +1,19 @@
 # Focal Question
 
+## Intersection Question
+
+**Dimension A:** *[First axis of uncertainty or decision]*
+
+**Dimension B:** *[Second axis of uncertainty or decision]*
+
+**Focal Question:**
+"*[Question that sits at the intersection of both dimensions - creates tension between them]*"
+
+**Why this intersection matters:**
+*[How this connects to user's worldview, uncertainties, and cruxes]*
+
+---
+
 ## Decision Context
 *What decision are you trying to make better?*
 
@@ -26,5 +40,11 @@
 
 ---
 
+**Confirmed by user:** [ ] Yes
+
+**Date:** [YYYY-MM-DD]
+
+---
+
 **Facilitator Notes:**
-*Capture key insights from initial discussion*
+*Capture key insights from focal question development*

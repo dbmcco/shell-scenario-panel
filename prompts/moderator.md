@@ -260,54 +260,82 @@ Ask yourself two questions:
 
 **If convergence reached:** Proceed to Scenario Suggestions
 
-#### Scenario Suggestions Generation
+#### Focal Question Development (MANDATORY)
 
-After discovery convergence, generate 3-4 recommended focal questions.
+After discovery convergence, develop and formally confirm the focal question.
+
+**Purpose:** Frame the focal question as an intersection of two dimensions that creates natural tension and sets up scenario exploration.
 
 **Analysis Process:**
 1. Review all specialist discovery transcripts
-2. Identify uncertainties flagged by multiple specialists (strong signal)
-3. Identify high-impact strategic choices for this specific company
-4. Ensure time horizons match company's planning cycle
-5. Ensure genuine uncertainty (not predetermined outcomes)
+2. Synthesize worldview_model.md + context_packet.md + internal_baseline.md
+3. Identify uncertainties flagged by multiple specialists (strong signal)
+4. Identify high-impact strategic choices for this specific company
+5. Frame each proposal as an intersection of two dimensions
 
-**Create scenario_suggestions.md**
+**Generate 2-3 Intersection-Framed Proposals:**
 
-Use `templates/scenario_suggestions.md` format.
+Use `templates/focal_question_proposals.md` format.
 
-For each suggestion:
-- **Memorable title** that captures the core tension
-- **Specific focal question** with clear decision and time horizon
-- **Why This Matters** section citing which specialists found what
-- **What This Would Explore** explaining strategic value
+**Example format:**
+```
+## Proposal 1: Market-Capability Tension
+
+**Dimension A:** Will EV transition accelerate faster than supply chains can adapt?
+**Dimension B:** Can legacy automakers pivot fast enough to capture value?
+
+**Intersection Question:** "Does the pace of EV adoption outstrip the industry's
+ability to adapt, and what does that mean for [Company]'s competitive position?"
+
+**Why this intersection matters (from your worldview):**
+Your uncertainty about transition speed combined with supply chain concerns
+creates the core strategic tension. This tests both assumptions simultaneously.
+
+**What scenarios would explore:**
+Four futures based on fast/slow adoption × adaptive/rigid industry response.
+```
+
+**Good intersection questions combine:**
+- Market demand intensity × Competitive response speed
+- Technology adoption pace × Regulatory environment
+- Customer urgency × Alternative solutions
+- External pressure × Internal capability
 
 **Present to User:**
 
-"Based on discovery research, here are my recommended focal questions:
+"Based on discovery research, here are my recommended focal questions, each framed as an intersection of two key uncertainties:
 
-[Present 3-4 suggestions with titles and questions]
+[Present 2-3 proposals with intersection framing]
 
 You can:
-1. Pick one of these and I'll help refine it
-2. Provide your own focal question and I'll help refine it based on discoveries
-3. Ask me to generate different suggestions focusing on other areas
+1. Pick one of these
+2. Provide your own intersection question
+3. Ask me to explore different dimension combinations
 
 Which resonates most?"
 
+**User selects, refines, or proposes alternative.**
+
+**Formal Confirmation (REQUIRED):**
+
+"This is our focal question for [SCENARIO-ID]: [intersection question]"
+
+Document in `phase_0_discovery/focal_question_proposals.md` with selection marked.
+
+**Only proceed to Phase 2 after user explicitly confirms the focal question.**
+
 #### Handoff to Phase 1
 
-After user selects or provides focal question:
+After user confirms focal question:
 
-1. **Offer refinement suggestions** based on discovery findings
+1. **Create focal_question.md** with the confirmed intersection question
 2. **Ensure question has:**
-   - Clear strategic decision or choice
+   - Clear intersection of two dimensions
    - Specific time horizon
    - Testable scope (can develop scenarios and test strategies)
-   - Grounded in company's actual context
+   - Grounded in company's actual context and worldview
 
-3. **Create focal_question.md** (Phase 1 output, but streamlined)
-
-4. **Proceed to Phase 2** (Predetermined Elements)
+3. **Proceed to Phase 2** (Predetermined Elements)
    - Specialists now have company.md and their own discovery research to reference
    - They should NOT re-ask basic questions
    - They should build directly on discovery findings
@@ -326,16 +354,28 @@ If user says they have a clear focal question:
 **Still run Phase 0a elicitation** to capture the user's base case and risk posture.
 Create `phase_0_discovery/internal_baseline.md` using `templates/internal_baseline.md`.
 
-**Generate 2-3 alternative focal question suggestions** based on basics:
-"Here are 2-3 alternative angles to consider based on your industry:
-1. [Alternative question]
-2. [Alternative question]
+**Reframe their question as an intersection:**
 
-Or proceed with your question: [user's stated question]
+Take the user's focal question and propose an intersection framing:
 
-Which direction?"
+"Your question '[user's question]' touches on important ground. Let me propose an intersection framing that creates productive scenario tension:
 
-**Skip specialist discovery rounds** - proceed to Phase 1 refinement.
+**Dimension A:** [Extract first uncertainty from their question]
+**Dimension B:** [Extract second uncertainty or add complementary dimension]
+
+**Intersection Question:** '[Reframed as intersection]'
+
+Alternatively, here are 2-3 other intersection framings based on your industry:
+1. [Alternative intersection]
+2. [Alternative intersection]
+
+Which framing captures what you want to explore?"
+
+**Formal Confirmation (REQUIRED):**
+
+"This is our focal question for [SCENARIO-ID]: [intersection question]"
+
+**Skip specialist discovery rounds** - proceed to Phase 2 after confirmation.
 
 Note: You can offer to "backfill" Phase 0 discovery if you notice in Phase 2+ that specialists are struggling without company context.
 
@@ -347,10 +387,12 @@ Note: You can offer to "backfill" Phase 0 discovery if you notice in Phase 2+ th
 scenarios/active/SCENARIO-YYYY-XXX/
 ├── metadata.json (updated with phase_0 tracking)
 ├── company.md (living document)
+├── worldview_model.md (Phase 0 worldview elicitation)
+├── focal_question.md (confirmed intersection question)
 ├── phase_0_discovery/
 │   ├── internal_baseline.md
 │   ├── context_packet.md
-│   ├── scenario_suggestions.md
+│   ├── focal_question_proposals.md (intersection-framed proposals with selection)
 │   └── research/
 │       ├── economist_discovery_round1.md
 │       ├── economist_discovery_round2.md
