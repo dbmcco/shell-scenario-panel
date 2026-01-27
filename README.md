@@ -323,6 +323,34 @@ The goal is preparing minds for multiple futures, identifying robust strategies,
 4. **Watch your cruxes** - The early warning signals for your specific uncertainties are most valuable
 5. **Reflect genuinely** - Phase 7 reflection is for you, not for us
 
+## Export to Keynote Slides
+
+Convert your scenario planning outputs into a presentation deck using the keynote-slides skill.
+
+### Export the brief
+
+```bash
+.claude/export-deck-brief.sh SCENARIO-2025-001
+```
+
+This consolidates: focal question, predetermined elements, critical uncertainties, all four scenarios, early warning signals, strategy analysis, and key specialist insights.
+
+### Copy to your deck
+
+```bash
+# Create a new deck
+cd ../keynote-slides-skill
+scripts/new-deck.sh futures-deck --entity acme --title "Strategic Futures" --type strategy
+
+# Copy the brief as materials
+cp ../ai-simulations/shell-scenario-panel/scenarios/active/SCENARIO-2025-001/deck-brief.md \
+   decks/futures-deck/resources/materials/
+```
+
+The narrative engine will help match your scenarios to storytelling frameworks like "Time Machine" (future vision) or "Rashomon" (multiple perspectives).
+
+---
+
 ## Based On
 
 This system adapts:
