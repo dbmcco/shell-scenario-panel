@@ -75,4 +75,4 @@ scenarios/active/SCENARIO-YYYY-XXX/
 - Discovery takes 30-45 minutes (6 specialists × 2-3 rounds)
 - No parallel specialist invocations (Task tool limitation)
 - No automated convergence detection (relies on Dr. Wells judgment)
-- pp-cli failures require manual handling
+- Research tool failures require manual handling

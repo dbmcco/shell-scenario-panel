@@ -14,7 +14,7 @@
 
 **Finding 1: [Title]**
 - [Description of finding]
-- **Source:** [pp-cli citation or domain expertise]
+- **Source:** [citation URL or domain expertise]
 - **Relevance:** [Why this matters for this company]
 
 **Finding 2: [Title]**

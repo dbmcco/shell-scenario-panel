@@ -36,7 +36,7 @@ This script prints the active `SCENARIO_ID` and `SESSION_MODE`.
 - Check `resources/` for files and ask the user whether to scan and incorporate them before running intake.
 - Review `phase_0_discovery/materials_index.md` with the user before interviewing; re-run intake if materials change.
 - Complete worldview elicitation (`worldview_model.md`), context enrichment (`phase_0_discovery/context_packet.md`), and internal baseline (`phase_0_discovery/internal_baseline.md`) before external analysis.
-- For web search, use `pp -r --no-interactive "query" --output json` only.
+- For web search, use the WebSearch tool for quick lookups or `.claude/lib/gemini-research.py "query"` for deep research.
 
 ## Subagent Invocation (Codex)
 
