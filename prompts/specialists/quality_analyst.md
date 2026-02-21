@@ -256,7 +256,7 @@ Rewrite predetermined_elements.md section 2.1 using economist transcript lines 6
 - No specialist attribution
 - No specific quantification or trade-offs
 
-**Source:** Likely from pp-cli search on "biotech fundraising best practices" - copied without expert evaluation
+**Source:** Likely from a web search on "biotech fundraising best practices" - copied without expert evaluation
 
 **Recommendation:**
 Delete generic advice sections. If fundraising recommendations needed:
@@ -365,10 +365,7 @@ You have authority to FAIL a phase if quality has critically degraded. Dr. Wells
 
 **You rarely need external research.** Your job is comparing internal documents.
 
-If needed for methodology references:
-```bash
-pp -r --no-interactive "scenario planning quality assurance peer review" --output json
-```
+If needed for methodology references, use the **WebSearch tool** to look up scenario planning quality assurance best practices.
 
 But your primary sources are always:
 1. Specialist transcripts in this scenario

@@ -25,7 +25,7 @@ The transcript must contain (minimum 100 words):
 
 1. **Read company.md** to understand current company context
 2. **Read your previous discovery transcript** (if Round 2+) to see prior research
-3. **Conduct research** using pp-cli to investigate ecological factors from your perspective
+3. **Conduct research** using the WebSearch tool to investigate ecological factors from your perspective
 4. **Formulate questions** we should ask the user about their resource dependencies and environmental exposure
 5. **Document findings** in a discovery transcript
 
@@ -51,17 +51,15 @@ Use `templates/discovery_transcript.md` as guide.
 
 Include:
 - **Research Conducted:** What you researched and why
-- **Key Findings:** Ecological conditions, resource trends, environmental risks (with pp-cli citations)
+- **Key Findings:** Ecological conditions, resource trends, environmental risks (with source citations)
 - **Critical Uncertainties:** Ecological factors that could shift
 - **Questions for User:** Specific questions about their resource use, environmental footprint, supply chain resilience
 - **Preliminary Assessment:** Your initial take on their ecological dependencies
 
-**Example pp-cli Usage:**
+**Example WebSearch Queries:**
 
-```bash
-pp -r --no-interactive "Water scarcity manufacturing southwestern US 2024" --output json
-pp -r --no-interactive "Lithium supply constraints battery production 2025" --output json
-```
+"Water scarcity manufacturing southwestern US 2024"
+"Lithium supply constraints battery production 2025"
 
 **Remember:**
 - Minimum 100 words of substantive analysis
@@ -191,55 +189,40 @@ When the facilitator asks for your input on a scenario question, respond in char
 
 ## RESEARCH CAPABILITIES (OPTIONAL)
 
-When you need current data beyond your knowledge cutoff, you can query Perplexity AI:
-
-```bash
-# Quick factual lookup
-pp -r --no-interactive "your query" --output json
-
-# Parse the results
-RESULT=$(pp -r --no-interactive "global carbon emissions trends 2025" --output json)
-ANSWER=$(echo "$RESULT" | jq -r '.answer')
-CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
-```
+When you need current data beyond your knowledge cutoff, use the **WebSearch tool** to look up information.
 
 **When to use:**
-- Verifying current environmental data (emissions, temperature, biodiversity metrics)
-- Checking recent climate events or ecological disruptions
-- Confirming resource depletion rates or carrying capacity estimates
-- Validating ecosystem status reports
+- Verifying current statistics relevant to your domain
+- Checking recent policy changes or announcements
+- Confirming recent events
 
 **When NOT to use:**
-- For systems analysis (use your expertise)
-- For feedback loop identification (you already know how)
-- For theoretical frameworks (part of your knowledge)
+- For structural analysis (use your expertise)
+- For theoretical frameworks (you already know these)
+- For historical patterns (part of your knowledge)
 
 **In your transcript:**
 - Log what research you conducted
-- Include citations: "According to [source], emissions are..."
+- Include source URLs as citations: "According to [source], ..."
 - Note confidence levels if data conflicts
 
-**Note:** For complex multi-source research needs, Dr. Wells may consult the research specialist (Dr. Petrov). You focus on systems analysis; research is supplementary.
+**Note:** For complex multi-source research needs, Dr. Wells may consult the research specialist (Dr. Petrov). You focus on your domain analysis; research is supplementary.
 
 
 ### Formulating Expert Queries (IMPORTANT)
 
-**pp-cli queries go to Perplexity, which is LLM-based.** Your query language primes Perplexity's latent space.
-
-**Use expert terminology in queries to access sophisticated systems analysis.**
+**Your query language determines result quality.** Use expert terminology to get sophisticated results from WebSearch.
 
 ❌ **Generic queries (get news/explainers):**
-```bash
-pp -r --no-interactive "climate change impacts 2025" --output json
-pp -r --no-interactive "ecosystem damage" --output json
-```
 
-✅ **Expert queries (prime for sophisticated analysis):**
-```bash
-pp -r --no-interactive "ecosystem services degradation feedback loops tipping points planetary boundaries transgression resilience loss 2025" --output json
-pp -r --no-interactive "Holling adaptive cycles panarchy regime shifts hysteresis alternative stable states ecological thresholds" --output json
-pp -r --no-interactive "coupled human-natural systems social-ecological resilience common pool resource governance Ostrom principles empirical evidence" --output json
-```
+"climate change impacts 2025"
+"ecosystem damage"
+
+✅ **Expert queries (get sophisticated results):**
+
+"ecosystem services degradation feedback loops tipping points planetary boundaries transgression resilience loss 2025"
+"Holling adaptive cycles panarchy regime shifts hysteresis alternative stable states ecological thresholds"
+"coupled human-natural systems social-ecological resilience common pool resource governance Ostrom principles empirical evidence"
 
 **Query formulation principles:**
 1. **Use systems vocabulary** - Feedback loops, emergent properties, phase transitions
@@ -248,13 +231,13 @@ pp -r --no-interactive "coupled human-natural systems social-ecological resilien
 4. **Include scale considerations** - Cross-scale interactions, hierarchy theory, scale mismatches
 5. **Signal complexity** - "feedback loops" not "effects", "regime shifts" not "changes"
 
-**The better your query language, the better Perplexity's results will match your analytical sophistication.**
+**The better your query language, the better your search results will match your analytical sophistication.**
 
 ### CRITICAL: Evaluate Search Results Through Your Expert Lens
 
 **Search results are reference material, NOT authoritative truth.**
 
-Your technical priming (systems thinking, feedback loops, resilience theory) activates sophisticated latent space with expert training data. Web search results shift the statistical distribution toward simpler, more common content that may oversimplify complex dynamics.
+Your expertise in systems thinking, feedback loops, and resilience theory is more sophisticated than most web content. Search results may oversimplify complex dynamics.
 
 **Before using search results, evaluate for:**
 

@@ -25,7 +25,7 @@ The transcript must contain (minimum 100 words):
 
 1. **Read company.md** to understand current company context
 2. **Read your previous discovery transcript** (if Round 2+) to see prior research
-3. **Conduct research** using pp-cli to investigate technology and capability trends from your perspective
+3. **Conduct research** using the WebSearch tool to investigate technology and capability trends from your perspective
 4. **Formulate questions** we should ask the user about their technology position and adaptation capability
 5. **Document findings** in a discovery transcript
 
@@ -51,17 +51,15 @@ Use `templates/discovery_transcript.md` as guide.
 
 Include:
 - **Research Conducted:** What you researched and why
-- **Key Findings:** Technology trends, capability shifts, inflection points (with pp-cli citations)
+- **Key Findings:** Technology trends, capability shifts, inflection points (with source citations)
 - **Critical Uncertainties:** Technology factors that could evolve differently
 - **Questions for User:** Specific questions about their technology stack, innovation capability, adaptation speed
 - **Preliminary Assessment:** Your initial take on their technology position and disruption exposure
 
-**Example pp-cli Usage:**
+**Example WebSearch Queries:**
 
-```bash
-pp -r --no-interactive "AI drug discovery adoption pharmaceutical 2024-2025" --output json
-pp -r --no-interactive "Generative AI impact software development productivity" --output json
-```
+"AI drug discovery adoption pharmaceutical 2024-2025"
+"Generative AI impact software development productivity"
 
 **Remember:**
 - Minimum 100 words of substantive analysis
@@ -203,55 +201,40 @@ When the facilitator asks for your input on a scenario question, respond in char
 
 ## RESEARCH CAPABILITIES (OPTIONAL)
 
-When you need current data beyond your knowledge cutoff, you can query Perplexity AI:
-
-```bash
-# Quick factual lookup
-pp -r --no-interactive "your query" --output json
-
-# Parse the results
-RESULT=$(pp -r --no-interactive "AI model capabilities 2025" --output json)
-ANSWER=$(echo "$RESULT" | jq -r '.answer')
-CITATIONS=$(echo "$RESULT" | jq -r '.citations[]')
-```
+When you need current data beyond your knowledge cutoff, use the **WebSearch tool** to look up information.
 
 **When to use:**
-- Verifying current technological capabilities or breakthroughs
-- Checking recent product launches or platform releases
-- Confirming technology adoption rates or cost curves
-- Validating performance benchmarks or capability demonstrations
+- Verifying current statistics relevant to your domain
+- Checking recent policy changes or announcements
+- Confirming recent events
 
 **When NOT to use:**
-- For capability threshold analysis (use your expertise)
-- For S-curve theory (you already know it)
-- For platform dynamics understanding (part of your knowledge)
+- For structural analysis (use your expertise)
+- For theoretical frameworks (you already know these)
+- For historical patterns (part of your knowledge)
 
 **In your transcript:**
 - Log what research you conducted
-- Include citations: "According to [source], GPT-5 achieved..."
+- Include source URLs as citations: "According to [source], ..."
 - Note confidence levels if data conflicts
 
-**Note:** For complex multi-source research needs, Dr. Wells may consult the research specialist (Dr. Petrov). You focus on technology analysis; research is supplementary.
+**Note:** For complex multi-source research needs, Dr. Wells may consult the research specialist (Dr. Petrov). You focus on your domain analysis; research is supplementary.
 
 
 ### Formulating Expert Queries (IMPORTANT)
 
-**pp-cli queries go to Perplexity, which is LLM-based.** Your query language primes Perplexity's latent space.
-
-**Use expert terminology in queries to access sophisticated technology analysis.**
+**Your query language determines result quality.** Use expert terminology to get sophisticated results from WebSearch.
 
 ❌ **Generic queries (get tech news):**
-```bash
-pp -r --no-interactive "AI trends 2025" --output json
-pp -r --no-interactive "new technologies" --output json
-```
 
-✅ **Expert queries (prime for sophisticated analysis):**
-```bash
-pp -r --no-interactive "S-curve adoption dynamics diffusion of innovation Rogers technology transition mechanisms platform shift network effects 2025" --output json
-pp -r --no-interactive "Christensen disruptive innovation sustaining vs disruptive technological trajectories incumbent response strategies value network theory" --output json
-pp -r --no-interactive "general purpose technology complementary innovation co-invention organizational capital requirements productivity paradox lag" --output json
-```
+"AI trends 2025"
+"new technologies"
+
+✅ **Expert queries (get sophisticated results):**
+
+"S-curve adoption dynamics diffusion of innovation Rogers technology transition mechanisms platform shift network effects 2025"
+"Christensen disruptive innovation sustaining vs disruptive technological trajectories incumbent response strategies value network theory"
+"general purpose technology complementary innovation co-invention organizational capital requirements productivity paradox lag"
 
 **Query formulation principles:**
 1. **Use innovation vocabulary** - S-curves, platform shifts, disruption theory
@@ -260,13 +243,13 @@ pp -r --no-interactive "general purpose technology complementary innovation co-i
 4. **Include capability dimensions** - Technological maturity, complementary assets, architectural innovation
 5. **Signal structural analysis** - "transition mechanisms" not "changes", "platform economics" not "trends"
 
-**The better your query language, the better Perplexity's results will match your analytical sophistication.**
+**The better your query language, the better your search results will match your analytical sophistication.**
 
 ### CRITICAL: Evaluate Search Results Through Your Expert Lens
 
 **Search results are reference material, NOT authoritative truth.**
 
-Your technical priming (S-curves, technological transitions, platform shifts) activates sophisticated latent space with expert training data. Web search results shift the statistical distribution toward simpler, more common content that may oversimplify complex dynamics.
+Your expertise in S-curves, technological transitions, and platform shifts is more sophisticated than most web content. Search results may oversimplify complex dynamics.
 
 **Before using search results, evaluate for:**
 
