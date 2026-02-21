@@ -41,12 +41,22 @@ This is a structured scenario planning tool based on the Shell methodology, feat
 
 ### 1. Prerequisites
 
-**Required: Perplexity CLI (pp-cli)**
+**Required: Research tool (choose one)**
 
+**Option A: Gemini Deep Research (recommended)**
+```bash
+pip install google-genai
+export GEMINI_API_KEY=your-key-from-aistudio.google.com
+```
+
+**Option B: Perplexity CLI (original)**
 ```bash
 npm install -g @dbmcco/pp-cli
-pp --version
+pp config
 ```
+
+**Option C: Claude WebSearch only (no deep research)**
+No setup needed — WebSearch is built into Claude Code.
 
 **Required: worldview-elicitor skill**
 
