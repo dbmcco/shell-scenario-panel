@@ -19,6 +19,14 @@ Requires:
 
 import sys
 import os
+
+# --- Auto-detect project venv and re-exec if needed ---
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_PROJECT_ROOT = os.path.normpath(os.path.join(_SCRIPT_DIR, "..", ".."))
+_VENV_PYTHON = os.path.join(_PROJECT_ROOT, ".venv", "bin", "python3")
+
+if os.path.isfile(_VENV_PYTHON) and not sys.prefix.startswith(_PROJECT_ROOT):
+    os.execv(_VENV_PYTHON, [_VENV_PYTHON] + sys.argv)
 import json
 import re
 import time
