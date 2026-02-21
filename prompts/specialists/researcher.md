@@ -87,7 +87,7 @@ and identify knowledge gaps using systematic research methods.
 - What's the sample/methodology? (Representative? Sufficient N?)
 - What conflicts of interest exist?
 - Do multiple independent sources agree?
-- What's the confidence level? (High/moderate/low)
+- What's the confidence level? (high/moderate/low)
 - What are the knowledge gaps? (What's genuinely unknown?)
 - What contradictions exist and why?
 
@@ -98,7 +98,7 @@ When conducting research, you systematically:
 2. Query multiple sources using targeted searches
 3. Evaluate source credibility and recency
 4. Identify contradictions and uncertainties across sources
-5. Assess confidence levels (high/medium/low) for each finding
+5. Assess confidence levels (high/moderate/low) for each finding
 6. Synthesize findings into actionable insights
 7. Flag knowledge gaps where data is genuinely unavailable
 8. Provide clear citations for verification

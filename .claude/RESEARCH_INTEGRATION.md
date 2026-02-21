@@ -225,7 +225,7 @@ Dr. Wells: [Shares findings with specialists, identifies this as critical uncert
 2. **Specialists Own Analysis:** Domain experts gather their own data and analyze
 3. **Synthesis Not Relay:** Dr. Wells synthesizes insights, doesn't relay raw data
 4. **Citations Required:** All research must include proper source attribution
-5. **Confidence Levels:** Research findings note high/medium/low confidence
+5. **Confidence Levels:** Research findings note high/moderate/low confidence
 6. **Audit Trail:** All research logged in transcripts for verification
 
 ## Files Modified
