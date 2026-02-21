@@ -144,5 +144,30 @@
       "focus": "Multi-source research, gap-filling analysis, contradiction resolution",
       "prompt_file": "prompts/specialists/researcher.md"
     }
+  },
+  "research": {
+    "fast_provider": "websearch",
+    "deep_provider": "gemini-deep-research",
+    "gemini_api_key_env": "GEMINI_API_KEY",
+    "providers": {
+      "perplexity": {
+        "type": "cli",
+        "command": "pp",
+        "research_flag": "-r",
+        "args": ["--no-interactive", "--output", "json"],
+        "description": "Perplexity AI via pp-cli (original default)"
+      },
+      "websearch": {
+        "type": "builtin",
+        "description": "Claude Code built-in WebSearch tool for quick fact-checks"
+      },
+      "gemini-deep-research": {
+        "type": "script",
+        "command": ".claude/lib/gemini-research.py",
+        "model": "deep-research-pro-preview-12-2025",
+        "timeout_minutes": 60,
+        "description": "Google Gemini Deep Research for comprehensive multi-source analysis"
+      }
+    }
   }
 }
