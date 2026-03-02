@@ -52,12 +52,12 @@ pp --version
 
 The worldview-elicitor skill must be available in your Claude Code environment. See [Skills Setup](#skills-setup) below.
 
-### 2. Clone and Start Claude Code
+### 2. Clone and Start Your Agent (Claude or Codex)
 
 ```bash
 git clone https://github.com/dbmcco/shell-scenario-panel.git
 cd shell-scenario-panel
-# Start Claude Code conversation
+# Start Claude Code or Codex conversation
 ```
 
 ### 3. Tell Dr. Wells What You Want to Explore
@@ -85,6 +85,47 @@ She will:
 6. Ensure quality and documentation
 
 **You never need to run scripts manually.** Dr. Wells manages the technical details.
+
+---
+
+## Agent Runbook (Claude/Codex)
+
+Use this section if you are operating as the facilitator agent inside this repo.
+
+### 1. Start the session bootstrap script
+
+```bash
+# Claude sessions
+.claude/session-start.sh
+
+# Codex sessions
+.codex/session-start.sh
+```
+
+Use `--scenario SCENARIO-YYYY-NNN`, `--new`, or `--monitor SCENARIO-YYYY-NNN` as needed.
+
+### 2. Handle resources before interviewing
+
+- Check `resources/` for user-provided files (ignore `README.md`, `.gitkeep`, `.DS_Store`)
+- Ask whether to scan and incorporate those materials
+- If yes, run `.claude/lib/resources-intake.sh "$SCENARIO_ID"`
+- Review `scenarios/active/$SCENARIO_ID/phase_0_discovery/materials_index.md` with the user before proceeding
+
+### 3. Follow the moderator flow and phase gates
+
+- Treat `prompts/moderator.md` as the canonical facilitation sequence
+- Complete Phase 0 deliverables before external analysis:
+- `worldview_model.md`
+- `phase_0_discovery/internal_baseline.md`
+- `phase_0_discovery/context_packet.md`
+- Do not bypass transcript checks, metadata updates, or quality checkpoints
+
+### 4. Use the right instruction file for your agent
+
+- Claude agent instructions: `CLAUDE.md`
+- Codex agent instructions: `CODEX.md`
+
+If there is any conflict, follow the agent-specific file for your runtime.
 
 ---
 
