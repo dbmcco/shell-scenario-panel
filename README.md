@@ -86,6 +86,45 @@ She will:
 
 **You never need to run scripts manually.** Dr. Wells manages the technical details.
 
+---
+
+## Recommended Input Documents
+
+Place materials in `resources/` before starting. The panel performs best when grounded in concrete context about your focal topic.
+
+### Required (Scenario Foundation)
+
+| Document | Why It Matters |
+|----------|---------------|
+| **Focal Topic Brief** | 1-2 pages defining what you want to explore, including time horizon (5, 10, 20 years) and geographic/industry scope |
+| **Current State Snapshot** | What the world looks like today in your focal area — statistics, trends, key players, recent developments |
+
+### High-Value (Enriches Scenarios)
+
+| Document | Why It Matters |
+|----------|---------------|
+| **Historical Trend Data** | How your focal area has evolved over the past 5-20 years; patterns reveal what's truly predetermined vs uncertain |
+| **Stakeholder Map** | Key actors (companies, governments, institutions) and their interests; Marcus (geopolitics) and Sarah (economics) need this |
+| **Explicit Constraints** | What you already know is locked in — budgets, infrastructure timelines, regulatory frameworks, demographic shifts |
+| **Prior Analysis** | Existing strategy documents, forecasts, or expert opinions you've gathered; specialists can build on or challenge these |
+
+### Nice-to-Have (Adds Depth)
+
+| Document | Why It Matters |
+|----------|---------------|
+| **Technology Roadmaps** | Capability timelines for relevant technologies; Kenji (futurist) uses these to identify inflection points |
+| **Cultural Context** | How different communities think about your topic; Aisha (anthropologist) grounds scenarios in lived experience |
+| **Contrarian Views** | Perspectives that challenge conventional wisdom; Jamie (contrarian) amplifies these to stress-test scenarios |
+
+### Format Tips
+
+- **Define your time horizon explicitly** — scenarios for 2030 require different inputs than 2050
+- **Include sources and dates** — specialists weight recent data more heavily
+- **Separate facts from assumptions** — label what you know vs what you believe
+- **Multiple perspectives welcome** — conflicting expert views often reveal critical uncertainties
+
+---
+
 ## The 8-Phase Process
 
 ### Phase 0: Worldview Elicitation (NEW)
