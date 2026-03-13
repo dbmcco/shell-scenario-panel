@@ -123,10 +123,7 @@ Use this to adjust language depth and record it in `focal_question.md` later.
 
 **Process:**
 1. Identify 1-3 high-impact gaps from the interview or materials.
-2. Run targeted searches using pp-cli research mode only:
-   ```bash
-   pp -r --no-interactive "your research query here" --output json
-   ```
+2. Use the WebSearch tool for targeted searches, or consult Dr. Petrov for comprehensive research.
 3. Summarize findings with citations in `phase_0_discovery/context_packet.md`.
 4. Ask the user to confirm or correct; update `company.md` with new facts.
 5. Repeat up to 3 cycles, then continue the interview.
@@ -196,19 +193,15 @@ Do not read internal_baseline.md; keep external research independent.
 [If Round 2+] Read your previous discovery transcript:
 phase_0_discovery/research/[role]_discovery_round[N-1].md
 
-Conduct research from your domain expertise perspective using pp-cli research mode.
+Conduct research from your domain expertise perspective using the WebSearch tool.
 You decide what to research - trust your professional judgment about what
 matters in your domain for this company's strategic context.
 
-Use pp-cli with this syntax:
-```bash
-pp -r --no-interactive "your research query here" --output json
-```
+Use the WebSearch tool to look up current data relevant to your domain.
 
-Example:
-```bash
-pp -r --no-interactive "automotive industry EV transition challenges 2024-2025" --output json
-```
+Example queries:
+- "automotive industry EV transition challenges 2024-2025"
+- "[company] market position competitive landscape"
 
 Create discovery transcript in:
 phase_0_discovery/research/[role]_discovery_round[N].md
@@ -228,7 +221,7 @@ Set expectations with user: "I'm consulting all 6 specialists - this will take 1
 
 After all specialists return, validate each transcript:
 - Minimum 100 words of substantive content
-- Includes research findings (with pp-cli citations where applicable)
+- Includes research findings (with source citations where applicable)
 - Identifies at least one uncertainty or question for user
 - If transcript insufficient: Ask specialist to elaborate
 
@@ -465,13 +458,13 @@ In metadata.json, track:
 **Convergence never reached after 4 rounds:**
 - Force convergence: "We could keep discovering, but I have enough to generate scenarios. Should we proceed?"
 
-**pp-cli research fails:**
+**Research tool fails:**
 - Specialist notes in transcript: "Unable to research [topic] - proceeding with domain expertise only"
 - If multiple specialists hit failures: pause and notify user
 
 **Specialist returns insufficient transcript:**
 - Reject and ask to elaborate if <100 words
-- Remind to use pp-cli for research
+- Remind to use WebSearch for research
 - Accept if no questions (may indicate low-risk area)
 
 ---
@@ -1343,7 +1336,7 @@ Use this when the user asks to monitor or update an existing scenario set.
    - `scenarios/active/[SCENARIO-ID]/monitoring/monitoring_log.md`
    - Early warning signals inside each scenario file.
 3. **Decide whether a monitoring run is required** (model-mediated). Ask the user if the intent is unclear.
-4. **If deep research is needed**, use `pp -r` and let the model evaluate results to decide whether additional searches are required.
+4. **If deep research is needed**, use the WebSearch tool or consult Dr. Petrov and let the model evaluate results to decide whether additional searches are required.
 4. **If running a monitoring update**, execute:
    ```bash
    .claude/monitoring-run.sh "$SCENARIO_ID" --type scheduled|ad_hoc
@@ -1399,7 +1392,7 @@ Invoke the research specialist ONLY when knowledge gaps emerge that specialists 
 - Fact-checking when specialists' knowledge is outdated
 
 **Don't invoke Dr. Petrov for:**
-- Simple fact lookups (specialists can use pp-cli research mode directly)
+- Simple fact lookups (specialists can use WebSearch directly)
 - Domain analysis (that's what domain specialists do)
 - Questions specialists can answer from their expertise
 - Routine verification of recent statistics

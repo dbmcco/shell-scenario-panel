@@ -4,11 +4,22 @@
 
 ### Step 1: Prerequisites
 
-**Install pp-cli:**
+**Research tool setup (choose one):**
+
+**Option A: Gemini Deep Research (recommended)**
+```bash
+pip install google-genai
+export GEMINI_API_KEY=your-key-from-aistudio.google.com
+```
+
+**Option B: Perplexity (original)**
 ```bash
 npm install -g @dbmcco/pp-cli
-pp --version
+pp config  # enter API key
 ```
+
+**Option C: Claude WebSearch only (no deep research)**
+No setup needed — WebSearch is built into Claude Code.
 
 **Install the worldview-elicitor skill (bundled with this repo):**
 ```bash

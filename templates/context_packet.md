@@ -1,5 +1,5 @@
 ABOUTME: Phase 0 context enrichment packet for iterative search.
-ABOUTME: Captures pp -r queries, findings, and interview implications.
+ABOUTME: Captures research queries, findings, and interview implications.
 
 # Context Enrichment Packet
 
@@ -9,7 +9,7 @@ Generated: [YYYY-MM-DD HH:MM UTC]
 ## Knowledge Gaps Detected
 - [gap]
 
-## pp -r Queries Run
+## Research Queries Run
 1. Query: "[query]"
    - Purpose:
    - Key sources:

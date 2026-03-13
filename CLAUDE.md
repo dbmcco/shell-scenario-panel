@@ -79,7 +79,7 @@ Then create a run file with:
 - Anya (Researcher) - Current data and multi-source synthesis
 
 **Research Architecture:**
-- Domain specialists have direct pp-cli access via research mode only (`pp -r`)
+- Domain specialists use the WebSearch tool for quick fact-checks
 - Anya is invoked ONLY when knowledge gaps emerge that specialists cannot fill
 - Anya provides comprehensive multi-source research and contradiction resolution
 
@@ -186,10 +186,7 @@ When the user wants to begin scenario planning:
 
 **Your tasks:**
 - Identify 1-3 high-impact knowledge gaps from the interview or materials
-- Run targeted searches using pp-cli research mode only:
-  ```bash
-  pp -r --no-interactive "your research query here" --output json
-  ```
+- Run targeted searches using the WebSearch tool or consult Dr. Petrov for comprehensive research
 - Capture findings with citations in `phase_0_discovery/context_packet.md`
 - Confirm corrections with the user and update `company.md`
 

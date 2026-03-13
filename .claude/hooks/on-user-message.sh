@@ -120,9 +120,9 @@ phase_0_guardrails() {
 
     if [ -f "$company_file" ]; then
         if [ ! -f "$context_packet" ]; then
-            warnings="${warnings}- Phase 0b context enrichment packet missing (pp -r search).\n"
+            warnings="${warnings}- Phase 0b context enrichment packet missing (research needed).\n"
         elif grep -q "\\[gap\\]" "$context_packet"; then
-            warnings="${warnings}- Phase 0b context enrichment packet not completed (pp -r search).\n"
+            warnings="${warnings}- Phase 0b context enrichment packet not completed (research needed).\n"
         fi
     fi
 
