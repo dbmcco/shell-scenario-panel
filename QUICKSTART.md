@@ -40,10 +40,12 @@ She will automatically:
 1. Initialize a new scenario
 2. **Elicit your worldview** (Phase 0) - understand how you think about the topic
 3. Clarify your focal question (Phase 1)
-4. Consult specialists strategically (Phases 2-6)
+4. Consult external specialists strategically (Phases 2-5)
 5. Develop 4 divergent scenarios
-6. **Integrate with your worldview** (Phase 7) - connect scenarios to your mental model
-7. Track progress with TodoWrite
+6. **Translate scenarios into impact** (Phase 6a) - what those futures mean for the relevant actor
+7. **Test strategies or responses** (Phase 6b) - preparedness, positioning, and other decisions
+8. **Integrate with your worldview** (Phase 7) - connect scenarios, impacts, and responses to your mental model
+9. Track progress with TodoWrite
 
 ## You Don't Need To:
 - Run any bash scripts manually
@@ -59,7 +61,7 @@ She will automatically:
 - Progress tracking and documentation
 - User validation at each phase
 
-## The 8 Phases
+## Workflow
 
 0. **Worldview Elicitation** - Understand how you think about this topic
 1. **Understanding** - Clarify your focal question and decision context
@@ -67,7 +69,8 @@ She will automatically:
 3. **Critical Uncertainties** - Surface factors that could go multiple ways
 4. **Scenario Development** - Create 4 plausible, divergent futures
 5. **Early Warning Signals** - Define indicators for each scenario
-6. **Strategy Testing** - Identify robust strategies across scenarios
+6a. **Impact Analysis** - Translate external scenarios into actor-relative consequences
+6b. **Strategy Testing** - Identify robust responses using the impact layer as input
 7. **Worldview Integration** - Connect scenarios back to your mental model
 
 ## Example Session: The New Flow
@@ -112,11 +115,27 @@ Does that capture how you're thinking about this?
 
 **Dr. Wells:** Now let's explore the external landscape. What decision are you facing that depends on how autonomous vehicles develop?
 
-*[Phases 1-6 proceed normally, developing 4 scenarios]*
+*[Phases 1-5 proceed normally, developing 4 scenarios and signals]*
 
 ---
 
-*[After Phase 6 completes...]*
+*[Phase 6a: Impact Analysis begins]*
+
+**Dr. Wells:** Before we talk strategy, I want to translate these futures into what they would actually mean for you. Some scenarios mainly challenge your belief model; others would change your exposure, timing, and preparation needs.
+
+**Dr. Wells:** Across the four futures, the impact split is not just "autonomy arrives faster or slower." It changes capital intensity, regulatory timing, labor mix, insurance exposure, and where your assumptions become fragile. That gives us a different question than "which scenario wins?" The question becomes "what hits you first, and what do you need to preserve?"
+
+*[Phase 6a complete - impact_analysis.md created]*
+
+---
+
+*[Phase 6b: Strategy Testing begins]*
+
+**Dr. Wells:** Now that we have the impact map, we can test what preparations or decisions are robust across those conditions versus what only works if one future shows up.
+
+---
+
+*[After Phase 6b completes...]*
 
 *[Phase 7: Worldview Integration begins]*
 
@@ -147,6 +166,7 @@ You'll receive:
 - `worldview_model.md` - Your captured mental model
 - `phase_0_discovery/internal_baseline.md` - Your structured base case and risk posture
 - 4 detailed scenario narratives with memorable names
+- `impact_analysis.md` - What those futures mean for the focal actor
 - `worldview_integration.md` - How scenarios connect to your beliefs
 - Personalized early warning signals based on your cruxes
 - Strategic recommendations

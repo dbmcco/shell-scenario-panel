@@ -53,9 +53,19 @@ get_specialist_paths() {
             echo "${BASE}/conversations/${SPECIALIST}_signals.md"
             ;;
 
-        "strategy"|"phase_6")
-            # Phase 6: Strategy Testing
+        "impact"|"phase_6a")
+            # Phase 6a: Impact Analysis
+            echo "${BASE}/conversations/${SPECIALIST}_impact.md"
+            ;;
+
+        "strategy"|"phase_6"|"phase_6b")
+            # Phase 6b: Strategy Testing
             echo "${BASE}/conversations/${SPECIALIST}_strategy.md"
+            ;;
+
+        "worldview"|"phase_7")
+            # Phase 7: Worldview Integration reactions
+            echo "${BASE}/conversations/${SPECIALIST}_worldview_reaction.md"
             ;;
 
         *)
@@ -97,8 +107,16 @@ get_phase_outputs() {
             echo "${BASE}/scenarios/"
             ;;
 
-        "phase_6"|"strategy")
+        "phase_6a"|"impact")
+            echo "${BASE}/impact_analysis.md"
+            ;;
+
+        "phase_6"|"phase_6b"|"strategy")
             echo "${BASE}/strategy_analysis.md"
+            ;;
+
+        "phase_7"|"worldview")
+            echo "${BASE}/worldview_integration.md"
             ;;
 
         *)

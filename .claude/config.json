@@ -55,6 +55,52 @@
   },
   "project_type": "shell_scenario_planning",
   "workflow_enforcement": "phase_based",
+  "impact_panels": {
+    "kernel": [
+      "ledger_keeper",
+      "friction_mechanic",
+      "dependency_cartographer",
+      "burden_cartographer",
+      "optionality_conservator",
+      "precedent_archivist",
+      "signal_mason",
+      "contrarian"
+    ],
+    "overlays": {
+      "household_personal": {
+        "description": "Household, personal finance, education, family-system, and lifestyle consequences",
+        "use_for": [
+          "personal finance",
+          "household decisions",
+          "family impact",
+          "education exposure",
+          "mobility choices",
+          "cost-of-living stress"
+        ],
+        "specialists": [
+          "mobility_planner",
+          "institutional_buffer_reader",
+          "youth_transition_observer"
+        ]
+      },
+      "commercial_positioning": {
+        "description": "Buyer-side commercial, positioning, procurement, operations, and implementation consequences",
+        "use_for": [
+          "product positioning",
+          "customer impact",
+          "buyer behavior",
+          "procurement dynamics",
+          "commercial strategy",
+          "go-to-market framing"
+        ],
+        "specialists": [
+          "procurement_gatekeeper",
+          "operations_operator",
+          "technical_trust_guardian"
+        ]
+      }
+    }
+  },
   "phase_configurations": {
     "understanding": {
       "description": "Understand focal question and decision context",
@@ -100,8 +146,25 @@
       ],
       "completion_trigger": "all_scenarios_complete"
     },
+    "impact_analysis": {
+      "description": "Translate external scenarios into actor-relative consequences",
+      "required_documents": [
+        "impact_analysis.md"
+      ],
+      "suggested_specialists": [
+        "ledger_keeper",
+        "friction_mechanic",
+        "dependency_cartographer",
+        "burden_cartographer",
+        "optionality_conservator",
+        "precedent_archivist",
+        "signal_mason",
+        "contrarian"
+      ],
+      "completion_trigger": "impact_analysis_validated"
+    },
     "strategy_testing": {
-      "description": "Test strategies across scenarios",
+      "description": "Test strategies across scenarios using the impact analysis as input",
       "required_documents": [
         "strategy_analysis.md"
       ],
@@ -134,6 +197,71 @@
       "focus": "Debt dynamics, financial structures",
       "prompt_file": "prompts/specialists/economist.md"
     },
+    "ledger_keeper": {
+      "name": "Marisol Vega",
+      "focus": "Cash flow, debt service, affordability, financial pressure",
+      "prompt_file": "prompts/impact_specialists/ledger_keeper.md"
+    },
+    "friction_mechanic": {
+      "name": "Darnell Brooks",
+      "focus": "Operational friction, workflow drag, execution burden",
+      "prompt_file": "prompts/impact_specialists/friction_mechanic.md"
+    },
+    "dependency_cartographer": {
+      "name": "Nadia Rahman",
+      "focus": "Institutional dependencies, chokepoints, transmission channels",
+      "prompt_file": "prompts/impact_specialists/dependency_cartographer.md"
+    },
+    "burden_cartographer": {
+      "name": "Dr. Imani Clarke",
+      "focus": "Burden distribution, invisible labor, stress transfer",
+      "prompt_file": "prompts/impact_specialists/burden_cartographer.md"
+    },
+    "optionality_conservator": {
+      "name": "Ethan Rowe",
+      "focus": "Reversibility, sequencing, path dependence, preserved options",
+      "prompt_file": "prompts/impact_specialists/optionality_conservator.md"
+    },
+    "precedent_archivist": {
+      "name": "Priya Desai",
+      "focus": "Analog cases, structural precedent, what actually worked before",
+      "prompt_file": "prompts/impact_specialists/precedent_archivist.md"
+    },
+    "signal_mason": {
+      "name": "Luis Ortega",
+      "focus": "Decision-grade indicators, thresholds, signal interpretation",
+      "prompt_file": "prompts/impact_specialists/signal_mason.md"
+    },
+    "mobility_planner": {
+      "name": "Rachel Kim",
+      "focus": "Household mobility, vehicle replacement, commuting, substitution costs",
+      "prompt_file": "prompts/impact_overlays/mobility_planner.md"
+    },
+    "institutional_buffer_reader": {
+      "name": "Monica Alvarez",
+      "focus": "School, employer, lender, insurer, and public-system transmission into households",
+      "prompt_file": "prompts/impact_overlays/institutional_buffer_reader.md"
+    },
+    "youth_transition_observer": {
+      "name": "Dr. Leah Morgan",
+      "focus": "College, launch-to-work transitions, youth mobility, early-career exposure",
+      "prompt_file": "prompts/impact_overlays/youth_transition_observer.md"
+    },
+    "procurement_gatekeeper": {
+      "name": "Aarti Menon",
+      "focus": "Buying process, vendor trust, proof burden, contract and procurement risk",
+      "prompt_file": "prompts/impact_overlays/procurement_gatekeeper.md"
+    },
+    "operations_operator": {
+      "name": "Miguel Salazar",
+      "focus": "Operational fit, workflow realism, throughput, frontline adoption burden",
+      "prompt_file": "prompts/impact_overlays/operations_operator.md"
+    },
+    "technical_trust_guardian": {
+      "name": "Hannah Stern",
+      "focus": "IT/OT integration risk, cyber exposure, data governance, implementation trust",
+      "prompt_file": "prompts/impact_overlays/technical_trust_guardian.md"
+    },
     "contrarian": {
       "name": "Dr. Jamie O'Sullivan",
       "focus": "Hidden risks, challenging assumptions",
@@ -143,6 +271,11 @@
       "name": "Dr. Anya Petrov",
       "focus": "Multi-source research, gap-filling analysis, contradiction resolution",
       "prompt_file": "prompts/specialists/researcher.md"
+    },
+    "quality_analyst": {
+      "name": "Dr. Mei Chen",
+      "focus": "Quality gates, generic drift prevention, synthesis rigor",
+      "prompt_file": "prompts/specialists/quality_analyst.md"
     }
   }
 }

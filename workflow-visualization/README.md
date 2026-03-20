@@ -4,8 +4,8 @@ Educational visualization of the Shell Scenario Panel multi-agent workflow, buil
 
 ## Overview
 
-This interactive HTML visualization shows the complete 7-phase Shell Scenario Panel process, including:
-- All 8 specialist personas with AI-generated avatars
+This interactive HTML visualization shows the Shell Scenario Panel workflow, including:
+- World-modeling and impact personas with AI-generated avatars
 - Progressive convergence patterns across phases
 - Round-by-round collaboration structures
 - Information flow diagrams
@@ -31,7 +31,7 @@ This interactive HTML visualization shows the complete 7-phase Shell Scenario Pa
 - Hover effects and interactions
 
 ### 📊 Educational Content
-- 7 phases (0-6) with detailed breakdowns
+- Worldview-first workflow with detailed phase breakdowns
 - Round structure visualization (isolated → summary → full integration)
 - Information flow indicators (🔒 🔗 📝)
 - Specialist roles and expertise
@@ -45,8 +45,8 @@ workflow-visualization/
 ├── workflow-model-mediated.html # Model-mediated guardrails snapshot
 ├── styles.css          # LFW-branded styling
 ├── script.js           # Imagen API integration & DOM manipulation
-├── personas.js         # 8 specialist persona definitions
-├── phases.js           # 7-phase workflow data
+├── personas.js         # World-modeling and impact persona definitions
+├── phases.js           # Workflow phase data
 ├── generated/          # Cached AI-generated images
 │   ├── avatars/       # Persona headshots (auto-generated)
 │   └── diagrams/      # Workflow diagrams (auto-generated)
@@ -82,7 +82,7 @@ workflow-visualization/
 
 The visualization uses Google's Imagen 3 (nano banana) model to generate:
 
-1. **Persona Avatars** (8 total):
+1. **Persona Avatars**:
    - Professional headshots based on persona descriptions
    - Unique styling for each specialist
    - Cached after first generation
@@ -165,10 +165,10 @@ Edit `styles.css` CSS variables:
 
 ## Workflow Summary
 
-### Phase 0: Company Discovery (Optional)
-- 12-14 invocations
-- Multi-round interview with specialist research
-- Generates focal question recommendations
+### Phase 0: Worldview and Baseline
+- 0-3 invocations
+- Capture worldview, internal baseline, and decision-grade context
+- Generates `worldview_model.md`, `internal_baseline.md`, and `context_packet.md`
 
 ### Phase 1: Focal Question
 - 0-2 invocations
@@ -195,12 +195,22 @@ Edit `styles.css` CSS variables:
 - 1 round, isolated
 - Defines observable indicators
 
-### Phase 6: Strategy Testing
-- 7 invocations
-- 1 round, challenge pattern
-- Identifies robust strategies
+### Phase 6a: Impact Analysis
+- 8 invocations
+- 1 round, actor-relative translation
+- Produces `impact_analysis.md`
 
-**Total: ~68-72 specialist invocations**
+### Phase 6b: Strategy Testing
+- 4-8 invocations
+- 1 round, challenge pattern
+- Uses `impact_analysis.md` as mandatory input
+
+### Phase 7: Worldview Integration
+- 3 invocations
+- 1 round, worldview reaction
+- Connects scenarios, impacts, and responses back to the user lens
+
+**Minimum footprint: ~64+ invocations depending on response mode**
 
 ## Credits
 

@@ -200,14 +200,19 @@ else
 fi
 
 # Phase 5: Early Warning Signals (embedded in scenarios)
-# Phase 6: Strategy Analysis
-if [ -f "$SCENARIO_DIR/strategy_analysis.md" ]; then
-    check_transcript "$SCENARIO_DIR/strategy_analysis.md" "Strategy Analysis (Phase 6)"
+# Phase 6a: Impact Analysis
+if [ -f "$SCENARIO_DIR/impact_analysis.md" ]; then
+    check_transcript "$SCENARIO_DIR/impact_analysis.md" "Impact Analysis (Phase 6a)"
 fi
 
-# Phase 7: Worldview Integration
+# Phase 6: Strategy Analysis
+if [ -f "$SCENARIO_DIR/strategy_analysis.md" ]; then
+    check_transcript "$SCENARIO_DIR/strategy_analysis.md" "Strategy Analysis (Phase 6b/7)"
+fi
+
+# Phase 7/8: Worldview Integration
 if [ -f "$SCENARIO_DIR/worldview_integration.md" ]; then
-    check_transcript "$SCENARIO_DIR/worldview_integration.md" "Worldview Integration (Phase 7)"
+    check_transcript "$SCENARIO_DIR/worldview_integration.md" "Worldview Integration (Final Phase)"
 fi
 
 echo ""

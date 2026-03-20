@@ -91,7 +91,9 @@ Centralized registry of all expected file paths by phase/round/specialist.
 - `phase_3` / `uncertainties` - Full + summary in `conversations/`
 - `phase_4` / `scenarios` - Full + summary (rounds 1-2), final only (round 3)
 - `phase_5` / `signals` - Signals file in `conversations/`
-- `phase_6` / `strategy` - Strategy file in `conversations/`
+- `phase_6a` / `impact` - Impact file in `conversations/`
+- `phase_6` / `phase_6b` / `strategy` - Strategy file in `conversations/`
+- `phase_7` / `worldview` - Worldview reaction file in `conversations/`
 
 ## Integration with Moderator
 

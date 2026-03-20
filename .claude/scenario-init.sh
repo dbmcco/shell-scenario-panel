@@ -71,6 +71,9 @@ cat > "$SCENARIO_DIR/metadata.json" <<EOF
   "critical_uncertainties_identified": false,
   "scenarios_developed": 0,
   "target_scenario_count": 4,
+  "impact_overlays_used": [],
+  "impact_analysis_complete": false,
+  "strategy_analysis_complete": false,
   "worldview_integration_complete": false,
   "monitoring": {
     "status": "not_started",
@@ -87,10 +90,12 @@ echo "✅ Metadata initialized"
 cp templates/focal_question.md "$SCENARIO_DIR/"
 cp templates/worldview_model.md "$SCENARIO_DIR/"
 cp templates/worldview_integration.md "$SCENARIO_DIR/"
+cp templates/impact_analysis.md "$SCENARIO_DIR/"
+cp templates/strategy_analysis.md "$SCENARIO_DIR/"
 cp templates/context_packet.md "$SCENARIO_DIR/phase_0_discovery/context_packet.md"
 cp templates/monitoring_plan.md "$SCENARIO_DIR/monitoring/monitoring_plan.md"
 cp templates/monitoring_log.md "$SCENARIO_DIR/monitoring/monitoring_log.md"
-echo "✅ Templates copied (focal_question, worldview_model, worldview_integration, context_packet, monitoring plan/log)"
+echo "✅ Templates copied (focal_question, worldview_model, worldview_integration, impact_analysis, strategy_analysis, context_packet, monitoring plan/log)"
 
 # Create scenario_context.md from template
 cp templates/scenario_context_template.md "$SCENARIO_DIR/scenario_context.md"

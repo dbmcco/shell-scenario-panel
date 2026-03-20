@@ -442,17 +442,23 @@ function initializeNavigation() {
 // ===== Overview Diagram =====
 
 function createOverviewDiagram() {
+  const viewWidth = Math.max(1200, 140 + (phases.length - 1) * 150);
+  const centerX = viewWidth / 2;
+  const startX = 80;
+  const stepX = phases.length > 1 ? (viewWidth - 160) / (phases.length - 1) : 0;
+  const total = phases.reduce((sum, phase) => sum + parseInt(phase.invocations.split('-')[0], 10), 0);
+
   return `
-    <svg viewBox="0 0 1200 300" style="max-width: 100%; height: auto;">
+    <svg viewBox="0 0 ${viewWidth} 300" style="max-width: 100%; height: auto;">
       <!-- Background -->
-      <rect width="1200" height="300" fill="#ffffff"/>
+      <rect width="${viewWidth}" height="300" fill="#ffffff"/>
 
       <!-- Title -->
-      <text x="600" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" font-weight="600" fill="#1a1a1a">7-Phase Workflow Overview</text>
+      <text x="${centerX}" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" font-weight="600" fill="#1a1a1a">Worldview-First Workflow Overview</text>
 
       <!-- Phase boxes and connections -->
       ${phases.map((phase, i) => {
-        const x = 80 + i * 160;
+        const x = startX + i * stepX;
         const y = 100;
         const isOptional = phase.optional;
         const boxColor = isOptional ? '#d4a574' : '#b8956f';
@@ -508,7 +514,7 @@ function createOverviewDiagram() {
       <!-- Legend -->
       <g transform="translate(100, 250)">
         <text x="0" y="0" font-family="sans-serif" font-size="11" fill="#999999">
-          Total: ~68-72 invocations across all phases
+          Minimum footprint: ~${total}+ invocations across all phases
         </text>
       </g>
     </svg>
@@ -534,7 +540,7 @@ function initializeTimeline() {
 
   // Update total invocations
   const total = phases.reduce((sum, p) => sum + parseInt(p.invocations.split('-')[0] || 0), 0);
-  document.getElementById('total-invocations').textContent = `~${total}`;
+  document.getElementById('total-invocations').textContent = `~${total}+`;
 
   // Initialize navigation
   initializeNavigation();

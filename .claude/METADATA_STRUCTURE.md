@@ -18,8 +18,9 @@ Each scenario has a `metadata.json` file that tracks:
   "scenario_id": "SCENARIO-YYYY-NNN",
   "created_at": "ISO 8601 timestamp",
   "status": "active" | "archived",
-  "current_phase": 0-6,
+  "current_phase": 0-7,
   "phase": "phase_name",
+  "worldview_captured": true | false,
   "focal_question": "string",
   "time_horizon": "string",
   "scope": "string",
@@ -33,6 +34,10 @@ Each scenario has a `metadata.json` file that tracks:
     }
   ],
   "validation_status": "pending" | "validated" | "revision_needed",
+  "impact_overlays_used": ["overlay_id", "..."],
+  "impact_analysis_complete": true | false,
+  "strategy_analysis_complete": true | false,
+  "worldview_integration_complete": true | false,
   "next_action": "string describing next step",
   "notes": "optional notes"
 }
@@ -154,14 +159,39 @@ This separate structure makes it easier to:
 }
 ```
 
-### Phase 6: Strategy Testing
+### Phase 6a: Impact Analysis
+
+```json
+{
+  "current_phase": 6,
+  "phase": "impact_analysis",
+  "impact_overlays_used": ["household_personal"],
+  "impact_analysis_complete": true
+}
+```
+
+### Phase 6b: Strategy Testing
 
 ```json
 {
   "current_phase": 6,
   "phase": "strategy_testing",
+  "impact_analysis_complete": true,
+  "strategy_analysis_complete": true,
   "robust_strategies_identified": true,
   "strategies_tested": 3
+}
+```
+
+### Phase 7: Worldview Integration
+
+```json
+{
+  "current_phase": 7,
+  "phase": "worldview_integration",
+  "impact_analysis_complete": true,
+  "strategy_analysis_complete": true,
+  "worldview_integration_complete": true
 }
 ```
 
@@ -195,6 +225,17 @@ The `consultations` array tracks ALL specialist consultations across all phases 
 - `transcript_path`: Relative path from scenario directory
 - `validated`: Whether moderator validated the transcript
 
+Common phase values now include:
+- `worldview_elicitation`
+- `understanding`
+- `predetermined`
+- `uncertainties`
+- `scenario_development`
+- `early_warning`
+- `impact_analysis`
+- `strategy_testing`
+- `worldview_integration`
+
 ## Validation
 
 Use `.claude/validate-scenario.sh SCENARIO-YYYY-NNN` to verify:
@@ -222,6 +263,7 @@ Use `.claude/validate-scenario.sh SCENARIO-YYYY-NNN` to verify:
   "status": "active",
   "current_phase": 2,
   "phase": "predetermined",
+  "worldview_captured": true,
   "focal_question": "How should Acme Auto Parts position itself for 2025-2035?",
   "time_horizon": "10 years",
   "scope": "US auto parts manufacturing, OEM suppliers",
@@ -242,6 +284,10 @@ Use `.claude/validate-scenario.sh SCENARIO-YYYY-NNN` to verify:
     }
   ],
   "validation_status": "validated",
+  "impact_overlays_used": [],
+  "impact_analysis_complete": false,
+  "strategy_analysis_complete": false,
+  "worldview_integration_complete": false,
   "predetermined_elements_identified": true,
   "next_action": "Move to Phase 3: Critical Uncertainties",
   "notes": "Strong consensus on predetermined elements. Both specialists aligned on debt constraints and supply chain restructuring."

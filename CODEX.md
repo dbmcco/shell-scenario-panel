@@ -36,6 +36,8 @@ This script prints the active `SCENARIO_ID` and `SESSION_MODE`.
 - Check `resources/` for files and ask the user whether to scan and incorporate them before running intake.
 - Review `phase_0_discovery/materials_index.md` with the user before interviewing; re-run intake if materials change.
 - Complete worldview elicitation (`worldview_model.md`), context enrichment (`phase_0_discovery/context_packet.md`), and internal baseline (`phase_0_discovery/internal_baseline.md`) before external analysis.
+- Treat `impact_analysis.md` as the required translation layer between scenario work and `strategy_analysis.md`.
+- Use `.claude/lib/select-impact-specialists.sh` to resolve the impact kernel plus any overlay packs for household/personal or commercial cases.
 - For web search, use `pp -r --no-interactive "query" --output json` only.
 
 ## Subagent Invocation (Codex)

@@ -1246,27 +1246,151 @@ Integrate signals from all specialists by scenario.
 
 **Cost:** Minimum 7 invocations (1 round), Maximum 14 invocations (2 rounds)
 
-**Phase 6: Test Strategies**
+**Phase 6a: Impact Analysis**
 
-**Pattern:** 1 round, structured challenge (all 7 specialists)
+**Pattern:** 1 round, actor-relative translation (impact kernel + contrarian)
 
-**Objective:** Explore strategy performance across scenarios
+**Objective:** Translate external scenarios into actor-relative consequences before making recommendations
 
 **Your tasks:**
 
-1. **Invoke all 7 specialists in parallel**
+1. **Invoke the impact kernel specialists in parallel**
+
+The impact kernel is mandatory. Use `.claude/lib/select-impact-specialists.sh` to resolve kernel plus overlays when the query requires additional actor-specific seats.
+
+Overlay packs currently implemented:
+- `household_personal` for household, personal finance, education, family-system, and lifestyle questions
+- `commercial_positioning` for buyer-side commercial, positioning, procurement, operations, and implementation questions
+
+Examples:
+```bash
+.claude/lib/select-impact-specialists.sh
+.claude/lib/select-impact-specialists.sh household_personal
+.claude/lib/select-impact-specialists.sh commercial_positioning
+.claude/lib/select-impact-specialists.sh household_personal commercial_positioning
+```
+
+Default kernel cast:
+- `ledger_keeper`
+- `friction_mechanic`
+- `dependency_cartographer`
+- `burden_cartographer`
+- `optionality_conservator`
+- `precedent_archivist`
+- `signal_mason`
+- `contrarian`
+
+Ground every invocation in:
+- Final scenario set
+- `worldview_model.md`
+- `phase_0_discovery/internal_baseline.md`
+- `scenario_context.md`
+- The user's explicit question or desired response mode
+
+Example:
+
+```
+Task("ledger_keeper", "SCENARIO: SCENARIO-2025-001
+PHASE 6A: Impact Analysis
+
+Read the completed scenarios and actor context:
+- scenarios/scenario_1_[name].md
+- scenarios/scenario_2_[name].md
+- scenarios/scenario_3_[name].md
+- scenarios/scenario_4_[name].md
+- worldview_model.md
+- phase_0_discovery/internal_baseline.md
+- scenario_context.md
+
+USER QUERY / RESPONSE MODE:
+[What does this mean to me and what should I prepare for? / How should we position? / etc.]
+
+Analyze actor-relative impact from your perspective:
+- What changes first for the focal actor?
+- Through what transmission channels does the scenario reach them?
+- What becomes more expensive, fragile, urgent, or valuable?
+- What balance-sheet or affordability thresholds matter?
+- What preparations would be no-regret versus premature?
+
+Create file:
+scenarios/active/SCENARIO-2025-001/conversations/ledger_keeper_impact.md
+")
+```
+
+2. **Verify files created** (8 files by default: one per impact specialist)
+
+3. **Checkpoint after impact analysis**
+
+Read all specialist impact transcripts and present to user:
+
+"Impact translation complete. I've mapped how the external scenarios propagate into actor-level consequences:
+
+[2-3 paragraph synthesis of exposure, burden distribution, timing, optionality, and trigger signals]
+
+Checkpoint:
+- Does this capture the actor or household/company/customer system correctly?
+- Any missing internal constraints, dependencies, or stakeholders?
+- Any response mode you want emphasized: preparedness, positioning, prioritization, or monitoring?
+
+(Say 'looks good' to proceed to strategy or response synthesis)"
+
+**Capture user feedback** in scenario_context.md if provided:
+```
+## Phase 6a - User Feedback (YYYY-MM-DD HH:MM)
+- **Actor corrections:** [...]
+- **Missing stakeholders:** [...]
+- **Response mode emphasis:** [...]
+```
+
+**Evaluate significance:**
+- **Minor/proceed:** Synthesize into `impact_analysis.md`
+- **Major + within limit (max 2 rounds):** Ask if user wants another impact round
+
+**Update metadata** with checkpoint.
+
+4. **Synthesize into `impact_analysis.md`**
+
+Include:
+- **Query Contract:** What the user is actually asking
+- **Impact Panel / Overlay Packs:** Which overlay packs were added and why
+- **External Frame:** Which scenarios or current-state conditions matter
+- **Actor Graph:** Whose consequences matter
+- **Transmission Map:** How external change reaches the actor
+- **Impact by Actor:** Near-term, medium-term, structural effects
+- **Burden Distribution:** Who carries cost, stress, friction, blame, or delay
+- **Mismatch Map:** Where internal assumptions collide with external conditions
+- **No-Regret Preparations:** High-value preparations before strategy selection
+- **Decision Triggers and Signals:** What would materially change the call
+- **Response Mode Synthesis:** Preparedness / positioning / decision-support framing
+
+5. **Present to user for validation**
+
+**Cost:** Minimum 8 invocations (1 round), Maximum 16 invocations (2 rounds)
+
+**Phase 6b: Test Strategies**
+
+**Pattern:** 1 round, structured challenge (use `impact_analysis.md` as mandatory input)
+
+**Objective:** Explore strategy or response performance across scenarios and impact conditions
+
+**Your tasks:**
+
+1. **Invoke the relevant specialists in parallel**
+
+Use `impact_analysis.md` as the primary translation layer. Do not jump from raw scenarios to recommendations.
 
 Example:
 
 ```
 Task("economist", "SCENARIO: SCENARIO-2025-001
-PHASE 6: Strategy Testing
+PHASE 6B: Strategy Testing
 
-Read all scenarios with early warning signals and accumulated context:
+Read all scenarios with early warning signals, the completed impact analysis, and accumulated context:
 - scenarios/scenario_1_[name].md
 - scenarios/scenario_2_[name].md
 - scenarios/scenario_3_[name].md
 - scenarios/scenario_4_[name].md
+- impact_analysis.md
 - scenarios/active/SCENARIO-2025-001/scenario_context.md (user feedback)
 
 IMPORTANT: scenario_context.md contains user feedback from throughout scenario
@@ -1287,7 +1411,7 @@ scenarios/active/SCENARIO-2025-001/conversations/economist_strategy.md
 ")
 ```
 
-2. **Verify files created** (7 files: one per specialist)
+2. **Verify files created** (count depends on chosen specialists)
 
 3. **Checkpoint after strategy testing**
 
@@ -1306,7 +1430,7 @@ Final checkpoint:
 
 **Capture user feedback** in scenario_context.md if provided:
 ```
-## Phase 6 - User Feedback (YYYY-MM-DD HH:MM)
+## Phase 6b - User Feedback (YYYY-MM-DD HH:MM)
 - **Strategy adjustments:** [...]
 - **Additional strategies:** [...]
 ```
@@ -1324,12 +1448,12 @@ Identify:
 - **Adaptive strategies:** Position for flexibility
 - **Risky strategies:** Fail catastrophically in some scenarios
 - **Scenario-specific strategies:** Optimized for one future
-- **Mismatch Map:** Where internal_baseline assumptions diverge from external scenarios
-- **Decision Calibration:** How risk posture changes recommended actions
+- **Impact Dependence:** Which recommendations only make sense given specific actor conditions
+- **Decision Calibration:** How risk posture, burden distribution, and optionality change recommended actions
 
 5. **Present to user for final validation**
 
-**Cost:** Minimum 7 invocations (1 round), Maximum 14 invocations (2 rounds)
+**Cost:** Variable by query; use the minimum specialist set that can defensibly answer the response mode
 
 ---
 
@@ -1585,12 +1709,14 @@ Use these phase identifiers with enforcement scripts:
 | Phase 3 Uncertainties | `phase_3` | 2-3 | `*_roundN_full.md`, `*_roundN_summary.md` |
 | Phase 4 Scenarios | `phase_4` | 3-4 | Rounds 1-2: full+summary, Round 3: final only |
 | Phase 5 Signals | `phase_5` | 1-2 | `*_signals.md` |
-| Phase 6 Strategy | `phase_6` | 1-2 | `*_strategy.md` |
+| Phase 6a Impact | `phase_6a` / `impact` | 1-2 | `*_impact.md` |
+| Phase 6b Strategy | `phase_6b` / `phase_6` / `strategy` | 1-2 | `*_strategy.md` |
+| Phase 7 Worldview | `phase_7` / `worldview` | 1 | `*_worldview_reaction.md` |
 
 ### When to Use Enforcement
 
 **Always use for:**
-- Phase 2-6 specialist invocations (standard workflow)
+- Phase 2-6b specialist invocations (standard workflow)
 - Phase 0 discovery rounds (if user chooses discovery)
 - Any specialist consultation creating files
 
@@ -1680,6 +1806,7 @@ scenarios/active/SCENARIO-YYYY-NNN/
 ├── critical_uncertainties.md
 ├── scenarios/
 │   └── [scenario narratives]
+├── impact_analysis.md
 ├── strategy_analysis.md
 ├── conversations/
 │   └── [specialist transcripts - REQUIRED]
@@ -1717,7 +1844,12 @@ Track all activity in `metadata.json`:
 - Risk: Scenarios sound generic, not grounded in specialist frameworks
 - Quality check: Do scenarios maintain intellectual rigor?
 
-**Checkpoint 4: Before Executive Summary**
+**Checkpoint 4: After Phase 6a (Impact Analysis)**
+- First actor-relative synthesis
+- Risk: Generic advice masquerading as impact
+- Quality check: Does the impact map preserve transmission logic, burden distribution, and actor specificity?
+
+**Checkpoint 5: Before Executive Summary**
 - Final quality gate
 - Risk: Summary regresses to motivational startup advice
 - Quality check: Does summary match specialist-level sophistication?
@@ -1727,7 +1859,7 @@ Track all activity in `metadata.json`:
 ```bash
 Task("quality_analyst", "SCENARIO: SCENARIO-2025-XXX
 
-CHECKPOINT: [phase_2 / phase_3 / phase_4 / executive_summary]
+CHECKPOINT: [phase_2 / phase_3 / phase_4 / phase_6a / executive_summary]
 
 QUALITY AUDIT REQUEST:
 Evaluate the quality and intellectual integrity of our scenario planning process.
@@ -1807,11 +1939,12 @@ Before moving to next phase:
 **Objective:** Connect the four scenarios back to the user's worldview model and surface belief-by-belief implications.
 
 **Your tasks:**
-- Use `worldview_model.md` and the final scenarios to complete `worldview_integration.md`.
+- Use `worldview_model.md`, the final scenarios, `impact_analysis.md`, and `strategy_analysis.md` to complete `worldview_integration.md`.
 - Map each core belief across scenarios and identify cruxes.
 - Highlight personalized early warning signals tied to those cruxes.
 - Ask reflective questions about shifts in perspective.
 - Surface value not-knowing (what outcomes are worth, tradeoffs, stakeholder values) in plain language.
+- Connect external scenarios to internal impact: what each future would mean for the user or focal actors, not just whether beliefs were right.
 - Consult Jamie (Contrarian) plus 1-2 relevant specialists for worldview reactions.
 
 ---

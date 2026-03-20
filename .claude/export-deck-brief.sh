@@ -113,6 +113,9 @@ include_raw() {
   # Early warning signals
   include_file "${SCENARIO_DIR}/early_warning_signals.md" "Early Warning Signals"
 
+  # Impact analysis (actor-relative translation layer)
+  include_file "${SCENARIO_DIR}/impact_analysis.md" "Impact Analysis"
+
   # Strategy analysis (testing strategies across scenarios)
   include_file "${SCENARIO_DIR}/strategy_analysis.md" "Strategy Analysis"
 

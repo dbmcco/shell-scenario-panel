@@ -1,46 +1,45 @@
 // ABOUTME: Phase definitions for Shell Scenario Panel workflow
-// Complete 7-phase process with rounds, outputs, and collaboration patterns
+// Complete worldview-first workflow with dedicated impact translation
 
 const phases = [
   {
     number: 0,
-    title: 'Company Discovery',
-    subtitle: 'Intelligent interview loop with specialist research',
-    description: 'Build comprehensive understanding through user interviews and multi-perspective research',
-    optional: true,
+    title: 'Worldview and Baseline',
+    subtitle: 'Capture the user lens before scenario work',
+    description: 'Elicit beliefs, internal baseline, and key context before moving into external analysis',
     rounds: [
       {
         number: 1,
-        name: 'Initial Interview',
+        name: 'Worldview Elicitation',
         pattern: 'moderator-led',
         icon: '💬',
-        description: '2-3 basic questions to establish foundation',
+        description: 'Surface beliefs, cruxes, and reasoning',
         specialists: ['moderator']
       },
       {
         number: 2,
-        name: 'Specialist Research',
-        pattern: 'isolated',
-        icon: '🔒',
-        description: 'All 6 domain specialists research independently',
-        specialists: ['ecologist', 'geopolitician', 'anthropologist', 'futurist', 'economist', 'contrarian']
+        name: 'Internal Baseline',
+        pattern: 'moderator-led',
+        icon: '🧭',
+        description: 'Capture structured exposure, constraints, and risk posture',
+        specialists: ['moderator']
       },
       {
         number: 3,
-        name: 'Follow-up Interview',
+        name: 'Context Enrichment',
         pattern: 'research-informed',
-        icon: '📝',
-        description: 'Questions informed by research findings',
-        specialists: ['moderator']
+        icon: '🔎',
+        description: 'Resolve high-impact factual gaps with targeted research',
+        specialists: ['moderator', 'researcher']
       }
     ],
     outputs: [
-      'company.md - Comprehensive company profile',
-      'phase_0_discovery/research/ - 6 specialist discovery transcripts',
-      'scenario_suggestions.md - AI-generated focal question recommendations'
+      'worldview_model.md - Beliefs, cruxes, and mental models',
+      'phase_0_discovery/internal_baseline.md - Base case, exposure, risk posture',
+      'phase_0_discovery/context_packet.md - Decision-grade factual context'
     ],
-    invocations: '12-14',
-    duration: '30-45 minutes',
+    invocations: '0-3',
+    duration: '20-35 minutes',
     color: '#d4c4a8'
   },
 
@@ -112,7 +111,7 @@ const phases = [
         name: 'Summary Convergence',
         pattern: 'summary-sharing',
         icon: '📝',
-        description: 'Refine with exposure to other specialists\' summaries',
+        description: 'Refine with exposure to other specialists summaries',
         specialists: ['ecologist', 'geopolitician', 'anthropologist', 'futurist', 'economist', 'contrarian', 'researcher']
       }
     ],
@@ -131,7 +130,7 @@ const phases = [
     number: 4,
     title: 'Develop Scenario Narratives',
     subtitle: 'Cluster-based collaboration',
-    description: 'Create 4 plausible, divergent future scenarios through deep integration',
+    description: 'Create plausible, divergent future scenarios through deep integration',
     rounds: [
       {
         number: 1,
@@ -196,26 +195,74 @@ const phases = [
   },
 
   {
-    number: 6,
-    title: 'Test Strategies',
-    subtitle: 'Identify robust and adaptive approaches',
-    description: 'Evaluate strategy performance across all scenarios',
+    number: '6a',
+    title: 'Impact Analysis',
+    subtitle: 'Translate scenarios into actor-relative consequence',
+    description: 'Use the impact translation cast to map exposure, burden, optionality, precedent, and signals for the focal actor',
     rounds: [
       {
         number: 1,
-        name: 'Strategy Testing',
-        pattern: 'challenge',
-        icon: '⚡',
-        description: 'Test user strategies across all scenarios',
-        specialists: ['ecologist', 'geopolitician', 'anthropologist', 'futurist', 'economist', 'contrarian', 'researcher']
+        name: 'Impact Translation',
+        pattern: 'actor-relative',
+        icon: '🧩',
+        description: 'Translate external futures into actor-level implications',
+        specialists: ['ledger_keeper', 'friction_mechanic', 'dependency_cartographer', 'burden_cartographer', 'optionality_conservator', 'precedent_archivist', 'signal_mason', 'contrarian']
       }
     ],
     outputs: [
-      'strategy_analysis.md - Robust and adaptive strategy recommendations',
-      'conversations/*_strategy.md - Domain-specific strategy analyses'
+      'impact_analysis.md - Actor graph, transmission map, impact map, triggers',
+      'conversations/*_impact.md - Impact specialist analyses'
     ],
-    invocations: '7',
-    duration: '15-20 minutes',
+    invocations: '8',
+    duration: '20-30 minutes',
+    color: '#d4c4a8'
+  },
+
+  {
+    number: '6b',
+    title: 'Test Strategies',
+    subtitle: 'Response design under impact conditions',
+    description: 'Evaluate strategy, preparedness, positioning, or response options using impact analysis as mandatory input',
+    rounds: [
+      {
+        number: 1,
+        name: 'Strategy Challenge',
+        pattern: 'challenge',
+        icon: '⚡',
+        description: 'Test user strategies across scenarios and impact conditions',
+        specialists: ['moderator', 'economist', 'contrarian', 'ledger_keeper', 'optionality_conservator']
+      }
+    ],
+    outputs: [
+      'strategy_analysis.md - Robust, adaptive, and conditional responses',
+      'conversations/*_strategy.md - Strategy challenge analyses'
+    ],
+    invocations: '4-8',
+    duration: '15-25 minutes',
+    color: '#e8dcc6'
+  },
+
+  {
+    number: 7,
+    title: 'Worldview Integration',
+    subtitle: 'Connect scenarios and impacts back to the user lens',
+    description: 'Map beliefs, cruxes, and personalized signals across scenarios, impacts, and response options',
+    rounds: [
+      {
+        number: 1,
+        name: 'Worldview Reflection',
+        pattern: 'worldview-reaction',
+        icon: '🪞',
+        description: 'Stress-test the original worldview against the completed scenario and impact work',
+        specialists: ['contrarian', 'economist', 'anthropologist']
+      }
+    ],
+    outputs: [
+      'worldview_integration.md - Belief-by-belief integration',
+      'conversations/*_worldview_reaction.md - Targeted worldview reactions'
+    ],
+    invocations: '3',
+    duration: '10-20 minutes',
     color: '#d4c4a8'
   }
 ];
@@ -227,7 +274,7 @@ function getPhase(number) {
 
 function getTotalInvocations() {
   return phases.reduce((sum, phase) => {
-    const count = parseInt(phase.invocations.split('-')[0]) || 0;
+    const count = parseInt(phase.invocations.split('-')[0], 10) || 0;
     return sum + count;
   }, 0);
 }
